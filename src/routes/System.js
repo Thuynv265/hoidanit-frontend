@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
 import UserManage from '../containers/System/UserManage';
 import ProductManage from '../containers/System/ProductManage';
-import RegisterPackageGroupOrAcc from '../containers/System/RegisterPackageGroupOrAcc';
+import CategoryManage from '../containers/System/CategoryManage';
 import Header from '../containers/Header/Header';
 class System extends Component {
     render() {
@@ -17,7 +17,7 @@ class System extends Component {
                         <Switch>
                             <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/product-manage" component={ProductManage} />
-                            <Route path="/system/register-package-group-or-account" component={RegisterPackageGroupOrAcc} />
+                            <Route path="/system/category-manage" component={CategoryManage} />
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                         </Switch>
                     </div>

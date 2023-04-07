@@ -67,7 +67,7 @@ class Header extends Component {
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link className='d-flex align-items-center text-white' to='/system/product-category-manage'>
+                                        <Link className='d-flex align-items-center text-white' to='/system/category-manage'>
                                             <p className='mb-0'>
                                                 <span className='text-white' >Quản lý danh mục sản phẩm</span>
                                                 <br />

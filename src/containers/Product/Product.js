@@ -14,7 +14,6 @@ import { useState } from 'react';
 
 const Product = () => {
     const [products, setProducts] = useState()
-
     const fetchDataProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -28,6 +27,8 @@ const Product = () => {
         fetchDataProduct()
     }, [])
     console.log(products)
+
+
     return (
         <>
             <HomeHeader></HomeHeader>
@@ -42,12 +43,14 @@ const Product = () => {
                                 </h3>
                                 <div>
                                     <ul className='ps-0'>
-                                        <li>Iphone</li>
-                                        <li>Samsung</li>
-                                        <li>Xiaomi</li>
-                                        <li>Oppo</li>
-                                        <li>Realme</li>
-                                        <li>Vivo</li>
+                                        <li><h3>Iphone</h3></li>
+                                        <li><h3>Samsung</h3></li>
+                                        <li><h3>Oppo</h3></li>
+                                        <li><h3>Xiaomi</h3></li>
+                                        <li><h3>Vivo</h3></li>
+                                        <li><h3>Realme</h3></li>
+                                        <li><h3>Redmi</h3></li>
+                                        <li><h3>Nokia</h3></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,29 +83,16 @@ const Product = () => {
                                         </div>
                                     </div>
                                     <h5 className='sub-title'>Giá:</h5>
-                                    <div className='d-flex align-items-center gap-10'>
-                                        <div className="form-floating">
-                                            <input
-                                                type="email"
-                                                className="form-control"
-                                                id="floatingInput"
-                                                placeholder="from"
-                                            />
-                                            <label htmlFor="floatingInput">Từ</label>
-                                        </div>
-
-                                        <div className="form-floating">
-                                            <input
-                                                type="email"
-                                                className="form-control"
-                                                id="floatingInput1"
-                                                placeholder="to"
-                                            />
-                                            <label htmlFor="floatingInput1">Đến</label>
-                                        </div>
+                                    <div>
+                                        <ul className='ps-0'>
+                                            <li><h3>Từ 1000000-3000000</h3></li>
+                                            <li><h3>Từ 3000000-5000000</h3></li>
+                                            <li><h3>Từ 5000000-8000000</h3></li>
+                                            <li><h3>Từ 8000000-15000000</h3></li>
+                                            <li><h3>Từ 1500000-25000000</h3></li>
+                                            <li><h3>Trên 25000000</h3></li>
+                                        </ul>
                                     </div>
-                                    <h5 className='sub-title'>Màu sắc:</h5>
-
                                     <h5 className='sub-title'>Kích thước màn hình:</h5>
                                     <div>
                                         <div className='form-check'>
@@ -222,13 +212,14 @@ const Product = () => {
                                         </p>
                                         <select
                                             name=""
-                                            defaultValue={"manula"}
+                                            // value={sortValue}
+                                            // defaultValue={"manula"}
                                             className="form-control form-select"
                                             id=""
                                         >
                                             <option value="title-ascending">Từ A-Z</option>
                                             <option value="title-descending">Từ Z-A</option>
-                                            <option value="price-ascending">Giá cao-thấp</option>
+                                            <option onClick={() => { products.sort((a, b) => (a.price > b.price ? 1 : -1)); }} value="price-ascending">Giá cao-thấp</option>
                                             <option value="price-descending">Giá thấp đến cao</option>
                                         </select>
                                     </div>
@@ -240,7 +231,7 @@ const Product = () => {
                                     {products && products.map((item) => {
                                         return (
                                             <div className={"col-3"}>
-                                                <Link to="/product/:id" className='product-card position-relative'>
+                                                <div className='product-card position-relative'>
 
                                                     <div className='product-image'>
                                                         <img src={item.img1} className='img-fluid' alt='product image' />
@@ -257,19 +248,32 @@ const Product = () => {
                                                         <h5 className='price'>
                                                             Giá: {item.price}VNĐ
                                                         </h5>
-                                                        {/* <h6 >
-                                                            Mô tả: {item.content}
-                                                        </h6> */}
-                                                        <Link to='/cart' className='btn-buy text-center' >Mua ngay</Link>
-                                                        <Link className='btn-addcart text-center'>Thêm vào giỏ hàng</Link>
+                                                        <Link to='/product/:id' className='btn-buy text-center' >Xem chi tiết</Link>
+                                                        <button className='btn-addcart text-center'>Thêm vào giỏ hàng</button>
                                                     </div>
-                                                </Link>
+                                                </div>
                                             </div>
                                         )
                                     })}
 
 
                                 </div>
+                                {/* <nav>
+                                    <ul className='pagination'>
+                                        <li className='page-item'>
+                                            <a href='#' className='page-link' onClick={prePage}>Trang trước</a>
+                                        </li>
+                                        {numbers.map((n, i) => {
+                                            <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
+                                                <a href='#' className='page-link'
+                                                    onClick={changeCpage} >{n}</a>
+                                            </li>
+                                        })}
+                                        <li className='page-item'>
+                                            <a href='#' className='page-link' onClick={nextPage}>Trang sau</a>
+                                        </li>
+                                    </ul>
+                                </nav> */}
                             </div>
                         </div>
                     </div>
@@ -278,6 +282,15 @@ const Product = () => {
             </div >
         </>
     );
+    // function prePage() {
+
+    // }
+    // function changeCpage(id) {
+
+    // }
+    // function nextPage() {
+
+    // }
 }
 
 export default Product;

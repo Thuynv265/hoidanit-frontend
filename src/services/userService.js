@@ -40,6 +40,22 @@ const editProductService = (inputData) => {
     return axios.put(`/api/edit-product`, inputData)
 }
 
+const getAllCategory = (inputId) => {
+    return axios.get(`/api/get-all-category?id=${inputId}`)
+}
+
+const deleteCategoryService = (categoryId) => {
+    return axios.delete(`/api/delete-category`, { data: { categoryId: categoryId } })
+}
+
+const createNewCategoryService = (data) => {
+    console.log('Check data from services: ', data)
+    return axios.post(`/api/create-new-category`, data)
+}
+
+const editCategoryService = (inputData) => {
+    return axios.put(`/api/edit-category`, inputData)
+}
 export {
     handleLoginApi,
     getAllUsers,
@@ -49,5 +65,9 @@ export {
     getAllProducts,
     createNewProductService,
     deleteProductService,
-    editProductService
+    editProductService,
+    getAllCategory,
+    deleteCategoryService,
+    createNewCategoryService,
+    editCategoryService
 }
