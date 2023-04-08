@@ -56,6 +56,12 @@ const createNewCategoryService = (data) => {
 const editCategoryService = (inputData) => {
     return axios.put(`/api/edit-category`, inputData)
 }
+
+const getProductByBrand = (inputId) => {
+    return axios.get(`/api/get-filter-product-by?id=${inputId}`)
+}
+
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -69,5 +75,6 @@ export {
     getAllCategory,
     deleteCategoryService,
     createNewCategoryService,
-    editCategoryService
+    editCategoryService,
+    getProductByBrand
 }

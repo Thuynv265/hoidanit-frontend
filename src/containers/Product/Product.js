@@ -9,11 +9,22 @@ import Footer from '../Footer/Footer';
 import ReactStars from 'react-rating-stars-component';
 import ip14prm from "../../assets/images/ip14promax.jpg";
 import { useEffect } from 'react';
-import { getAllProducts } from '../../services/userService';
+import { getAllProducts, getProductByBrand } from '../../services/userService';
 import { useState } from 'react';
 
 const Product = () => {
     const [products, setProducts] = useState()
+    const [productIphone, setProductIphone] = useState()
+    const [productSamsung, setProductSamsung] = useState()
+    const [productOppo, setProductOppo] = useState()
+    const [productXiaomi, setProductXiaomi] = useState()
+    const [productVivo, setProductVivo] = useState()
+    const [productRealme, setProductRealme] = useState()
+    const [productRedmi, setProductRedmi] = useState()
+    const [productNokia, setProductNokia] = useState()
+    const [AllProducts, setAllProducts] = useState()
+
+    // all products
     const fetchDataProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -26,9 +37,120 @@ const Product = () => {
     useEffect(() => {
         fetchDataProduct()
     }, [])
+
+    const fetchDataAllProduct = async () => {
+        try {
+            const res = await getAllProducts('ALL')
+            setAllProducts(res.products[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchDataAllProduct()
+    }, [])
+
+    // samsung product
+    const fetchSamsungProduct = async () => {
+        try {
+            const res = await getProductByBrand('2')
+            setProductSamsung(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchSamsungProduct()
+    }, [])
+    // iphone product
+    const fetchIphoneProduct = async () => {
+        try {
+            const res = await getProductByBrand('1')
+            setProductIphone(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchIphoneProduct()
+    }, [])
+
+    // oppo product
+    const fetchOppoProduct = async () => {
+        try {
+            const res = await getProductByBrand('3')
+            setProductOppo(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchOppoProduct()
+    }, [])
+
+    // Xiaomi product
+    const fetchXiaomiProduct = async () => {
+        try {
+            const res = await getProductByBrand('4')
+            setProductXiaomi(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchXiaomiProduct()
+    }, [])
+    // Vivo product
+    const fetchVivoProduct = async () => {
+        try {
+            const res = await getProductByBrand('5')
+            setProductVivo(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchVivoProduct()
+    }, [])
+    // Realme product
+    const fetchRealmeProduct = async () => {
+        try {
+            const res = await getProductByBrand('6')
+            setProductRealme(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchRealmeProduct()
+    }, [])
+    // Redmi product
+    const fetchRedmiProduct = async () => {
+        try {
+            const res = await getProductByBrand('7')
+            setProductRedmi(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchRedmiProduct()
+    }, [])
+    // Nokia product
+    const fetchNokiaProduct = async () => {
+        try {
+            const res = await getProductByBrand('8')
+            setProductNokia(res.category[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchNokiaProduct()
+    }, [])
+    // console.log(products)
     console.log(products)
-
-
     return (
         <>
             <HomeHeader></HomeHeader>
@@ -43,14 +165,15 @@ const Product = () => {
                                 </h3>
                                 <div>
                                     <ul className='ps-0'>
-                                        <li><h3>Iphone</h3></li>
-                                        <li><h3>Samsung</h3></li>
-                                        <li><h3>Oppo</h3></li>
-                                        <li><h3>Xiaomi</h3></li>
-                                        <li><h3>Vivo</h3></li>
-                                        <li><h3>Realme</h3></li>
-                                        <li><h3>Redmi</h3></li>
-                                        <li><h3>Nokia</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(AllProducts)}>Tất cả sản phẩm</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productIphone)}>Iphone</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productSamsung)}>Samsung</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productOppo)}>Oppo</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productXiaomi)}>Xiaomi</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productVivo)}>Vivo</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productRealme)}>Realme</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productRedmi)}>Redmi</h3></li>
+                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productNokia)}>Nokia</h3></li>
                                     </ul>
                                 </div>
                             </div>
@@ -219,7 +342,7 @@ const Product = () => {
                                         >
                                             <option value="title-ascending">Từ A-Z</option>
                                             <option value="title-descending">Từ Z-A</option>
-                                            <option onClick={() => { products.sort((a, b) => (a.price > b.price ? 1 : -1)); }} value="price-ascending">Giá cao-thấp</option>
+                                            <option value="price-ascending">Giá cao-thấp</option>
                                             <option value="price-descending">Giá thấp đến cao</option>
                                         </select>
                                     </div>
