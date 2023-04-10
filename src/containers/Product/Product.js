@@ -13,7 +13,8 @@ import { getAllProducts, getProductBetweenPrice, getProductByBrand, getProductSo
 import { useState } from 'react';
 import { AiOutlineSortAscending, AiOutlineSortDescending, } from "react-icons/ai"
 import { BsSortNumericDown, BsSortNumericDownAlt, } from "react-icons/bs"
-
+import ProductItem from './ProductItem';
+import { v4 as uuidv4 } from 'uuid';
 
 const Product = () => {
     const [price1, setPrice1] = useState()
@@ -406,33 +407,9 @@ const Product = () => {
 
                                     {products && products.map((item) => {
                                         return (
-                                            <div className={"col-3"}>
-                                                <div className='product-card position-relative'>
-
-                                                    <div className='product-image'>
-                                                        <img src={item.img1} className='img-fluid' alt='product image' />
-                                                        <img src={item.img2} className='img-fluid' alt='product image' />
-                                                    </div>
-
-                                                    <div className='product-details'>
-                                                        <h5 className='brand'>
-                                                            {item.productName}
-                                                        </h5>
-                                                        <h5 className='product-title'>
-                                                            Dung lượng: {item.storage}
-                                                        </h5>
-                                                        <h5 className='price'>
-                                                            Giá: {item.price}VNĐ
-                                                        </h5>
-                                                        <Link to='/product/:id' className='btn-buy text-center' >Xem chi tiết</Link>
-                                                        <button className='btn-addcart text-center'>Thêm vào giỏ</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <ProductItem item={item} key={uuidv4()} />
                                         )
                                     })}
-
-
                                 </div>
                                 {/* <nav>
                                     <ul className='pagination'>

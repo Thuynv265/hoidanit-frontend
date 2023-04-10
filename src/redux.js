@@ -9,6 +9,7 @@ import { persistStore } from 'redux-persist';
 
 import createRootReducer from './store/reducers/rootReducer';
 import actionTypes from './store/actions/actionTypes';
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const environment = process.env.NODE_ENV || "development";
 let isDevelopment = environment === "development";
@@ -32,12 +33,13 @@ const middleware = [
     createStateSyncMiddleware(reduxStateSyncConfig),
 ]
 if (isDevelopment) middleware.push(logger);
-
+const middlewareEnhancer = applyMiddleware(...middleware)
 const composeEnhancers = (isDevelopment && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
-
+const enhancers = [middlewareEnhancer]
+const composedEnhancers = composeWithDevTools(...enhancers)
 const reduxStore = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(...middleware)),
+    composedEnhancers,
 )
 
 export const dispatch = reduxStore.dispatch;

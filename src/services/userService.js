@@ -75,6 +75,10 @@ const getProductSortAlphabet = (inputId) => {
     return axios.get(`/api/get-sort-product-by-alphabet?id=${inputId}`)
 }
 
+const getProductById = (productId) => {
+    return axios.get(`/api/get-product/${productId}`)
+}
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -92,5 +96,6 @@ export {
     getProductByBrand,
     getProductBetweenPrice,
     getProductSortPrice,
-    getProductSortAlphabet
+    getProductSortAlphabet,
+    getProductById,
 }

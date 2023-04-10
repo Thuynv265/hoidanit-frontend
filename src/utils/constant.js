@@ -8,6 +8,7 @@ export const path = {
     SIGNUP: '/signup',
     CONTACT: '/contact',
     PRODUCT: '/products',
+    PRODUCT_DETAIL: '/products/:id',
     POLICY: '/policy',
     CART: '/cart',
     CHECKOUT: '/checkout'

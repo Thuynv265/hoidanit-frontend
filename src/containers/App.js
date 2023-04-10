@@ -19,6 +19,7 @@ import Login from './Auth/Login';
 import System from '../routes/System';
 import Homepage from './Homepage/Homepage.js'
 import About from './About/About'
+import ProductDetail from './Product/ProductDetail';
 // import ConfirmModal from '../components/ConfirmModal';
 
 class App extends Component {
@@ -60,10 +61,11 @@ class App extends Component {
                                         <Route path={path.ABOUT} component={About} />
                                         <Route path={path.SIGNUP} component={Signup} />
                                         <Route path={path.CONTACT} component={Contact} />
-                                        <Route path={path.PRODUCT} component={Product} />
+                                        <Route path={path.PRODUCT} component={Product} exact />
                                         <Route path={path.POLICY} component={Policy} />
                                         <Route path={path.CART} component={Cart} />
                                         <Route path={path.CHECKOUT} component={Checkout} />
+                                        <Route path={path.PRODUCT_DETAIL} component={ProductDetail} />
                                     </Switch>
                                 </CustomScrollbars>
                             </div>
