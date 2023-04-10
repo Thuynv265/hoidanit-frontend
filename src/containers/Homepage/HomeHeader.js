@@ -67,12 +67,7 @@ class HomeHeader extends Component {
                                         <div>
                                             <Link to="/cart" className='d-flex align-items-center gap-10 text-white'>
                                                 <BsFillCartDashFill className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />
-
-                                                <div className='d-flex flex-column gap-10'>
-                                                    <span className='badge bg-white text-dark'>0</span>
-                                                    <p className='mb-0'>0 VND</p>
-                                                </div>
-
+                                                <p className='mb-0'>Giỏ hàng</p>
                                             </Link>
                                         </div>
                                         <div >

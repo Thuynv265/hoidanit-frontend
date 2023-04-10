@@ -9,22 +9,17 @@ import Footer from '../Footer/Footer';
 import ReactStars from 'react-rating-stars-component';
 import ip14prm from "../../assets/images/ip14promax.jpg";
 import { useEffect } from 'react';
-import { getAllProducts, getProductByBrand } from '../../services/userService';
+import { getAllProducts, getProductBetweenPrice, getProductByBrand, getProductSortAlphabet, getProductSortPrice } from '../../services/userService';
 import { useState } from 'react';
+import { AiOutlineSortAscending, AiOutlineSortDescending, } from "react-icons/ai"
+import { BsSortNumericDown, BsSortNumericDownAlt, } from "react-icons/bs"
+
 
 const Product = () => {
-    const [products, setProducts] = useState()
-    const [productIphone, setProductIphone] = useState()
-    const [productSamsung, setProductSamsung] = useState()
-    const [productOppo, setProductOppo] = useState()
-    const [productXiaomi, setProductXiaomi] = useState()
-    const [productVivo, setProductVivo] = useState()
-    const [productRealme, setProductRealme] = useState()
-    const [productRedmi, setProductRedmi] = useState()
-    const [productNokia, setProductNokia] = useState()
-    const [AllProducts, setAllProducts] = useState()
-
+    const [price1, setPrice1] = useState()
+    const [price2, setPrice2] = useState()
     // all products
+    const [products, setProducts] = useState()
     const fetchDataProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -33,11 +28,12 @@ const Product = () => {
             console.log(error)
         }
     }
-
     useEffect(() => {
         fetchDataProduct()
     }, [])
 
+    // all product2 
+    const [AllProducts, setAllProducts] = useState()
     const fetchDataAllProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -46,12 +42,12 @@ const Product = () => {
             console.log(error)
         }
     }
-
     useEffect(() => {
         fetchDataAllProduct()
     }, [])
 
     // samsung product
+    const [productSamsung, setProductSamsung] = useState()
     const fetchSamsungProduct = async () => {
         try {
             const res = await getProductByBrand('2')
@@ -64,6 +60,7 @@ const Product = () => {
         fetchSamsungProduct()
     }, [])
     // iphone product
+    const [productIphone, setProductIphone] = useState()
     const fetchIphoneProduct = async () => {
         try {
             const res = await getProductByBrand('1')
@@ -75,8 +72,9 @@ const Product = () => {
     useEffect(() => {
         fetchIphoneProduct()
     }, [])
-
+    // console.log('iphone', productIphone)
     // oppo product
+    const [productOppo, setProductOppo] = useState()
     const fetchOppoProduct = async () => {
         try {
             const res = await getProductByBrand('3')
@@ -90,6 +88,7 @@ const Product = () => {
     }, [])
 
     // Xiaomi product
+    const [productXiaomi, setProductXiaomi] = useState()
     const fetchXiaomiProduct = async () => {
         try {
             const res = await getProductByBrand('4')
@@ -102,6 +101,7 @@ const Product = () => {
         fetchXiaomiProduct()
     }, [])
     // Vivo product
+    const [productVivo, setProductVivo] = useState()
     const fetchVivoProduct = async () => {
         try {
             const res = await getProductByBrand('5')
@@ -114,6 +114,7 @@ const Product = () => {
         fetchVivoProduct()
     }, [])
     // Realme product
+    const [productRealme, setProductRealme] = useState()
     const fetchRealmeProduct = async () => {
         try {
             const res = await getProductByBrand('6')
@@ -126,6 +127,7 @@ const Product = () => {
         fetchRealmeProduct()
     }, [])
     // Redmi product
+    const [productRedmi, setProductRedmi] = useState()
     const fetchRedmiProduct = async () => {
         try {
             const res = await getProductByBrand('7')
@@ -138,6 +140,7 @@ const Product = () => {
         fetchRedmiProduct()
     }, [])
     // Nokia product
+    const [productNokia, setProductNokia] = useState()
     const fetchNokiaProduct = async () => {
         try {
             const res = await getProductByBrand('8')
@@ -149,8 +152,88 @@ const Product = () => {
     useEffect(() => {
         fetchNokiaProduct()
     }, [])
-    // console.log(products)
-    console.log(products)
+    console.log('all products: ', products)
+
+    // // function filter product between 2 price
+    // const filterPrices = [price1, price2]
+    // const [productFilterPrice, setProductFilterPrice] = useState()
+
+    // const fetchFilterPrice = async () => {
+    //     try {
+    //         const res = await getProductBetweenPrice(price1, price2)
+    //         setProductFilterPrice(res.filterProduct[0])
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    // useEffect(() => {
+    //     fetchFilterPrice()
+    // }, [])
+
+    // console.log(productFilterPrice)
+
+    // sort product by price asc
+    const [sortPriceASC, setSortPriceASC] = useState()
+
+    const fetchSortPriceAsc = async () => {
+        try {
+            const res = await getProductSortPrice('asc')
+            setSortPriceASC(res.products[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchSortPriceAsc()
+    }, [])
+    console.log('product sort', sortPriceASC)
+
+    // sort product by price desc
+    const [sortPriceDESC, setSortPriceDESC] = useState()
+    const fetchSortPriceDESC = async () => {
+        try {
+            const res = await getProductSortPrice('desc')
+            setSortPriceDESC(res.products[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchSortPriceDESC()
+    }, [])
+
+    // sort product a-z asc
+    const [sortAlphabetASC, setSortAlphabetASC] = useState()
+
+    const fetchSortAlphabetAsc = async () => {
+        try {
+            const res = await getProductSortAlphabet('asc')
+            setSortAlphabetASC(res.products[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchSortAlphabetAsc()
+    }, [])
+    console.log('product sort a-z', sortAlphabetASC)
+
+    // sort product z-a desc
+    const [sortAlphabetDESC, setSortAlphabetDESC] = useState()
+
+    const fetchSortAlphabetDesc = async () => {
+        try {
+            const res = await getProductSortAlphabet('desc')
+            setSortAlphabetDESC(res.products[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchSortAlphabetDesc()
+    }, [])
+    console.log('product sort Z-A', sortAlphabetDESC)
+
     return (
         <>
             <HomeHeader></HomeHeader>
@@ -160,97 +243,45 @@ const Product = () => {
                     <div className='row'>
                         <div className='col-3'>
                             <div className='filter-part mb-3'>
-                                <h3 className='filter-title'>
-                                    Phân loại sản phẩm
-                                </h3>
+                                {/* <h3 className='filter-title'> */}
+                                <h1 >
+                                    Phân loại sản phẩm:
+                                </h1>
                                 <div>
                                     <ul className='ps-0'>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(AllProducts)}>Tất cả sản phẩm</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productIphone)}>Iphone</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productSamsung)}>Samsung</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productOppo)}>Oppo</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productXiaomi)}>Xiaomi</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productVivo)}>Vivo</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productRealme)}>Realme</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productRedmi)}>Redmi</h3></li>
-                                        <li><h3 className='hover-category-filter' onClick={() => setProducts(productNokia)}>Nokia</h3></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(AllProducts)}>-Tất cả sản phẩm</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productIphone)}>-Iphone</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productSamsung)}>-Samsung</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productOppo)}>-Oppo</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productXiaomi)}>-Xiaomi</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productVivo)}>-Vivo</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productRealme)}>-Realme</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productRedmi)}>-Redmi</h4></li>
+                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productNokia)}>-Nokia</h4></li>
                                     </ul>
                                 </div>
                             </div>
                             <div className='filter-part mb-3'>
-                                <h3 className='filter-title'>Phân loại theo</h3>
+                                <h2 >Phân loại theo:</h2>
                                 <div>
-                                    <h5 className='sub-title'>Còn hàng/hết hàng:</h5>
-                                    <div>
-                                        <div className='form-check'>
-                                            <input
-                                                className='form-check-input'
-                                                type='checkbox'
-                                                value=""
-                                                id=''
-                                            />
-                                            <label className='form-check-label' htmlFor=''>
-                                                Còn hàng (1)
-                                            </label>
-                                        </div>
-                                        <div className='form-check'>
-                                            <input
-                                                className='form-check-input'
-                                                type='checkbox'
-                                                value=""
-                                                id=''
-                                            />
-                                            <label className='form-check-label' htmlFor=''>
-                                                Hết hàng (0)
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <h5 className='sub-title'>Giá:</h5>
+                                    {/* <h3 className='sub-title'>Phân khúc điện thoại</h3> */}
+                                    <h3 className='mx-1'>Phân khúc điện thoại:</h3>
                                     <div>
                                         <ul className='ps-0'>
-                                            <li><h3>Từ 1000000-3000000</h3></li>
-                                            <li><h3>Từ 3000000-5000000</h3></li>
-                                            <li><h3>Từ 5000000-8000000</h3></li>
-                                            <li><h3>Từ 8000000-15000000</h3></li>
-                                            <li><h3>Từ 1500000-25000000</h3></li>
-                                            <li><h3>Trên 25000000</h3></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#Giá rẻ: 2-4 triệu</h4></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#Tầm trung: 4-8 triệu</h4></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#Cận cao cấp: 8-13 triệu</h4></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#Cao cấp: trên 13 triệu</h4></li>
                                         </ul>
                                     </div>
-                                    <h5 className='sub-title'>Kích thước màn hình:</h5>
+                                    <h3 className='mx-1'>Dung lượng điện thoại</h3>
                                     <div>
-                                        <div className='form-check'>
-                                            <input
-                                                className='form-check-input'
-                                                type='checkbox'
-                                                value=""
-                                                id='color-1'
-                                            />
-                                            <label className='form-check-label' htmlFor='color-1'>
-                                                5.8 inches (2)
-                                            </label>
-                                        </div>
-                                        <div className='form-check'>
-                                            <input
-                                                className='form-check-input'
-                                                type='checkbox'
-                                                value=""
-                                                id='color-2'
-                                            />
-                                            <label className='form-check-label' htmlFor='color-2'>
-                                                6.1 inches (2)
-                                            </label>
-                                        </div>
-                                        <div className='form-check'>
-                                            <input
-                                                className='form-check-input'
-                                                type='checkbox'
-                                                value=""
-                                                id='color-3'
-                                            />
-                                            <label className='form-check-label' htmlFor='color-3'>
-                                                6.43" (2)
-                                            </label>
-                                        </div>
+                                        <ul className='ps-0'>
+                                            <li><h4 className='hover-category-filter mx-3'>#64 GB</h4></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#128 GB</h4></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#256 GB</h4></li>
+                                            <li><h4 className='hover-category-filter mx-3'>#512 GB</h4></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -329,22 +360,44 @@ const Product = () => {
                         <div className="col-9">
                             <div className="filter-sort-grid mb-4">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center gap-10">
+                                    <div className="d-flex align-items-center gap-30 ">
                                         <p className="mb-0 d-block" style={{ width: "100px" }}>
                                             Sắp xếp theo:
                                         </p>
-                                        <select
-                                            name=""
-                                            // value={sortValue}
-                                            // defaultValue={"manula"}
-                                            className="form-control form-select"
-                                            id=""
-                                        >
-                                            <option value="title-ascending">Từ A-Z</option>
-                                            <option value="title-descending">Từ Z-A</option>
-                                            <option value="price-ascending">Giá cao-thấp</option>
-                                            <option value="price-descending">Giá thấp đến cao</option>
-                                        </select>
+                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortAlphabetASC)}>
+                                            <AiOutlineSortAscending className=' d-flex align-items-center ' style={{ width: "40px", height: "40px" }} />
+                                            <span className='mb-0'>
+                                                <span className='text-dark'>: Từ A-Z</span>
+                                                <br />
+                                            </span>
+                                        </div>
+                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortAlphabetDESC)}>
+                                            <AiOutlineSortDescending className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
+                                            <span className='mb-0'>
+                                                <span className='text-dark'>: Từ Z-A</span>
+                                                <br />
+                                            </span>
+                                        </div>
+                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortPriceDESC)}>
+                                            <BsSortNumericDown className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
+                                            <span className='mb-0'>
+                                                <span className='text-dark'>: Giá cao đến thấp</span>
+                                                <br />
+                                            </span>
+                                        </div>
+                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortPriceASC)}>
+                                            <BsSortNumericDownAlt className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
+                                            <span className='mb-0'>
+                                                <span className='text-dark'>: Giá thấp đến cao</span>
+                                                <br />
+                                            </span>
+                                        </div>
+
+
+                                        {/* <button onClick={() => setProducts(sortAlphabetASC)}>A-Z</button>
+                                        <button onClick={() => setProducts(sortAlphabetDESC)}>Z-A</button>
+                                        <button onClick={() => setProducts(sortPriceDESC)}>Cao-thap</button>
+                                        <button onClick={() => setProducts(sortPriceASC)}>thap den cao</button> */}
                                     </div>
                                 </div>
                             </div>
@@ -372,7 +425,7 @@ const Product = () => {
                                                             Giá: {item.price}VNĐ
                                                         </h5>
                                                         <Link to='/product/:id' className='btn-buy text-center' >Xem chi tiết</Link>
-                                                        <button className='btn-addcart text-center'>Thêm vào giỏ hàng</button>
+                                                        <button className='btn-addcart text-center'>Thêm vào giỏ</button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -61,6 +61,19 @@ const getProductByBrand = (inputId) => {
     return axios.get(`/api/get-filter-product-by?id=${inputId}`)
 }
 
+const getProductBetweenPrice = (inputData1, inputData2) => {
+    return axios.get(`/api/get-filter-product-by-price`, [inputData1, inputData2])
+}
+
+// api sap xep theo gia cao-thap, thap-cao
+const getProductSortPrice = (inputId) => {
+    return axios.get(`/api/get-sort-product-by-price?id=${inputId}`)
+}
+
+// api sap xep theo a-z, z-a
+const getProductSortAlphabet = (inputId) => {
+    return axios.get(`/api/get-sort-product-by-alphabet?id=${inputId}`)
+}
 
 export {
     handleLoginApi,
@@ -76,5 +89,8 @@ export {
     deleteCategoryService,
     createNewCategoryService,
     editCategoryService,
-    getProductByBrand
+    getProductByBrand,
+    getProductBetweenPrice,
+    getProductSortPrice,
+    getProductSortAlphabet
 }
