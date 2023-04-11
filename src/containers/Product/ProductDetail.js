@@ -82,7 +82,7 @@ const ProductDetail = (props) => {
                         <div className='col-12'>
                             <h2 className="mb-0 text-center">
                                 <Link to="/products" className='text-dark'>
-                                    Sản phẩm </Link> &gt;  {product.productName} {product.storage} GB
+                                    Sản phẩm </Link> &gt;  {product.productName} phiên bản {product.storage}
                             </h2>
                         </div>
                     </div>
@@ -180,12 +180,8 @@ const ProductDetail = (props) => {
                                             <td >{product.color}</td>
                                         </tr>
                                         <tr>
-                                            <td className="text-center">RAM</td>
-                                            <td ></td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Dung lượng bộ nhớ</td>
-                                            <td>{product.storage} GB</td>
+                                            <td className="text-center">RAM/ROM</td>
+                                            <td>{product.storage}</td>
                                         </tr>
                                         <tr>
                                             <td className="text-center">Kích thước màn hình</td>

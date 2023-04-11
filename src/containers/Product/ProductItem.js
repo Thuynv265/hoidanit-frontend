@@ -14,8 +14,11 @@ const ProductItem = ({ item }) => {
                         <h5 className='brand'>
                             {item.productName}
                         </h5>
+                        <h5 className='brand'>
+                            Màu: {item.color}
+                        </h5>
                         <h5 className='product-title'>
-                            Dung lượng: {item.storage} GB
+                            Dung lượng: {item.storage}
                         </h5>
                         <h5 className='price'>
                             Giá: {item.price}VNĐ
