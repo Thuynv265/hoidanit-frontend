@@ -245,20 +245,20 @@ const Product = () => {
                         <div className='col-3'>
                             <div className='filter-part mb-3'>
                                 {/* <h3 className='filter-title'> */}
-                                <h1 >
+                                <h2 >
                                     Phân loại sản phẩm:
-                                </h1>
+                                </h2>
                                 <div>
                                     <ul className='ps-0'>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(AllProducts)}>-Tất cả sản phẩm</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productIphone)}>-Iphone</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productSamsung)}>-Samsung</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productOppo)}>-Oppo</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productXiaomi)}>-Xiaomi</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productVivo)}>-Vivo</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productRealme)}>-Realme</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productRedmi)}>-Redmi</h4></li>
-                                        <li><h4 className='hover-category-filter mx-4' onClick={() => setProducts(productNokia)}>-Nokia</h4></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(AllProducts)}>-Tất cả sản phẩm</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productIphone)}>-Iphone</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productSamsung)}>-Samsung</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productOppo)}>-Oppo</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productXiaomi)}>-Xiaomi</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productVivo)}>-Vivo</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productRealme)}>-Realme</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productRedmi)}>-Redmi</h5></li>
+                                        <li><h5 className='hover-category-filter mx-4' onClick={() => setProducts(productNokia)}>-Nokia</h5></li>
                                     </ul>
                                 </div>
                             </div>
@@ -269,90 +269,20 @@ const Product = () => {
                                     <h3 className='mx-1'>Phân khúc điện thoại:</h3>
                                     <div>
                                         <ul className='ps-0'>
-                                            <li><h4 className='hover-category-filter mx-3'>#Giá rẻ: 2-4 triệu</h4></li>
-                                            <li><h4 className='hover-category-filter mx-3'>#Tầm trung: 4-8 triệu</h4></li>
-                                            <li><h4 className='hover-category-filter mx-3'>#Cận cao cấp: 8-13 triệu</h4></li>
-                                            <li><h4 className='hover-category-filter mx-3'>#Cao cấp: trên 13 triệu</h4></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#Giá rẻ: 2-4 triệu</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#Tầm trung: 4-8 triệu</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#Cận cao cấp: 8-13 triệu</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#Cao cấp: trên 13 triệu</h6></li>
                                         </ul>
                                     </div>
                                     <h3 className='mx-1'>Dung lượng điện thoại</h3>
                                     <div>
                                         <ul className='ps-0'>
-                                            <li><h4 className='hover-category-filter mx-3'>#64 GB</h4></li>
-                                            <li><h4 className='hover-category-filter mx-3'>#128 GB</h4></li>
-                                            <li><h4 className='hover-category-filter mx-3'>#256 GB</h4></li>
-                                            <li><h4 className='hover-category-filter mx-3'>#512 GB</h4></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#64 GB</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#128 GB</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#256 GB</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'>#512 GB</h6></li>
                                         </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='filter-part mb-3'>
-                                <h3 className='filter-title'>Tags sản phẩm</h3>
-                                <div>
-                                    <div className='product-tags d-flex flex-wrap align-items-center gap-10'>
-                                        <span className='badge bg-light text-secondary rounded-3 py-2 px-3'>
-                                            Iphone
-                                        </span>
-                                        <span className='badge bg-light text-secondary rounded-3 py-2 px-3'>
-                                            Zfold 4
-                                        </span>
-                                        <span className='badge bg-light text-secondary rounded-3 py-2 px-3'>
-                                            Reno 8T
-                                        </span>
-                                        <span className='badge bg-light text-secondary rounded-3 py-2 px-3'>
-                                            Xiaomi 13
-                                        </span>
-                                        <span className='badge bg-light text-secondary rounded-3 py-2 px-3'>
-                                            Realme
-                                        </span>
-                                        <span className='badge bg-light text-secondary rounded-3 py-2 px-3'>
-                                            Vivo V25
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='filter-part mb-3'>
-                                <h3 className='filter-title'>Sản phẩm gợi ý</h3>
-                                <div>
-                                    <div className='suggest-products mb-3 d-flex'>
-                                        <div className='w-50'>
-                                            <img
-                                                src={ip14prm}
-                                                className='img-fluid'
-                                                alt='watch'
-                                            />
-                                        </div>
-                                        <div className='w-50'>
-                                            <h5>Day la san pham goi y cho ban</h5>
-                                            <ReactStars
-                                                count={5}
-                                                size={24}
-                                                value={4}
-                                                edit={false}
-                                                activeColor="#ffd700"
-                                            />
-                                            <b>9.990.000 VND</b>
-                                        </div>
-                                    </div>
-                                    <div className='suggest-products d-flex'>
-                                        <div className='w-50'>
-                                            <img
-                                                src={ip14prm}
-                                                className='img-fluid'
-                                                alt='watch'
-                                            />
-                                        </div>
-                                        <div className='w-50'>
-                                            <h5>Day la san pham goi y cho ban</h5>
-                                            <ReactStars
-                                                count={5}
-                                                size={24}
-                                                value={4}
-                                                edit={false}
-                                                activeColor="#ffd700"
-                                            />
-                                            <b>9.990.000 VND</b>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -393,12 +323,6 @@ const Product = () => {
                                                 <br />
                                             </span>
                                         </div>
-
-
-                                        {/* <button onClick={() => setProducts(sortAlphabetASC)}>A-Z</button>
-                                        <button onClick={() => setProducts(sortAlphabetDESC)}>Z-A</button>
-                                        <button onClick={() => setProducts(sortPriceDESC)}>Cao-thap</button>
-                                        <button onClick={() => setProducts(sortPriceASC)}>thap den cao</button> */}
                                     </div>
                                 </div>
                             </div>
@@ -411,22 +335,7 @@ const Product = () => {
                                         )
                                     })}
                                 </div>
-                                {/* <nav>
-                                    <ul className='pagination'>
-                                        <li className='page-item'>
-                                            <a href='#' className='page-link' onClick={prePage}>Trang trước</a>
-                                        </li>
-                                        {numbers.map((n, i) => {
-                                            <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
-                                                <a href='#' className='page-link'
-                                                    onClick={changeCpage} >{n}</a>
-                                            </li>
-                                        })}
-                                        <li className='page-item'>
-                                            <a href='#' className='page-link' onClick={nextPage}>Trang sau</a>
-                                        </li>
-                                    </ul>
-                                </nav> */}
+
                             </div>
                         </div>
                     </div>
@@ -435,15 +344,7 @@ const Product = () => {
             </div >
         </>
     );
-    // function prePage() {
 
-    // }
-    // function changeCpage(id) {
-
-    // }
-    // function nextPage() {
-
-    // }
 }
 
 export default Product;

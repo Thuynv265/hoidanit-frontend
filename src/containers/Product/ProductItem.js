@@ -15,13 +15,13 @@ const ProductItem = ({ item }) => {
                             {item.productName}
                         </h5>
                         <h5 className='product-title'>
-                            Dung lượng: {item.storage}
+                            Dung lượng: {item.storage} GB
                         </h5>
                         <h5 className='price'>
                             Giá: {item.price}VNĐ
                         </h5>
                         <Link to={`/products/${item.productId}`} className='btn-buy text-center' >Xem chi tiết</Link>
-                        <button className='btn-addcart text-center'>Thêm vào giỏ hàng</button>
+                        <button className='btn-addcart text-center'>Thêm vào giỏ</button>
                     </div>
                 </div>
             </div >

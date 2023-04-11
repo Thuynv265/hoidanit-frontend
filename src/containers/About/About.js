@@ -26,23 +26,51 @@ class About extends Component {
                     <div className="container my-3 py-3">
                         <h1 className="text-center">Về chúng tôi</h1>
                         <hr />
-                        <p className="lead ">
-                            -VTmobile là một chuỗi các cửa hàng cung cấp và bán các sản phẩm điện thoại di động trong phạm vi cả nước, hợp tác kinh doanh hiệu quả với nhiều Công ty và thương hiệu lớn trên thế giới.
-                            <br></br>
-                            -Với triết lý " Chắc chắn cho tương lai", chúng tôi luôn hướng tới mục tiêu
-                            phát triển bền vững cho chính Công ty và cho khách hàng của mình.Chất lượng quốc tế cho người Việt Nam
-                            <br></br>
-                            -Giá trị này dẫn dắt sự thành công của VT mobile tại nhiều quốc gia trên toàn cầu và cũng là động lực,
-                            niềm tự hào cho đội ngũ VT mobile Việt Nam cùng nỗ lực vì cuộc sống dễ dàng và tốt đẹp hơn cho người Việt.
-                            <br></br>
-                            -Kinh doanh có trách nhiệm:
-                            <br></br>
-                            -Chúng tôi tin rằng một doanh nghiệp lớn mạnh luôn cần sự chung sức và đồng hành của tập thể gồm đối tác,
-                            nhân viên và cộng đồng và cũng là giá trị mà chúng tôi cân nhắc cho sự phát triển bền vững của VT mobile.
-                            -VT mobile được thành lập năm 2023 dưới tên gọi C.S, có trụ sở tại Hà Nội (VN). Khởi đầu là một đại lý điện thoại nhỏ, sau đó VT đã nhanh chóng mở rộng thêm các chi nhánh trên phạm vi toàn quốc.
-                            Tại thời điểm đó, ý tưởng kinh doanh mới này đáp ứng đúng nhu cầu khách hàng, là tiền đề cho khái niệm bán lẻ tiện lợi
+                        <div className="about-section">
+                            <h3>-VTmobile là một chuỗi các cửa hàng chuyên bán các sản phẩm điện thoại di động trong phạm vi cả nước, hợp tác kinh doanh hiệu quả với nhiều Công ty và thương hiệu lớn trên thế giới.</h3>
+                            <h3>-Với triết lý "Chắc chắn cho tương lai", chúng tôi luôn hướng tới mục tiêu phát triển bền vững cho chính Công ty và cho khách hàng của mình. Chất lượng quốc tế cho người Việt Nam</h3>
+                            <h3>-Giá trị này dẫn dắt sự thành công của VT mobile tại nhiều quốc gia trên toàn cầu và cũng là động lực,
+                                niềm tự hào cho đội ngũ VT mobile Việt Nam cùng nỗ lực vì cuộc sống dễ dàng và tốt đẹp hơn cho người Việt.</h3>
+                            <br /><br />
+                            <h2>Lịch sử hình thành và phát triển của VT-mobile:</h2>
+                            <ul>
+                                <li><h4>2013: Anh Thủy - CEO và Founder đã mở cửa hàng đầu tiên lấy tên là "Di động Văn Thủy"</h4></li>
+                                <li><h4>2014: Cửa hàng thứ 2 nằm tại huyện Hoài Đức chính thức khánh thành và đi vào hoạt động</h4></li>
+                                <li><h4>2016: Di động Văn Thủy đã quyết định đổi tên thành VT-mobile sau 4 năm hoạt động</h4></li>
+                                <li><h4>2018: Tiếp tục mở cửa hàng số 3 nằm tại con phố Trần Đăng Ninh Quận Cầu Giấy do nhu câu của khách hàng cũng như độ uy tín của cửa hàng tăng cao</h4></li>
+                            </ul>
+                        </div>
 
-                        </p>
+                        <h2 className='text-center'>Đội ngũ cửa hàng</h2>
+                        <div className="row">
+                            <div className="column">
+                                <div className="card">
+                                    <img src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg" />
+                                    <div className="container" style={{ width: "100%" }}>
+                                        <h2 className='text-center'>Mr.Thuy</h2>
+                                        <p className="title">CEO & Founder </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="column">
+                                <div className="card">
+                                    <img src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg" />
+                                    <div className="container" style={{ width: "100%" }}>
+                                        <h2 className='text-center'>Mr.Pan</h2>
+                                        <p className="title">Giám đốc điều hành</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="column">
+                                <div className="card" >
+                                    <img src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg" />
+                                    <div className="container" style={{ width: "100%" }}>
+                                        <h2 className='text-center'>Mrs.Mary</h2>
+                                        <p className="title">Quản lý cửa hàng</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <h2 className="text-center py-4">Các hãng điện thoại mà VT mobile hiện đang phân phối và bán lẻ:</h2>
                         <div className="row">

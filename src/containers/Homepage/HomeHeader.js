@@ -86,10 +86,10 @@ class HomeHeader extends Component {
                                     <div className='menu-bottom d-flex align-items-center '>
                                         <div className='menu-links'>
                                             <div className='d-flex align-items-center gap-50'>
-                                                <NavLink to='/home'>Trang chủ</NavLink>
+                                                <NavLink to='/home'>Trang chủ VT-Mobile</NavLink>
                                                 <NavLink to='/products'>Sản phẩm</NavLink>
                                                 <NavLink to='/about'>Về chúng tôi</NavLink>
-                                                <NavLink to='/blog'>Blogs</NavLink>
+                                                {/* <NavLink to='/blog'>Blogs</NavLink> */}
                                                 <NavLink to='/contact'>Liên hệ</NavLink>
                                                 <NavLink to='/policy'>Thông tin & Điều khoản</NavLink>
                                                 <a className='text-white' href='tel: 0978569372'>Liên hệ hotline : 0978569372</a>

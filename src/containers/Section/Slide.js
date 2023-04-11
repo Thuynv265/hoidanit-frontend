@@ -219,7 +219,7 @@ class Slide extends Component {
                                                 Khuyến mại hot mỗi ngày
                                             </h6>
                                             <p className="mb-0">
-                                                Tiết kiệm đến 25%
+                                                Tiết kiệm đến 15%
                                             </p>
                                         </div>
                                     </div>
@@ -262,22 +262,22 @@ class Slide extends Component {
                     </div>
                 </section>
 
-                <section className='home-wrapper-1 py-5'>
+                {/* <section className='home-wrapper-1 py-5'>
                     <div className='container-xxl'>
                         <div className='row'>
                             <div className='col-6'>
                                 <div className='main-banner '>
                                     <div>
-                                        <h4>Top smartphone giá rẻ dưới 5 triệu tại của hàng:</h4></div>
+                                        <h4>Top smartphone giá rẻ dưới 5 triệu tại của hàng:</h4></div> */}
 
-                                    {/* <ReactPlayer className='react-player'
+                {/* <ReactPlayer className='react-player'
                                         url='https://www.youtube.com/watch?v=fE_DIbQuRGU&t=1s&ab_channel=AnhEmTV'
                                         width='100%'
                                         height='300px'
 
                                     /> */}
 
-                                </div>
+                {/* </div>
                             </div>
                             <div className='col-6'>
                                 <div className='d-flex flex-wrap gap-10 justify-content-between align-items-center'>
@@ -314,7 +314,7 @@ class Slide extends Component {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
             </>
         );

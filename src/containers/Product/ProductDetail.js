@@ -6,11 +6,21 @@ import { useDispatch } from "react-redux";
 import { AddCart } from "../../store/actions/cartAction";
 import ProductCard from './ProductCard';
 import ReactImageZoom from "react-image-zoom";
-import { TbGitCompare } from "react-icons/tb";
-import { AiOutlineHeart } from "react-icons/ai";
+import { TbTruckReturn, TbDiscount2 } from "react-icons/tb";
+import { SiCashapp } from "react-icons/si";
+import { ImPriceTags } from "react-icons/im";
+import { FaShippingFast } from "react-icons/fa";
+import { BiTimer } from "react-icons/bi";
 import ReactStars from 'react-rating-stars-component';
 import { Link } from "react-router-dom";
-
+import './productDetail.scss'
+import logoApple from '../../assets/images/logoIphone.jpg'
+import logoOppo from '../../assets/images/logoOppo.jpg'
+import logoRealme from '../../assets/images/logoRealme.png'
+import logoSamsung from '../../assets/images/logoSamsung.jpg'
+import logoVivo from '../../assets/images/logoVivo.jpg'
+import logoXiaomi from '../../assets/images/logoXiaomi.jpg'
+import Marquee from "react-fast-marquee";
 
 const ProductDetail = (props) => {
     const { id } = props.match.params;
@@ -30,6 +40,7 @@ const ProductDetail = (props) => {
             })
         }
     }
+    console.log(product)
 
     const addCart = () => {
         if (product)
@@ -40,7 +51,7 @@ const ProductDetail = (props) => {
         width: 594,
         height: 600,
         zoomWidth: 600,
-        img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg",
+        img: product.img1
     };
 
     // eslint-disable-next-line no-unused-vars
@@ -59,6 +70,7 @@ const ProductDetail = (props) => {
     }, [])
 
 
+
     return (
         <>
             <HomeHeader />
@@ -68,10 +80,10 @@ const ProductDetail = (props) => {
                 <div className='container-xxl'>
                     <div className='row'>
                         <div className='col-12'>
-                            <p className="mb-0 text-center">
-                                <Link to="/" className='text-dark'>
-                                    Trang chủ </Link> &gt;  Tên sản phẩm
-                            </p>
+                            <h2 className="mb-0 text-center">
+                                <Link to="/products" className='text-dark'>
+                                    Sản phẩm </Link> &gt;  {product.productName} {product.storage} GB
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -84,18 +96,26 @@ const ProductDetail = (props) => {
                         <div className='col-6'>
                             <div className='main-product-image'>
                                 <div>
-                                    <ReactImageZoom {...zoomImg} />
+                                    {/* <ReactImageZoom {...zoomImg} /> */}
                                 </div>
                             </div>
                             <div className="other-product-images d-flex flex-wrap gap-15">
                                 <div>
                                     <img
-                                        src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
+                                        src={product.img1}
                                         className="img-fluid"
                                         alt=""
                                     />
                                 </div>
                                 <div>
+                                    <img
+                                        src={product.img2}
+                                        className="img-fluid"
+                                        alt=""
+                                    />
+                                </div>
+
+                                {/* <div>
                                     <img
                                         src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
                                         className="img-fluid"
@@ -108,258 +128,177 @@ const ProductDetail = (props) => {
                                         className="img-fluid"
                                         alt=""
                                     />
+                                </div> */}
+                            </div>
+                            <div>
+                                <div className="d-flex gap-10 flex-column  my-3">
+                                    <h3 className="product-heading">
+                                        <FaShippingFast style={{ width: "40px", height: "40px" }} />
+                                        Vận chuyển: Miễn phí vận chuyển với mọi đơn hàng tại VT-mobile<br />
+                                    </h3>
+                                    <h3 className="product-heading">
+                                        < TbTruckReturn style={{ width: "40px", height: "40px" }} />
+                                        Hoàn trả dễ dàng: Hoàn trả sản phẩm dễ dàng nếu khách hàng gặp bất kỳ lỗi gì liên quan đến phần cứng và phần mềm khi nhân hàng<br />
+                                    </h3>
                                 </div>
                                 <div>
-                                    <img
-                                        src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                                        className="img-fluid"
-                                        alt=""
-                                    />
+                                    <h3 className="product-heading">
+                                        <BiTimer style={{ width: "40px", height: "40px" }} />
+                                        Thời gian giao hàng nhanh: 1-2 ngày đối với khu vực miền Bắc, 3-4 ngày đối với các khu vực khác<br />
+                                    </h3>
+                                    <h3 className="product-heading">
+                                        <SiCashapp style={{ width: "40px", height: "40px" }} />
+                                        Thanh toán khi nhận hàng: đem lại sự yên tâm cho khách<br />
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div className='col-6'>
                             <div className="main-product-details">
                                 <div className="border-bottom">
-                                    <h3 className="title">
-                                        Kids Headphones Bulk 10 Pack Multi Colored For Students
-                                    </h3>
+                                    <h1 className="title">
+                                        Điện thoại {product.productName}
+                                    </h1>
                                 </div>
                                 <div className="border-bottom py-3">
-                                    <p className="price">$ 100</p>
-                                    <div className="d-flex align-items-center gap-10">
-                                        <ReactStars
-                                            count={5}
-                                            size={24}
-                                            value={4}
-                                            edit={false}
-                                            activeColor="#ffd700"
-                                        />
-                                        <p className="mb-0 t-review">( 2 Reviews )</p>
-                                    </div>
-                                    <a className="review-btn" href="#review">
-                                        Write a Review
-                                    </a>
+                                    <p className="price text-center"><ImPriceTags />  Giá bán niêm yết: {product.price} VND</p>
+                                    <p className="price text-center"><TbDiscount2 />  Giảm giá/Sản phẩm: {product.discount} VND</p>
                                 </div>
                                 <div className=" py-3">
-                                    <div className="d-flex gap-10 align-items-center my-2">
-                                        <h3 className="product-heading">Type :</h3>
-                                        <p className="product-data">Watch</p>
-                                    </div>
-                                    <div className="d-flex gap-10 align-items-center my-2">
-                                        <h3 className="product-heading">Brand :</h3>
-                                        <p className="product-data">Havells</p>
-                                    </div>
-                                    <div className="d-flex gap-10 align-items-center my-2">
-                                        <h3 className="product-heading">Category :</h3>
-                                        <p className="product-data">Watch</p>
-                                    </div>
-                                    <div className="d-flex gap-10 align-items-center my-2">
-                                        <h3 className="product-heading">Tags :</h3>
-                                        <p className="product-data">Watch</p>
-                                    </div>
-                                    <div className="d-flex gap-10 align-items-center my-2">
-                                        <h3 className="product-heading">Availablity :</h3>
-                                        <p className="product-data">In Stock</p>
-                                    </div>
-                                    <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                                        <h3 className="product-heading">Size :</h3>
-                                        <div className="d-flex flex-wrap gap-15">
-                                            <span className="badge border border-1 bg-white text-dark border-secondary">
-                                                S
-                                            </span>
-                                            <span className="badge border border-1 bg-white text-dark border-secondary">
-                                                M
-                                            </span>
-                                            <span className="badge border border-1 bg-white text-dark border-secondary">
-                                                XL
-                                            </span>
-                                            <span className="badge border border-1 bg-white text-dark border-secondary">
-                                                XXL
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                                        <h3 className="product-heading">Color :</h3>
-                                        <ul className="colors ps-0">
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                    <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
-                                        <h3 className="product-heading">Quantity :</h3>
-                                        <div className="">
-                                            <input
-                                                type="number"
-                                                name=""
-                                                min={1}
-                                                max={10}
-                                                className="form-control"
-                                                style={{ width: "70px" }}
-                                                id=""
-                                            />
-                                        </div>
-                                        <div className="d-flex align-items-center gap-30 ms-5">
-                                            <button
-                                                className="button border-0"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop"
-                                                type="button"
-                                                onClick={addCart}
-                                            >
-                                                Add to Cart
-                                            </button>
-                                            <button className="button signup">Buy It Now</button>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex align-items-center gap-15">
-                                        <div>
-                                            <a href="/">
-                                                <TbGitCompare className="fs-5 me-2" /> Add to Compare
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="/">
-                                                <AiOutlineHeart className="fs-5 me-2" /> Add to Wishlist
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex gap-10 flex-column  my-3">
-                                        <h3 className="product-heading">Shipping & Returns :</h3>
-                                        <p className="product-data">
-                                            Free shipping and returns available on all orders! <br /> We
-                                            ship all US domestic orders within
-                                            <b>5-10 business days!</b>
-                                        </p>
-                                    </div>
-                                    <div className="d-flex gap-10 align-items-center my-3">
-                                        <h3 className="product-heading">Product Link:</h3>
-                                        {/* <a
-                                            href="javascript:void(0);"
-                                            onClick={() => {
-                                                alert("copied")
-                                                copyToClipboard(
-                                                    "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                                                );
-                                            }}
+                                    <h3 className="text-center">Cấu hình chi tiết sản phẩm:</h3>
+                                    <table>
+                                        <tr>
+                                            <th className="text-center">Bảng cấu hình máy</th>
+                                            <th >{product.productName} {product.storage} GB</th>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Hãng sản xuất</td>
+                                            <td >{product.categoryId === 1 ? 'Apple' : product.categoryId === 2 ? "Samsung" : product.categoryId === 3 ? "Oppo" : product.categoryId === 4 ? 'Xiaomi' : product.categoryId === 5 ? 'Vivo' : product.categoryId === 6 ? 'Realme' : product.categoryId === 7 ? 'Redmi' : 'Nokia'}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Màu sắc</td>
+                                            <td >{product.color}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">RAM</td>
+                                            <td ></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Dung lượng bộ nhớ</td>
+                                            <td>{product.storage} GB</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Kích thước màn hình</td>
+                                            <td>{product.screen} inches</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Độ phân giải</td>
+                                            <td>{product.resolution}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Trọng lượng</td>
+                                            <td>{product.weight} Gram</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Dung lượng pin</td>
+                                            <td>{product.battery} MAH</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Chất liệu</td>
+                                            <td>{product.material}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Tiêu chuẩn chống nước</td>
+                                            <td>{product.water_resist}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-center">Bảo hành</td>
+                                            <td>{product.warranty} tháng chính hãng</td>
+                                        </tr>
+                                    </table>
+                                    <br />
+                                    <div className="d-flex align-items-center gap-30 ms-5">
+                                        <button
+                                            className="button border-0"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop"
+                                            type="button"
+                                            onClick={addCart}
                                         >
-                                            Copy Product Link
-                                        </a> */}
-                                        Copy Product Link(chua fix duoc)
+                                            Thêm vào giỏ hàng
+                                        </button>
+                                        <button className="button signup">Mua ngay</button>
                                     </div>
+                                </div>
+                                <div className="d-flex gap-10 flex-column  my-3">
+                                    <h3 className="product-heading">
+                                        <FaShippingFast style={{ width: "40px", height: "40px" }} />
+                                        Vận chuyển và hoàn trả: Miễn phí vận chuyển với mọi đơn hàng tại VT-mobile<br />
+                                    </h3>
+                                    <h3 className="product-heading">
+                                        < TbTruckReturn style={{ width: "40px", height: "40px" }} />
+                                        Hoàn trả dễ dàng: Hoàn trả sản phẩm dễ dàng nếu khách hàng gặp bất kỳ lỗi gì liên quan đến phần cứng và phân mềm khi nhân hàng<br />
+                                    </h3>
+                                    <h3 className="product-heading">
+                                        <BiTimer style={{ width: "40px", height: "40px" }} />
+                                        Thời gian giao hàng nhanh: 1-2 ngày đối với khu vực miền Bắc, 3-4 ngày đối với các khu vực khác<br />
+                                    </h3>
+                                    <h3 className="product-heading">
+                                        <SiCashapp style={{ width: "40px", height: "40px" }} />
+                                        Thanh toán khi nhận hàng: đem lại sự yên tâm cho khách<br />
+                                    </h3>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div className="description-wrapper py-5 home-wrapper-2">
                 <div className='container-xxl'>
                     <div className="row">
                         <div className="col-12">
-                            <h4>Description</h4>
+                            <h4>Mô tả sản phẩm</h4>
                             <div className="bg-white p-3">
-                                <p>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Tenetur nisi similique illum aut perferendis voluptas, quisquam
-                                    obcaecati qui nobis officia. Voluptatibus in harum deleniti
-                                    labore maxime officia esse eos? Repellat?
-                                </p>
+                                {product.content}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <section className="reviews-wrapper home-wrapper-2">
-                <div className='container-xxl'>
-                    <div className="row">
-                        <div className="col-12">
-                            <h3 id="review">Đánh giá</h3>
-                            <div className="review-inner-wrapper">
-                                <div className="review-head d-flex justify-content-between align-items-end">
-                                    <div>
-                                        <h4 className="mb-2">Đánh giá của khách hàng</h4>
-                                        <div className="d-flex align-items-center gap-10">
-                                            <ReactStars
-                                                count={5}
-                                                size={24}
-                                                value={4}
-                                                edit={false}
-                                                activeColor="#ffd700"
-                                            />
-                                            <p className="mb-0">Dựa trên 2 đánh giá</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <a className="text-dark text-decoration-underline" href="/">
-                                            Viết đánh giá
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="review-form py-4">
-                                    <h4>Viết đánh giá của bạn</h4>
-                                    <form action="" className="d-flex flex-column gap-15">
-                                        <div>
-                                            <ReactStars
-                                                count={5}
-                                                size={24}
-                                                value={4}
-                                                edit={true}
-                                                activeColor="#ffd700"
-                                            />
-                                        </div>
-                                        <div>
-                                            <textarea
-                                                name=""
-                                                id=""
-                                                className="w-100 form-control"
-                                                cols="30"
-                                                rows="4"
-                                                placeholder="Comments"
-                                            ></textarea>
-                                        </div>
-                                        <div className="d-flex justify-content-end">
-                                            <button className="button border-0">Gửi đánh giá</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div className="reviews mt-4">
-                                    <div className="review">
-                                        <div className="d-flex gap-10 align-items-center">
-                                            <h6 className="mb-0">Navdeep</h6>
-                                            <ReactStars
-                                                count={5}
-                                                size={24}
-                                                value={4}
-                                                edit={false}
-                                                activeColor="#ffd700"
-                                            />
-                                        </div>
-                                        <p className="mt-3">
-                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                            Consectetur fugit ut excepturi quos. Id reprehenderit
-                                            voluptatem placeat consequatur suscipit ex. Accusamus dolore
-                                            quisquam deserunt voluptate, sit magni perspiciatis quas
-                                            iste?
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section className='popular-wrapper py-5 home-wrapper-2'>
+            <section className='marque-wrapper py-5'>
                 <div className='container-xxl'>
                     <div className='row'>
                         <div className='col-12'>
-                            <h3 className='section-heading'>Our popular products</h3>
+                            <div className='marquee-inner-wrapper card-wrapper'>
+                                <Marquee className='d-flex'>
+                                    <div className='mx-4 w-25'>
+                                        <img className='brand-css' src={logoApple} alt='brand' />
+                                    </div>
+
+                                    <div className='mx-4 w-25'>
+                                        <img className='brand-css' src={logoOppo} alt='brand' />
+                                    </div>
+
+                                    <div className='mx-4 w-25'>
+                                        <img className='brand-css' src={logoRealme} alt='brand' />
+                                    </div>
+
+                                    <div className='mx-4 w-25'>
+                                        <img className='brand-css' src={logoSamsung} alt='brand' />
+                                    </div>
+
+                                    <div className='mx-4 w-25'>
+                                        <img className='brand-css' src={logoVivo} alt='brand' />
+                                    </div>
+
+                                    <div className='mx-4 w-25'>
+                                        <img className='brand-css' src={logoXiaomi} alt='brand' />
+                                    </div>
+                                </Marquee>
+                            </div>
                         </div>
-                    </div>
-                    <div className='row'>
-                        <ProductCard />
                     </div>
                 </div>
             </section>

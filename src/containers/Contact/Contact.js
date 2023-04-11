@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom'
+// import { NavLink, Link } from 'react-router-dom'
 import Meta from '../../components/Meta'
 import './Contact.scss'
 import HomeHeader from '../Homepage/HomeHeader';
@@ -34,29 +34,12 @@ class Contact extends Component {
                             <div className='col-12 mt-5'>
                                 <div className='d-flex justify-content-between contact-with-wrapper'>
                                     <div>
-                                        <h3 className='mb-4 contact-title'>Hãy liên hệ với chúng tôi</h3>
-                                        <form action='' className='d-flex flex-column gap-15'>
-                                            <div>
-                                                <input type="text" className='form-control' placeholder='Mời bạn nhập tên' />
-                                            </div>
-                                            <div>
-                                                <input type="email" className='form-control' placeholder='Email*' />
-                                            </div>
-                                            <div>
-                                                <input type="tel" className='form-control' placeholder='Số điện thoại' />
-                                            </div>
-                                            <div>
-                                                <textarea name='' id='' className='w-100 form-control' cols="30" rows="4" placeholder='Ý kiến của bạn'></textarea>
-                                            </div>
-                                            {/* <div>
-                                            <button className="button border-0 btn-dark">Gửi</button>
-                                        </div> */}
-                                            <div className="text-center">
-                                                <button class="my-2 py-2 p-4 mx-auto btn btn-dark" type="submit">
-                                                    Gửi
-                                                </button>
-                                            </div>
-                                        </form>
+                                        <h3 className='mb-4 contact-title'>Các chi nhánh của cửa hàng:</h3>
+                                        <ul>
+                                            <li><h4>+Trụ sở chính: Số 144 Xuân Thủy, Cầu Giấy, Hà Nội. Hotline: <a href="tel:+84978569372">Hotline: 0978569372</a></h4></li>
+                                            <li><h4>+Cơ sở 2: Số 156, Đức Thượng, Hoài Đức, Hà Nội. Hotline: <a href="tel:+84867832651">Hotline: 0867832651</a></h4></li>
+                                            <li><h4>+Cơ sở 3: Số 12 Trần Đăng Ninh, Cầu Giấy, Hà Nội. Hotline: <a href="tel:+84396617584">Hotline: 0396617584</a></h4></li>
+                                        </ul>
                                     </div>
                                     <div>
                                         <h3 className='mb-4 contact-title'>Thông tin liên hệ của cửa hàng VT mobile:</h3>
