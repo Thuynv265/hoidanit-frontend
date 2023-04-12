@@ -16,29 +16,48 @@ class Policy extends Component {
         return (
             <>
                 <HomeHeader></HomeHeader>
-                <Meta title={"Về cửa hàng"} />
+                <Meta title={"Thông tin & điều khoản"} />
                 <section id="Policy" className="py-16">
                     <div className="container my-3 py-3">
-                        <h1 className="text-center">Về chúng tôi</h1>
+                        <h1 className="text-center">Thông tin và điều khoản</h1>
                         <hr />
-                        <p className="lead ">
-                            -VTmobile là một chuỗi các cửa hàng cung cấp và bán các sản phẩm điện thoại di động trong phạm vi cả nước, hợp tác kinh doanh hiệu quả với nhiều Công ty và thương hiệu lớn trên thế giới.
-                            <br></br>
-                            -Với triết lý " Chắc chắn cho tương lai", chúng tôi luôn hướng tới mục tiêu
-                            phát triển bền vững cho chính Công ty và cho khách hàng của mình.Chất lượng quốc tế cho người Việt Nam
-                            <br></br>
-                            -Giá trị này dẫn dắt sự thành công của VT mobile tại nhiều quốc gia trên toàn cầu và cũng là động lực,
-                            niềm tự hào cho đội ngũ VT mobile Việt Nam cùng nỗ lực vì cuộc sống dễ dàng và tốt đẹp hơn cho người Việt.
-                            <br></br>
-                            -Kinh doanh có trách nhiệm:
-                            <br></br>
-                            -Chúng tôi tin rằng một doanh nghiệp lớn mạnh luôn cần sự chung sức và đồng hành của tập thể gồm đối tác,
-                            nhân viên và cộng đồng và cũng là giá trị mà chúng tôi cân nhắc cho sự phát triển bền vững của VT mobile.
-                            -VT mobile được thành lập năm 2023 dưới tên gọi C.S, có trụ sở tại Hà Nội (VN). Khởi đầu là một đại lý điện thoại nhỏ, sau đó VT đã nhanh chóng mở rộng thêm các chi nhánh trên phạm vi toàn quốc.
-                            Tại thời điểm đó, ý tưởng kinh doanh mới này đáp ứng đúng nhu cầu khách hàng, là tiền đề cho khái niệm bán lẻ tiện lợi
-
-                        </p>
-
+                        <h2>I. Chính sách hoàn tiền & đổi trả</h2>
+                        <h3>VT-mobile sẽ thực hiện việc đổi/trả hàng và hoàn tiền cho khách hàng trong những trường hợp sau:</h3>
+                        <ul>
+                            <li> <h5>Sản phẩm Chúng tôi giao không đúng đơn đặt hàng (tên sản phẩm, kích thước, mẫu mã, màu sắc)  </h5></li>
+                            <li> <h5>Sản phẩm Chúng tôi giao bị lỗi hoặc đã qua sử dụng. Trường hợp sản phẩm hư hại do quá trình vận chuyển hoặc do nhà sản xuất thì quý khách có thể từ chối nhận và yêu cầu bộ phận giao hàng liên hệ trực tiếp với chúng tôi.
+                                Với những sản phẩm bảo hành đã qua sử dụng, khi mã sản phẩm, nhãn sản phẩm hãng không còn sản xuất hoặc do lý do bất khả kháng, chúng tôi sẽ khấu hao thời gian sử dụng theo cam kết của từng nhãn hàng tới đại lý và khách hàng mua hàng trực tiếp. </h5></li>
+                            <li> <h5>Điều kiện đổi trả hàng (chỉ áp dụng khi mua hàng online): <br />
+                                *Thời gian: Trong vòng 07 ngày kể từ khi nhận được hàng.<br />
+                                *Điều kiện về sản phẩm:<br />
+                                - Hàng hóa còn đầy đủ: Sản phẩm nguyên hộp không rách nát, kèm theo các sản phẩm tặng (nếu có), chưa bóc tem, nhãn mác, hóa đơn.
+                                <br />
+                                - Hàng hóa tuyệt đối không có dấu hiệu đã qua sử dụng.
+                            </h5></li >
+                            <li> <h5>Chi phí chuyển đổi, hoàn trả sản phẩm: <br />
+                                - Trong trường hợp lỗi từ phía Chúng tôi: Chúng tôi sẽ chịu hoàn toàn chi phí vận chuyển đổi trả.<br />
+                                - Trong trường hợp do nhu cầu cá nhân, khách hàng muốn đổi sản phẩm khác: Khách hàng chịu hoàn toàn chi phí trả hàng và giao sản phẩm mới.
+                            </h5></li >
+                            <li> <h5>Điều kiện hoàn tiền: <br />
+                                *Chúng tôi sẽ hoàn tiền cho khách hàng trong 3 trường hợp:<br />
+                                - Hoàn tiền khi đặt hàng thành công nhưng chưa nhận sản phẩm<br />
+                                *Trường hợp này xảy ra khi Chúng tôi hết sản phẩm khách muốn đặt nhưng chưa cập nhật kịp thời trên website hoặc khách hàng đặt nhầm.<br />
+                                - Hoàn tiền khi khách hàng nhận được sản phẩm nhưng sản phẩm lỗi từ phía chúng tôi. <br />
+                                - Hoàn tiền khi khách không muốn nhận sản phẩm do nhu cầu cá nhân thay đổi. Chúng tôi sẽ trừ chi phí vận chuyển trực tiếp vào tiền chuyển hoàn của khách hàng.
+                            </h5></li >
+                        </ul>
+                        <br />
+                        <h2>II. Chính sách bảo hành</h2>
+                        <h3>Sản phẩm của quý khách sẽ được bảo hành trong các trường hợp sau:</h3>
+                        <ul>
+                            <li> <h5>Sản phẩm còn trong thời hạn bảo hành chính hãng digiworld và chưa từng sửa chữa ở những nơi khác</h5></li>
+                            <li> <h5>Trong vòng 15 ngày đầu sử dụng nếu có bất kỳ lỗi gì từ nhà sản xuất thì khách hàng sẽ được đổi mới sản phẩm khác<br /></h5>
+                            </li >
+                            <li> <h5>Chi phí vận chuyển sản phẩm để bảo hành sẽ do cửa hàng chịu, khách hàng sẽ không phải trả tiền vận chuyển<br />
+                            </h5></li >
+                            <li> <h5>Những sản phẩm quá hạn bảo hành sẽ không được sửa chữa miễn phí nếu hỏng hóc và khách hàng sẽ cần trả tiền sửa chữa theo giá của hãng niêm yết<br />
+                            </h5></li >
+                        </ul>
                         <h2 className="text-center py-4">Các hãng điện thoại mà VT mobile hiện đang phân phối và bán lẻ:</h2>
                         <div className="row">
                             <div className="col-md-4 col-sm-6 mb-3 px-3">

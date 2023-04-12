@@ -226,25 +226,6 @@ const ProductDetail = (props) => {
                                         <button className="button signup">Mua ngay</button>
                                     </div>
                                 </div>
-                                <div className="d-flex gap-10 flex-column  my-3">
-                                    <h3 className="product-heading">
-                                        <FaShippingFast style={{ width: "40px", height: "40px" }} />
-                                        Vận chuyển và hoàn trả: Miễn phí vận chuyển với mọi đơn hàng tại VT-mobile<br />
-                                    </h3>
-                                    <h3 className="product-heading">
-                                        < TbTruckReturn style={{ width: "40px", height: "40px" }} />
-                                        Hoàn trả dễ dàng: Hoàn trả sản phẩm dễ dàng nếu khách hàng gặp bất kỳ lỗi gì liên quan đến phần cứng và phân mềm khi nhân hàng<br />
-                                    </h3>
-                                    <h3 className="product-heading">
-                                        <BiTimer style={{ width: "40px", height: "40px" }} />
-                                        Thời gian giao hàng nhanh: 1-2 ngày đối với khu vực miền Bắc, 3-4 ngày đối với các khu vực khác<br />
-                                    </h3>
-                                    <h3 className="product-heading">
-                                        <SiCashapp style={{ width: "40px", height: "40px" }} />
-                                        Thanh toán khi nhận hàng: đem lại sự yên tâm cho khách<br />
-                                    </h3>
-
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -340,7 +340,7 @@ const Product = () => {
                                             <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(productFlagship)}>#Flagship: trên 10 triệu</h6></li>
                                         </ul>
                                     </div>
-                                    <h3 className='mx-1'>Dung lượng điện thoại</h3>
+                                    <h4 className='mx-1'>Dung lượng điện thoại</h4>
                                     <div>
                                         <ul className='ps-0'>
                                             <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(product64gb)}>#64 GB</h6></li>

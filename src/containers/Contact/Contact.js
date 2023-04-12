@@ -36,9 +36,9 @@ class Contact extends Component {
                                     <div>
                                         <h3 className='mb-4 contact-title'>Các chi nhánh của cửa hàng:</h3>
                                         <ul>
-                                            <li><h4>+Trụ sở chính: Số 144 Xuân Thủy, Cầu Giấy, Hà Nội. Hotline: <a href="tel:+84978569372">Hotline: 0978569372</a></h4></li>
-                                            <li><h4>+Cơ sở 2: Số 156, Đức Thượng, Hoài Đức, Hà Nội. Hotline: <a href="tel:+84867832651">Hotline: 0867832651</a></h4></li>
-                                            <li><h4>+Cơ sở 3: Số 12 Trần Đăng Ninh, Cầu Giấy, Hà Nội. Hotline: <a href="tel:+84396617584">Hotline: 0396617584</a></h4></li>
+                                            <li><h4>+Trụ sở chính: Số 144 Xuân Thủy, Cầu Giấy, Hà Nội. <a href="tel:+84978569372">Hotline: 0978569372</a></h4></li>
+                                            <li><h4>+Cơ sở 2: Số 156, Đức Thượng, Hoài Đức, Hà Nội. <a href="tel:+84867832651">Hotline: 0867832651</a></h4></li>
+                                            <li><h4>+Cơ sở 3: Số 12 Trần Đăng Ninh, Cầu Giấy, Hà Nội. <a href="tel:+84396617584">Hotline: 0396617584</a></h4></li>
                                         </ul>
                                     </div>
                                     <div>

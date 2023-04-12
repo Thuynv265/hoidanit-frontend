@@ -19,7 +19,7 @@ class Checkout extends Component {
                         <div className="row">
                             <div className="col-7">
                                 <div className="checkout-left-data">
-                                    <h3 className="website-name">Dev Corner</h3>
+                                    <h3 className="website-name">Thanh toán</h3>
                                     <nav
                                         style={{ "--bs-breadcrumb-divider": ">" }}
                                         aria-label="breadcrumb"
@@ -27,7 +27,7 @@ class Checkout extends Component {
                                         <ol className="breadcrumb">
                                             <li className="breadcrumb-item">
                                                 <Link className="text-dark total-price" to="/cart">
-                                                    Cart
+                                                    Giỏ hàng
                                                 </Link>
                                             </li>
                                             &nbsp; /&nbsp;
@@ -35,9 +35,9 @@ class Checkout extends Component {
                                                 className="breadcrumb-ite total-price active"
                                                 aria-current="page"
                                             >
-                                                Information
+                                                Thông tin giao hàng
                                             </li>
-                                            &nbsp; /
+                                            {/* &nbsp; /
                                             <li className="breadcrumb-item total-price active">
                                                 Shipping
                                             </li>
@@ -47,71 +47,63 @@ class Checkout extends Component {
                                                 aria-current="page"
                                             >
                                                 Payment
-                                            </li>
+                                            </li> */}
                                         </ol>
                                     </nav>
-                                    <h4 className="title total">Contact Information</h4>
-                                    <p className="user-details total">
+                                    <h4 className="title total">Thông tin giao hàng</h4>
+                                    {/* <p className="user-details total">
                                         Ngyen Van Thuy (19021371@vnu.edu.vn)
-                                    </p>
-                                    <h4 className="mb-3">Shipping Address</h4>
+                                    </p> */}
+
                                     <form
                                         action=""
                                         className="d-flex gap-15 flex-wrap justify-content-between"
                                     >
-                                        <div className="w-100">
-                                            <select name="" className="form-control form-select" id="">
-                                                <option value="" selected disabled>
-                                                    Select Country
-                                                </option>
-                                            </select>
-                                        </div>
                                         <div className="flex-grow-1">
+                                            <h4 className="mb-3">Tên:</h4>
                                             <input
                                                 type="text"
-                                                placeholder="First Name"
+                                                placeholder="Tên người nhận"
                                                 className="form-control"
                                             />
                                         </div>
                                         <div className="flex-grow-1">
+                                            <h4 className="mb-3">Họ:</h4>
                                             <input
                                                 type="text"
-                                                placeholder="Last Name"
+                                                placeholder="Họ"
                                                 className="form-control"
                                             />
                                         </div>
                                         <div className="w-100">
+                                            <h4 className="mb-3">Số nhà:</h4>
                                             <input
                                                 type="text"
-                                                placeholder="Address"
+                                                placeholder="Số nhà cụ thể"
                                                 className="form-control"
                                             />
                                         </div>
                                         <div className="w-100">
+                                            <h4 className="mb-3">Địa chỉ nhận hàng:</h4>
                                             <input
                                                 type="text"
-                                                placeholder="Apartment, Suite ,etc"
+                                                placeholder="Địa chỉ nhận hàng: phố/phường/quận/thành phố"
                                                 className="form-control"
                                             />
                                         </div>
-                                        <div className="flex-grow-1">
+                                        <div className="w-100">
+                                            <h4 className="mb-3">Điện thoại liên hệ:</h4>
                                             <input
                                                 type="text"
-                                                placeholder="City"
+                                                placeholder="Số điện  thoại"
                                                 className="form-control"
                                             />
                                         </div>
-                                        <div className="flex-grow-1">
-                                            <select name="" className="form-control form-select" id="">
-                                                <option value="" selected disabled>
-                                                    Select State
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div className="flex-grow-1">
+                                        <div className="w-100">
+                                            <h4 className="mb-3">Ghi chú (nếu có):</h4>
                                             <input
                                                 type="text"
-                                                placeholder="Zipcode"
+                                                placeholder="Ghi chú"
                                                 className="form-control"
                                             />
                                         </div>
@@ -119,11 +111,11 @@ class Checkout extends Component {
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <Link to="/cart" className="text-dark">
                                                     <BiArrowBack className="me-2" />
-                                                    Return to Cart
+                                                    Quay lại giỏ hàng
                                                 </Link>
-                                                <Link to="/cart" className="button">
+                                                {/* <Link to="/cart" className="button">
                                                     Continue to Shipping
-                                                </Link>
+                                                </Link> */}
                                             </div>
                                         </div>
                                     </form>
@@ -143,28 +135,33 @@ class Checkout extends Component {
                                                 <img className="img-fluid" src={ip14prm} alt="product" />
                                             </div>
                                             <div>
-                                                <h5 className="total-price">gfdhgf</h5>
-                                                <p className="total-price">s / #agfgfd</p>
+                                                <h5 className="total-price">Tên sản phẩm</h5>
+                                                <p className="total-price">Màu: Bộ nhớ:</p>
                                             </div>
                                         </div>
                                         <div className="flex-grow-1">
-                                            <h5 className="total">$ 100</h5>
+                                            <h5 className="total">Giá:</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="border-bottom py-4">
                                     <div className="d-flex justify-content-between align-items-center">
-                                        <p className="total">Subtotal</p>
+                                        <p className="total">Tổng tiền:</p>
                                         <p className="total-price">$ 10000</p>
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center">
-                                        <p className="mb-0 total">Shipping</p>
-                                        <p className="mb-0 total-price">$ 10000</p>
+                                        <p className="mb-0 total">Phí ship:</p>
+                                        <p className="mb-0 total-price">0 VNĐ</p>
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center border-bootom py-4">
-                                    <h4 className="total">Total</h4>
-                                    <h5 className="total-price">$ 10000</h5>
+                                    <h4 className="total">Tổng thanh toán</h4>
+                                    <h4 className="total-price">Tiền thanh toán</h4>
+                                </div>
+                                <div>
+                                    <span className="button align-item-center">
+                                        Đặt hàng
+                                    </span>
                                 </div>
                             </div>
                         </div>

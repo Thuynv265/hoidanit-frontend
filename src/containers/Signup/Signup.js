@@ -18,14 +18,13 @@ class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: '',
-            password: '',
+            userName: '',
+            passWord: '',
             firstName: '',
+            roleId: '0',
             lastName: '',
-            address: '',
-            phoneNumber: '',
-            gender: '1',
-            roleId: '0'
+            phone: '',
+            address: ''
         }
     }
 
@@ -45,7 +44,7 @@ class Signup extends Component {
 
     checkValidateInput = () => {
         let isValid = true
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address', 'phoneNumber', 'gender', 'roleId']
+        let arrInput = ['userName', 'passWord', 'firstName', 'lastName', 'roleId', 'phone', 'address']
         for (let i = 0; i < arrInput.length; i++) {
             console.log('check inside loop: ', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
@@ -65,14 +64,13 @@ class Signup extends Component {
             else {
                 alert('Đăng ký thành công')
                 let copyState = {
-                    email: '',
-                    password: '',
+                    userName: '',
+                    passWord: '',
                     firstName: '',
+                    roleId: '0',
                     lastName: '',
-                    address: '',
-                    phoneNumber: '',
-                    gender: '1',
-                    roleId: '0'
+                    phone: '',
+                    address: ''
                 }
                 this.setState = ({
                     ...copyState
@@ -107,64 +105,55 @@ class Signup extends Component {
                                 <div className="auth-card">
                                     <h3 className="text-center mb-3">Tạo tài khoản mới</h3>
                                     <form action="" className="d-flex flex-column gap-15">
-                                        <label>Email:</label>
+                                        <label>Tên đăng nhập:</label>
                                         <input
                                             type='email'
                                             className='form-control'
-                                            onChange={(event) => { this.handleOnchangeInput(event, 'email') }}
-                                            value={this.state.email}
+                                            onChange={(event) => { this.handleOnchangeInput(event, 'userName') }}
+                                            value={this.state.userName}
                                         ></input>
-                                        <label>Password:</label>
+                                        <label>Mật khẩu:</label>
                                         <input
                                             type='password'
                                             className='form-control'
-                                            onChange={(event) => { this.handleOnchangeInput(event, 'password') }}
-                                            value={this.state.password}
+                                            onChange={(event) => { this.handleOnchangeInput(event, 'passWord') }}
+                                            value={this.state.passWord}
                                         ></input>
-                                        <label>Firstname:</label>
+                                        <label>Họ:</label>
                                         <input
                                             type='text'
                                             className='form-control'
                                             onChange={(event) => { this.handleOnchangeInput(event, 'firstName') }}
                                             value={this.state.firstName}
                                         ></input>
-                                        <label>Lastname:</label>
+                                        <label>Tên:</label>
                                         <input type='text'
                                             className='form-control'
                                             onChange={(event) => { this.handleOnchangeInput(event, 'lastName') }}
                                             value={this.state.lastName}
                                         ></input>
-                                        <label>Address:</label>
+                                        <label>Địa chỉ:</label>
                                         <input
                                             type='text'
                                             className='form-control'
                                             onChange={(event) => { this.handleOnchangeInput(event, 'address') }}
                                             value={this.state.address}
                                         ></input>
-                                        <label>Phone:</label>
+                                        <label>Số điện thoại:</label>
                                         <input
                                             type='text'
                                             className='form-control'
-                                            onChange={(event) => { this.handleOnchangeInput(event, 'phoneNumber') }}
-                                            value={this.state.phoneNumber}
+                                            onChange={(event) => { this.handleOnchangeInput(event, 'phone') }}
+                                            value={this.state.phone}
                                         ></input>
-                                        <label>Gender:</label>
-                                        <select
-                                            name="gender"
-                                            onChange={(event) => { this.handleOnchangeInput(event, 'gender') }}
-                                            value={this.state.gender}
-                                        >
-                                            <option value="1">Nam</option>
-                                            <option value="0">Nữ</option>
-                                        </select>
-                                        <label>Role:</label>
+                                        <label>Vai trò:</label>
                                         <select
                                             name="roleId"
                                             onChange={(event) => { this.handleOnchangeInput(event, 'roleId') }}
                                             value={this.state.roleId}
                                         >
-                                            <option value="0">User</option>
-                                            <option value="1">Admin</option>
+                                            <option value="0">Người dùng</option>
+                                            {/* <option value="1">Admin</option> */}
                                         </select>
                                         <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                                             <span className='button border-0' onClick={() => { this.handleAddNewUser() }}>
