@@ -6,16 +6,60 @@ import { BsSearch, BsFillCartDashFill } from "react-icons/bs"
 import { FaUserPlus, FaUserCircle } from "react-icons/fa"
 import * as actions from "../../store/actions";
 // import { FcMultipleSmartphones } from "react-icons/fc"
-// import { AiOutlineMenuUnfold } from "react-icons/ai"
+import { BiEdit } from "react-icons/bi"
 import './HomeHeader.scss'
 import logoVT from '../../assets/images/logoVT.png'
 import { HiOutlineLogout } from "react-icons/hi"
+import { push } from "connected-react-router";
+import ModalEditUser from '../EditUserInfo/ModalEditUser';
+import { editUserService } from '../../services/userService';
 // import menulogo from '../../assets/images/menu.svg'
 
 class HomeHeader extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isOpenModalEditUser: false,
+            userEdit: {},
+            inforUser: []
+        }
+    };
+
+
+    toggleUserEditModal = () => {
+        this.setState({
+            isOpenModalEditUser: !this.state.isOpenModalEditUser,
+        })
+    }
+
+    handleEditUser = async (user) => {
+        console.log("check edit user", user)
+        this.setState({
+            isOpenModalEditUser: true,
+            userEdit: user
+        })
+    }
+
+    doEditUser = async (user) => {
+        try {
+            let res = await editUserService(user)
+            if (res && res.errCode === 0) {
+                this.setState({
+                    isOpenModalEditUser: false
+                })
+            }
+            else {
+                alert(res.errMessage)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     render() {
         // console.log('check user info: ', this.props.userInfo
-        const { isLoggedIn, processLogout, userInfo } = this.props;
+        let { isLoggedIn, processLogout, userInfo } = this.props;
+        let inforUser = userInfo
         return (
 
             <>
@@ -45,14 +89,30 @@ class HomeHeader extends Component {
                                 <div className='col-5'>
                                     <div className='header-upper-links d-flex align-items-center justify-content-between '>
                                         <div>
-                                            <Link className='d-flex align-items-center gap-10 text-white' to='/signup'>
-
-                                                <FaUserPlus className=' d-flex align-items-center  text-white ' style={{ width: "40px", height: "40px" }} />
-                                                <p className='mb-0'>
-                                                    <span className='text-white'>Đăng ký</span>
-                                                    <br />
-                                                </p>
-                                            </Link>
+                                            {isLoggedIn && this.state.isOpenModalEditUser &&
+                                                <ModalEditUser
+                                                    isOpen={this.state.isOpenModalEditUser}
+                                                    toggleFromParent={this.toggleUserEditModal}
+                                                    currentUser={this.state.userEdit}
+                                                    editUser={this.doEditUser}
+                                                />
+                                            }
+                                            {isLoggedIn ?
+                                                <div onClick={() => { this.handleEditUser(userInfo) }} className='d-flex align-items-center gap-10 text-white'>
+                                                    <BiEdit className=' d-flex align-items-center  text-white ' style={{ width: "40px", height: "40px" }} />
+                                                    <p className='mb-0'>
+                                                        <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Chỉnh sửa thông tin</span>
+                                                        <br />
+                                                    </p>
+                                                </div>
+                                                :
+                                                <Link className='d-flex align-items-center gap-10 text-white' to='/signup'>
+                                                    <FaUserPlus className=' d-flex align-items-center  text-white ' style={{ width: "40px", height: "40px" }} />
+                                                    <p className='mb-0'>
+                                                        <span className='text-white'>Đăng ký</span>
+                                                        <br />
+                                                    </p>
+                                                </Link>}
                                         </div>
                                         <div>
                                             <Link className='d-flex align-items-center gap-10 text-white' to='/login'>

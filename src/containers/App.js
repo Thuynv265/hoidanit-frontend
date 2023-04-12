@@ -13,7 +13,9 @@ import Contact from './Contact/Contact';
 import Product from './Product/Product';
 import Policy from './Policy/Policy';
 import Cart from './Cart/Cart';
-import Checkout from './Checkout/Checkout'; import Home from '../routes/Home';
+import Checkout from './Checkout/Checkout';
+import Home from '../routes/Home';
+import editInfo from './EditUserInfo/editInfo';
 // import Login from '../routes/Login';
 import Login from './Auth/Login';
 import System from '../routes/System';
@@ -60,6 +62,7 @@ class App extends Component {
                                         <Route path={path.HOMEPAGE} component={Homepage} />
                                         <Route path={path.ABOUT} component={About} />
                                         <Route path={path.SIGNUP} component={Signup} />
+                                        <Route path={path.EDIT} component={editInfo} />
                                         <Route path={path.CONTACT} component={Contact} />
                                         <Route path={path.PRODUCT} component={Product} exact />
                                         <Route path={path.POLICY} component={Policy} />
