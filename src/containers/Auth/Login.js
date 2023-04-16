@@ -78,7 +78,6 @@ class Login extends Component {
         })
     }
     render() {
-
         return (
             <>
                 <HomeHeader />
@@ -151,7 +150,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        // language: state.app.language
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 

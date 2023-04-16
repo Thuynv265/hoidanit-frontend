@@ -5,6 +5,8 @@ import UserManage from '../containers/System/UserManage';
 import ProductManage from '../containers/System/ProductManage';
 import CategoryManage from '../containers/System/CategoryManage';
 import Header from '../containers/Header/Header';
+import OrderManage from '../containers/System/OrderManage';
+import OrderDetailManage from '../containers/System/OrderDetailManage';
 class System extends Component {
     render() {
 
@@ -18,6 +20,8 @@ class System extends Component {
                             <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/product-manage" component={ProductManage} />
                             <Route path="/system/category-manage" component={CategoryManage} />
+                            <Route path="/system/order-manage" component={OrderManage} />
+                            <Route path="/system/orderdetail-manage" component={OrderDetailManage} />
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                         </Switch>
                     </div>

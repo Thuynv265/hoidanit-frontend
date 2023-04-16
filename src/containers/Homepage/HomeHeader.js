@@ -10,6 +10,7 @@ import { BiEdit } from "react-icons/bi"
 import './HomeHeader.scss'
 import logoVT from '../../assets/images/logoVT.png'
 import { HiOutlineLogout } from "react-icons/hi"
+import { MdManageAccounts } from "react-icons/md"
 import { push } from "connected-react-router";
 import ModalEditUser from '../EditUserInfo/ModalEditUser';
 import { editUserService } from '../../services/userService';
@@ -68,9 +69,9 @@ class HomeHeader extends Component {
                             <div className='row align-items-center'>
                                 <div className='col-2'>
                                     <h3>
-                                        <Link to="/" className='text-white'>
+                                        <span className='text-white'>
                                             <img src={logoVT} className='img-fluid gap-15' style={{ width: "80px", height: "80px" }}></img>
-                                        </Link>
+                                        </span>
                                     </h3>
                                 </div>
                                 <div className='col-5'>
@@ -116,11 +117,11 @@ class HomeHeader extends Component {
                                         <div>
                                             <Link className='d-flex align-items-center gap-10 text-white' to='/login'>
                                                 <FaUserCircle className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />
+                                                {/* {userInfo.roleId === 1 ? <MdManageAccounts className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} /> : <FaUserCircle className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />} */}
                                                 <p className='mb-0'>
                                                     <span className='text-white fs-50' >{isLoggedIn ? 'Hello, ' + userInfo.lastName : 'Đăng nhập'}</span>
                                                     <br />
                                                 </p>
-
                                             </Link>
                                         </div>
                                         <div>

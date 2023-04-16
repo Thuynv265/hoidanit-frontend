@@ -53,7 +53,7 @@ const ProductCartList = ({ products }) => {
                                 {products ? products?.map((product) => (
                                     < ProductCartItem product={product} key={uuidv4()} />
                                 )) :
-                                    <div>None</div>
+                                    <div>Giỏ hàng của bạn trống</div>
                                 }
                             </tbody>
                         </table>

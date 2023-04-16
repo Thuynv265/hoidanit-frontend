@@ -44,7 +44,7 @@ class Header extends Component {
                                     <div>
                                         <Link className='d-flex align-items-centertext-white' to='/home'>
                                             <p className='mb-0'>
-                                                <span className='text-white'>Trang chủ VT-mobile </span>
+                                                <span className='text-white'>Home </span>
                                                 <br />
                                             </p>
                                         </Link>
@@ -52,7 +52,7 @@ class Header extends Component {
                                     <div>
                                         <Link className='d-flex align-items-centertext-white' to='/system/user-manage'>
                                             <p className='mb-0'>
-                                                <span className='text-white'>Quản lý người dùng </span>
+                                                <span className='text-white'>User </span>
                                                 <br />
                                             </p>
                                         </Link>
@@ -60,7 +60,7 @@ class Header extends Component {
                                     <div>
                                         <Link className='d-flex align-items-center text-white' to='/system/product-manage'>
                                             <p className='mb-0'>
-                                                <span className='text-white'>Quản lý sản phẩm </span>
+                                                <span className='text-white'>Products </span>
                                                 <br />
                                             </p>
 
@@ -69,15 +69,24 @@ class Header extends Component {
                                     <div>
                                         <Link className='d-flex align-items-center text-white' to='/system/category-manage'>
                                             <p className='mb-0'>
-                                                <span className='text-white' >Quản lý danh mục sản phẩm</span>
+                                                <span className='text-white' >Category </span>
                                                 <br />
                                             </p>
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link to="/" className='d-flex align-items-center text-white'>
+                                        <Link to="/system/order-manage" className='d-flex align-items-center text-white'>
                                             <p className='mb-0'>
-                                                <span className='text-white' >Quản lý đơn hàng</span>
+                                                <span className='text-white' >Order</span>
+                                                <br />
+                                            </p>
+
+                                        </Link>
+                                    </div>
+                                    <div>
+                                        <Link to="/system/orderdetail-manage" className='d-flex align-items-center text-white'>
+                                            <p className='mb-0'>
+                                                <span className='text-white' >Order Detail</span>
                                                 <br />
                                             </p>
 

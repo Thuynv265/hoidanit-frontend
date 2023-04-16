@@ -67,7 +67,7 @@ const CheckoutCart = () => {
 
     return (
         <form>
-            <h5 className="text-uppercase">Thông tin khách hàng</h5>
+            <h5 className="text-uppercase">Thông tin nhận hàng</h5>
             <div style={{
                 flexDirection: "row",
                 display: "flex",

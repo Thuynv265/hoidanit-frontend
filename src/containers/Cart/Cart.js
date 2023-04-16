@@ -18,7 +18,7 @@ const Cart = () => {
     return (
         <>
             <HomeHeader></HomeHeader>
-            <Meta title={"Về cửa hàng"} />
+            <Meta title={"Giỏ hàng"} />
             <ProductCartList products={listItem} />
             <Footer></Footer>
         </>
