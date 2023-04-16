@@ -15,7 +15,7 @@ const appReducer = (state = initialCart, action) => {
             if (state.numberCart === 0) {
                 let item = {
                     pid: action.payload.productId,
-                    quantity: 1,
+                    quantity: action.payload.quantity,
                     title: action.payload.productName,
                     img: action.payload.img1,
                     unit: action.payload.unit,
@@ -39,6 +39,7 @@ const appReducer = (state = initialCart, action) => {
                         title: action.payload.productName,
                         img: action.payload.img1,
                         unit: action.payload.unit,
+                        discount: action.payload.discount,
                         price: Number.parseFloat(((Math.round(action.payload.price - action.payload.discount)).toFixed(2)))
                     }
                     state.Carts.push(item)
@@ -47,10 +48,9 @@ const appReducer = (state = initialCart, action) => {
 
             return {
                 ...state,
-                numberCart: state.numberCart + 1
+                numberCart: state.numberCart + action.payload.quantity
             }
         case actionTypes.INCREASE_QUANTITY:
-            state.numberCart++
             let id = action.payload
             state.Carts.map((item, key) => {
                 if (item.pid === id) {
@@ -58,7 +58,8 @@ const appReducer = (state = initialCart, action) => {
                 }
             })
             return {
-                ...state
+                ...state,
+                numberCart: state.numberCart + 1
             }
 
         case actionTypes.DECREASE_QUANTITY:
@@ -66,19 +67,23 @@ const appReducer = (state = initialCart, action) => {
             state.Carts.map((item, key) => {
                 if (item.quantity >= 1 && item.pid === pid) {
                     item.quantity--
-                    state.numberCart--
                 }
             })
             let arr = state.Carts.filter(item => item.quantity !== 0)
             state.Carts = arr
             return {
                 ...state,
-                Carts: arr
+                Carts: arr,
+                numberCart: state.numberCart - 1
             }
 
         case actionTypes.DELETE_ITEM:
             let did = action.payload //Paylod la id san pham muon tang so luon
+            console.log('text delete')
+            console.log(did)
+            console.log(state.Carts)
             let arr1 = state.Carts.filter(item => item.pid !== did)
+            console.log('toang', arr1)
             let number = 0
             arr1.map((item) => {
                 number = number + item.quantity

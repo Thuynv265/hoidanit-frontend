@@ -21,6 +21,7 @@ import logoSamsung from '../../assets/images/logoSamsung.jpg'
 import logoVivo from '../../assets/images/logoVivo.jpg'
 import logoXiaomi from '../../assets/images/logoXiaomi.jpg'
 import Marquee from "react-fast-marquee";
+import AddProduct from "./BtnAddProduct";
 
 const ProductDetail = (props) => {
     const { id } = props.match.params;
@@ -167,54 +168,59 @@ const ProductDetail = (props) => {
                                 <div className=" py-3">
                                     <h3 className="text-center">Cấu hình chi tiết sản phẩm:</h3>
                                     <table>
-                                        <tr>
-                                            <th className="text-center">Bảng cấu hình máy</th>
-                                            <th >{product.productName} {product.storage} GB</th>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Hãng sản xuất</td>
-                                            <td >{product.categoryId === 1 ? 'Apple' : product.categoryId === 2 ? "Samsung" : product.categoryId === 3 ? "Oppo" : product.categoryId === 4 ? 'Xiaomi' : product.categoryId === 5 ? 'Vivo' : product.categoryId === 6 ? 'Realme' : product.categoryId === 7 ? 'Redmi' : 'Nokia'}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Màu sắc</td>
-                                            <td >{product.color}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">RAM/ROM</td>
-                                            <td>{product.storage}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Kích thước màn hình</td>
-                                            <td>{product.screen} inches</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Độ phân giải</td>
-                                            <td>{product.resolution}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Trọng lượng</td>
-                                            <td>{product.weight} Gram</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Dung lượng pin</td>
-                                            <td>{product.battery} MAH</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Chất liệu</td>
-                                            <td>{product.material}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Tiêu chuẩn chống nước</td>
-                                            <td>{product.water_resist}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">Bảo hành</td>
-                                            <td>{product.warranty} tháng chính hãng</td>
-                                        </tr>
+                                        <thead style={{ color: 'white' }}>
+                                            <tr>
+                                                <th className="text-center">Bảng cấu hình máy</th>
+                                                <th >{product.productName} {product.storage} GB</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td className="text-center">Hãng sản xuất</td>
+                                                <td >{product.categoryId === 1 ? 'Apple' : product.categoryId === 2 ? "Samsung" : product.categoryId === 3 ? "Oppo" : product.categoryId === 4 ? 'Xiaomi' : product.categoryId === 5 ? 'Vivo' : product.categoryId === 6 ? 'Realme' : product.categoryId === 7 ? 'Redmi' : 'Nokia'}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Màu sắc</td>
+                                                <td >{product.color}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">RAM/ROM</td>
+                                                <td>{product.storage}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Kích thước màn hình</td>
+                                                <td>{product.screen} inches</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Độ phân giải</td>
+                                                <td>{product.resolution}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Trọng lượng</td>
+                                                <td>{product.weight} Gram</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Dung lượng pin</td>
+                                                <td>{product.battery} MAH</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Chất liệu</td>
+                                                <td>{product.material}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Tiêu chuẩn chống nước</td>
+                                                <td>{product.water_resist}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Bảo hành</td>
+                                                <td>{product.warranty} tháng chính hãng</td>
+                                            </tr>
+                                        </tbody>
+
                                     </table>
                                     <br />
                                     <div className="d-flex align-items-center gap-30 ms-5">
-                                        <button
+                                        {/* <button
                                             className="button border-0"
                                             data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop"
@@ -222,7 +228,8 @@ const ProductDetail = (props) => {
                                             onClick={addCart}
                                         >
                                             Thêm vào giỏ hàng
-                                        </button>
+                                        </button> */}
+                                        <AddProduct product={product} />
                                         <button className="button signup">Mua ngay</button>
                                     </div>
                                 </div>

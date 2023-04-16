@@ -55,10 +55,9 @@ class HomeHeader extends Component {
             console.log(e)
         }
     }
-
     render() {
-        // console.log('check user info: ', this.props.userInfo
-        let { isLoggedIn, processLogout, userInfo } = this.props;
+        console.log('check user info: ', this.props.cartNumber)
+        let { isLoggedIn, processLogout, userInfo, cartNumber } = this.props;
         let inforUser = userInfo
         return (
 
@@ -125,9 +124,30 @@ class HomeHeader extends Component {
                                             </Link>
                                         </div>
                                         <div>
-                                            <Link to="/cart" className='d-flex align-items-center gap-10 text-white'>
+                                            <Link to="/cart" className='d-flex align-items-center gap-10 text-white position-relative'>
                                                 <BsFillCartDashFill className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />
                                                 <p className='mb-0'>Giỏ hàng</p>
+                                                {cartNumber > 0 && (
+                                                    <div className='position-absolute back'
+                                                        style={{
+                                                            right: "48px",
+                                                            bottom: "-10px",
+                                                            borderRadius: "120%",
+                                                            background: "rgb(229 111 24)",
+                                                            height: "24px",
+                                                            width: "24px",
+
+                                                            padding: "4px",
+                                                            display: "flex",
+                                                            alignItems: "center",
+                                                            justifyContent: "center",
+                                                            fontWeight: "bold",
+                                                        }}
+                                                    >
+                                                        {cartNumber}
+                                                    </div>
+                                                )}
+
                                             </Link>
                                         </div>
                                         <div >
@@ -137,8 +157,8 @@ class HomeHeader extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </header>
+                        </div >
+                    </header >
                     <header className='header-bottom py-3'>
                         <div className='container-xxl'>
                             <div className='row'>
@@ -160,7 +180,7 @@ class HomeHeader extends Component {
                             </div>
                         </div>
                     </header>
-                </div>
+                </div >
 
             </>
         );
@@ -171,7 +191,8 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        userInfo: state.user.userInfo
+        userInfo: state.user.userInfo,
+        cartNumber: state.cart.numberCart,
     };
 };
 
