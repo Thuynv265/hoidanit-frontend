@@ -11,20 +11,20 @@ const ProductItem = ({ item }) => {
                         <img src={item.img2} className='img-fluid' alt='product image' />
                     </div>
                     <div className='product-details'>
-                        <h5 className='brand'>
+                        <h5 className='brand text-center'>
                             {item.productName}
                         </h5>
-                        <h5 className='brand'>
+                        <h5 className='brand text-center'>
                             Màu: {item.color}
                         </h5>
-                        <h5 className='product-title'>
+                        <h5 className='product-title text-center'>
                             Dung lượng: {item.storage}
                         </h5>
-                        <h5 className='price'>
+                        <h5 className='price text-center'>
                             Giá: {item.price}VNĐ
                         </h5>
                         <Link to={`/products/${item.productId}`} className='btn-buy text-center' >Xem chi tiết</Link>
-                        <button className='btn-addcart text-center'>Thêm vào giỏ</button>
+                        {/* <button className='btn-addcart text-center'>Thêm vào giỏ</button> */}
                     </div>
                 </div>
             </div >

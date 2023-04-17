@@ -10,6 +10,7 @@ import { BiEdit } from "react-icons/bi"
 import './HomeHeader.scss'
 import logoVT from '../../assets/images/logoVT.png'
 import { HiOutlineLogout } from "react-icons/hi"
+import { FaHistory } from "react-icons/fa"
 import { MdManageAccounts } from "react-icons/md"
 import { push } from "connected-react-router";
 import ModalEditUser from '../EditUserInfo/ModalEditUser';
@@ -70,7 +71,7 @@ class HomeHeader extends Component {
                                 <div className='col-2'>
                                     <h3>
                                         <span className='text-white'>
-                                            <img src={logoVT} className='img-fluid gap-15' style={{ width: "80px", height: "80px" }}></img>
+                                            <img src={logoVT} className='img-fluid gap-15' style={{ width: "70px", height: "70px" }}></img>
                                         </span>
                                     </h3>
                                 </div>
@@ -99,15 +100,23 @@ class HomeHeader extends Component {
                                             }
                                             {isLoggedIn ?
                                                 <div onClick={() => { this.handleEditUser(userInfo) }} className='d-flex align-items-center gap-10 text-white'>
-                                                    <BiEdit className=' d-flex align-items-center  text-white ' style={{ width: "40px", height: "40px" }} />
+                                                    <BiEdit className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                     <p className='mb-0'>
-                                                        <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Chỉnh sửa thông tin</span>
+                                                        <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Sửa thông tin</span>
                                                         <br />
                                                     </p>
+                                                    <Link className='d-flex align-items-center gap-10 text-white' to='/order-history'>
+                                                        <FaHistory className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
+                                                        <p className='mb-0'>
+                                                            <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Xem lịch sử</span>
+                                                            <br />
+                                                        </p>
+                                                    </Link>
                                                 </div>
+
                                                 :
                                                 <Link className='d-flex align-items-center gap-10 text-white' to='/signup'>
-                                                    <FaUserPlus className=' d-flex align-items-center  text-white ' style={{ width: "40px", height: "40px" }} />
+                                                    <FaUserPlus className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                     <p className='mb-0'>
                                                         <span className='text-white'>Đăng ký</span>
                                                         <br />
@@ -116,17 +125,17 @@ class HomeHeader extends Component {
                                         </div>
                                         <div>
                                             <Link className='d-flex align-items-center gap-10 text-white' to='/login'>
-                                                <FaUserCircle className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />
+                                                <FaUserCircle className=' d-flex align-items-center gap-10 text-white' style={{ width: "20px", height: "20px" }} />
                                                 {/* {userInfo.roleId === 1 ? <MdManageAccounts className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} /> : <FaUserCircle className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />} */}
                                                 <p className='mb-0'>
-                                                    <span className='text-white fs-50' >{isLoggedIn ? 'Hello, ' + userInfo.lastName : 'Đăng nhập'}</span>
+                                                    <span className='text-white fs-50' >{isLoggedIn ? userInfo.lastName : 'Đăng nhập'}</span>
                                                     <br />
                                                 </p>
                                             </Link>
                                         </div>
                                         <div>
                                             <Link to="/cart" className='d-flex align-items-center gap-10 text-white position-relative'>
-                                                <BsFillCartDashFill className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} />
+                                                <BsFillCartDashFill className=' d-flex align-items-center gap-10 text-white' style={{ width: "20px", height: "20px" }} />
                                                 <p className='mb-0'>Giỏ hàng</p>
                                                 {cartNumber > 0 && (
                                                     <div className='position-absolute back'
@@ -170,7 +179,6 @@ class HomeHeader extends Component {
                                                 <NavLink to='/home'>Trang chủ VT-Mobile</NavLink>
                                                 <NavLink to='/products'>Sản phẩm</NavLink>
                                                 <NavLink to='/about'>Về chúng tôi</NavLink>
-                                                {/* <NavLink to='/blog'>Blogs</NavLink> */}
                                                 <NavLink to='/contact'>Liên hệ</NavLink>
                                                 <NavLink to='/policy'>Thông tin & Điều khoản</NavLink>
                                                 <a className='text-white' href='tel: 0978569372'>Liên hệ hotline : 0978569372</a>

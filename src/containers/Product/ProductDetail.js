@@ -230,7 +230,7 @@ const ProductDetail = (props) => {
                                             Thêm vào giỏ hàng
                                         </button> */}
                                         <AddProduct product={product} />
-                                        <button className="button signup">Mua ngay</button>
+                                        {/* <button className="button signup">Mua ngay</button> */}
                                     </div>
                                 </div>
                             </div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Marquee from "react-fast-marquee";
 import Meta from '../../components/Meta'
 import './Policy.scss'
-import logoIphone from '../../assets/images/logoIphone.jpg'
+import logoApple from '../../assets/images/logoIphone.jpg'
 import logoOppo from '../../assets/images/logoOppo.jpg'
 import logoRealme from '../../assets/images/logoRealme.png'
 import logoSamsung from '../../assets/images/logoSamsung.jpg'
@@ -59,56 +60,41 @@ class Policy extends Component {
                             </h5></li >
                         </ul>
                         <h2 className="text-center py-4">Các hãng điện thoại mà VT mobile hiện đang phân phối và bán lẻ:</h2>
-                        <div className="row">
-                            <div className="col-md-4 col-sm-6 mb-3 px-3">
-                                <div className="card h-100">
-                                    <img className="card-img-top img-fluid" src={logoIphone} alt="" height={160} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center"><br />Iphone</h5>
+                        <section className='marque-wrapper py-5'>
+                            <div className='container-xxl'>
+                                <div className='row'>
+                                    <div className='col-12'>
+                                        <div className='marquee-inner-wrapper card-wrapper'>
+                                            <Marquee className='d-flex'>
+                                                <div className='mx-4 w-25'>
+                                                    <img className='brand-css' src={logoApple} alt='brand' />
+                                                </div>
+
+                                                <div className='mx-4 w-25'>
+                                                    <img className='brand-css' src={logoOppo} alt='brand' />
+                                                </div>
+
+                                                <div className='mx-4 w-25'>
+                                                    <img className='brand-css' src={logoRealme} alt='brand' />
+                                                </div>
+
+                                                <div className='mx-4 w-25'>
+                                                    <img className='brand-css' src={logoSamsung} alt='brand' />
+                                                </div>
+
+                                                <div className='mx-4 w-25'>
+                                                    <img className='brand-css' src={logoVivo} alt='brand' />
+                                                </div>
+
+                                                <div className='mx-4 w-25'>
+                                                    <img className='brand-css' src={logoXiaomi} alt='brand' />
+                                                </div>
+                                            </Marquee>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-4 col-sm-6 mb-3 px-3">
-                                <div className="card h-100">
-                                    <img className="card-img-top img-fluid" src={logoSamsung} alt="" height={160} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center">Samsung</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4 col-sm-6 mb-3 px-3">
-                                <div className="card h-100">
-                                    <img className="card-img-top img-fluid" src={logoOppo} alt="" height={160} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center"><br /><br /><br /><br /><br /><br /><br />Oppo</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4 col-sm-6 mb-3 px-3">
-                                <div className="card h-100">
-                                    <img className="card-img-top img-fluid" src={logoXiaomi} alt="" height={160} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center">Xiaomi</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4 col-sm-6 mb-3 px-3">
-                                <div className="card h-100">
-                                    <img className="card-img-top img-fluid" src={logoRealme} alt="" height={160} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center">Realme</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-4 col-sm-6 mb-3 px-3">
-                                <div className="card h-100">
-                                    <img className="card-img-top img-fluid" src={logoVivo} alt="" height={160} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center">Vivo</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </section>
                     </div>
                 </section>
                 <Footer></Footer>

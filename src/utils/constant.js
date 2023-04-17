@@ -12,7 +12,8 @@ export const path = {
     POLICY: '/policy',
     CART: '/cart',
     CHECKOUT: '/checkout',
-    EDIT: '/edit-infor'
+    EDIT: '/edit-infor',
+    ORDER_HISTORY: '/order-history'
 };
 
 export const languages = {

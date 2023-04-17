@@ -86,6 +86,19 @@ const getFilterByPrice = (inputId) => {
     return axios.get(`/api/get-filter-product-by-price?id=${inputId}`)
 }
 
+const getAllOrder = (inputId) => {
+    return axios.get(`/api/get-all-order?id=${inputId}`)
+}
+
+//api edit order
+const editOrderService = (inputData) => {
+    return axios.put(`/api/edit-order`, inputData)
+}
+
+const deleteOrderService = (orderId) => {
+    return axios.delete(`/api/delete-order`, { data: { orderId: orderId } })
+}
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -105,5 +118,8 @@ export {
     getProductSortPrice,
     getProductSortAlphabet,
     getProductById,
-    getProductFilterByStorage
+    getProductFilterByStorage,
+    getAllOrder,
+    editOrderService,
+    deleteOrderService
 }
