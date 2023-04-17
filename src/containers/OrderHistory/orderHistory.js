@@ -25,7 +25,7 @@ const OrderHistory = () => {
     useEffect(() => {
         if (userInfo) { getUserHistory() }
 
-    }, [])
+    }, [userInfo])
 
 
     return (
