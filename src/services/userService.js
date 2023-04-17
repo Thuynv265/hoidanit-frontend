@@ -99,6 +99,12 @@ const deleteOrderService = (orderId) => {
     return axios.delete(`/api/delete-order`, { data: { orderId: orderId } })
 }
 
+//get user order history
+const getUserOrderHistory = (inputId) => {
+    return axios.get(`/api/get-all-order-of-user?id=${inputId}`)
+}
+
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -121,5 +127,6 @@ export {
     getProductFilterByStorage,
     getAllOrder,
     editOrderService,
-    deleteOrderService
+    deleteOrderService,
+    getUserOrderHistory
 }

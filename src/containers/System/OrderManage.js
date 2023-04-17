@@ -12,6 +12,7 @@ import { AiFillEdit, AiFillInfoCircle } from "react-icons/ai"
 import { BiTrash } from "react-icons/bi"
 import ModalEditOrder from './ModalOrder/ModalEditOrder';
 import ModalDeleteOrder from './ModalOrder/ModalDeleteOrder';
+import ModalDetailOrder from './ModalOrder/ModalDetailOrder';
 
 class OrderManage extends Component {
 
@@ -22,8 +23,10 @@ class OrderManage extends Component {
             // isOpenModalAddProduct: false,
             isOpenModalEditOrder: false,
             isOpenModalDeleteOrder: false,
+            isOpenModalDetailOrder: false,
             orderEdit: {},
-            orderDelete: {}
+            orderDelete: {},
+            orderDetail: {}
         }
     }
 
@@ -60,6 +63,12 @@ class OrderManage extends Component {
             isOpenModalDeleteOrder: !this.state.isOpenModalDeleteOrder,
         })
     }
+
+    toggleOrderDetailModal = () => {
+        this.setState({
+            isOpenModalDetailOrder: !this.state.isOpenModalDetailOrder,
+        })
+    }
     // createNewProduct = async (data) => {
     //     try {
     //         let res = await createNewProductService(data)
@@ -83,6 +92,14 @@ class OrderManage extends Component {
         this.setState({
             isOpenModalEditOrder: true,
             orderEdit: order
+        })
+    }
+
+    handleDetailOrder = async (order) => {
+        console.log("check edit order", order)
+        this.setState({
+            isOpenModalDetailOrder: true,
+            orderDetail: order
         })
     }
 
@@ -112,6 +129,22 @@ class OrderManage extends Component {
         }
     }
 
+    doDetailOrder = async (order) => {
+        try {
+            let res = await editOrderService(order)
+            if (res && res.errCode === 0) {
+                this.setState({
+                    isOpenModalEditOrder: false
+                })
+                await this.getAllOrdersFromReact()
+            }
+            else {
+                alert(res.errMessage)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     deleteOrder = async (order) => {
         console.log('click delete', order)
@@ -158,6 +191,15 @@ class OrderManage extends Component {
                         deleteAction={this.deleteOrder}
 
                     />}
+                {this.state.isOpenModalDetailOrder &&
+                    <ModalDetailOrder
+                        isOpen={this.state.isOpenModalDetailOrder}
+                        toggleFromParent={this.toggleOrderDetailModal}
+                        currentOrder={this.state.orderDetail}
+                        editAction={this.doDetailOrder}
+                    />
+                }
+
                 <div className='title text-center'>Manage orders with admin:</div>
 
                 <div className='user-table mt-3 mx-1'>
@@ -198,7 +240,7 @@ class OrderManage extends Component {
                                             ><BiTrash /><p>Delete</p></span>
                                             <span
                                                 className='btn-infor'
-                                                onClick={() => { alert('me') }}
+                                                onClick={() => { this.handleEditOrder(item) }}
                                             ><AiFillInfoCircle /><p>Detail</p></span>
                                         </td>
                                     </tr>
