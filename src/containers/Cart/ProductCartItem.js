@@ -65,8 +65,8 @@ const ProductCartItem = ({ product }) => {
                         <span style={{
                             fontWeight: 'bold',
                         }}>Tên: <span> {name}</span></span>
-                        <span>Màu ở đây:</span>
-                        <span>Phiên bản RAM/ROM:</span>
+                        <span>Màu: Tím</span>
+                        <span>Phiên bản RAM/ROM: 6GB/256GB</span>
                     </div>
                 </div>
             </td>

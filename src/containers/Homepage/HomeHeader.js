@@ -99,16 +99,16 @@ class HomeHeader extends Component {
                                                 />
                                             }
                                             {isLoggedIn ?
-                                                <div onClick={() => { this.handleEditUser(userInfo) }} className='d-flex align-items-center gap-10 text-white'>
-                                                    <BiEdit className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
+                                                <div className='d-flex align-items-center gap-10 text-white'>
+                                                    <BiEdit onClick={() => { this.handleEditUser(userInfo) }} className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                     <p className='mb-0'>
-                                                        <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Sửa thông tin</span>
+                                                        <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Cập nhật </span>
                                                         <br />
                                                     </p>
                                                     <Link className='d-flex align-items-center gap-10 text-white' to='/order-history'>
                                                         <FaHistory className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                         <p className='mb-0'>
-                                                            <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Xem lịch sử</span>
+                                                            <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Lịch sử</span>
                                                             <br />
                                                         </p>
                                                     </Link>
@@ -176,12 +176,15 @@ class HomeHeader extends Component {
                                     <div className='menu-bottom d-flex align-items-center '>
                                         <div className='menu-links'>
                                             <div className='d-flex align-items-center gap-50'>
-                                                <NavLink to='/home'>Trang chủ VT-Mobile</NavLink>
+
+                                                <NavLink to=''></NavLink>
+                                                <NavLink to=''></NavLink>
+                                                <NavLink to='/home'>Trang chủ </NavLink>
                                                 <NavLink to='/products'>Sản phẩm</NavLink>
                                                 <NavLink to='/about'>Về chúng tôi</NavLink>
                                                 <NavLink to='/contact'>Liên hệ</NavLink>
-                                                <NavLink to='/policy'>Thông tin & Điều khoản</NavLink>
-                                                <a className='text-white' href='tel: 0978569372'>Liên hệ hotline : 0978569372</a>
+                                                <NavLink to='/policy'>Điều khoản</NavLink>
+                                                <a className='text-white' href='tel: 0978569372'>Hotline : 0978569372</a>
                                             </div>
                                         </div>
                                     </div>

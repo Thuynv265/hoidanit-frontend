@@ -104,6 +104,16 @@ const getUserOrderHistory = (inputId) => {
     return axios.get(`/api/get-all-order-of-user?id=${inputId}`)
 }
 
+//get all order detail
+const getAllOrderDetail = (inputId) => {
+    return axios.get(`/api/get-all-order-detail?id=${inputId}`)
+}
+//get user order detail
+const getUserOrderDetail = (inputId) => {
+    return axios.get(`/api/get-user-order-detail?id=${inputId}`)
+}
+
+
 
 export {
     handleLoginApi,
@@ -128,5 +138,7 @@ export {
     getAllOrder,
     editOrderService,
     deleteOrderService,
-    getUserOrderHistory
+    getUserOrderHistory,
+    getAllOrderDetail,
+    getUserOrderDetail
 }

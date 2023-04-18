@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss'
-import { getAllOrder, editOrderService, deleteOrderService } from '../../services/userService'
+import { getAllOrder, editOrderService, deleteOrderService, getAllOrderDetail } from '../../services/userService'
 import { emitter } from '../../utils/emitter';
 import ModalAddProduct from './Modal Product/ModalAddProduct';
 import ModalDeleteProduct from './Modal Product/ModalDeleteProduct';
@@ -20,13 +20,12 @@ class OrderManage extends Component {
         super(props)
         this.state = {
             arrOrders: [],
-            // isOpenModalAddProduct: false,
             isOpenModalEditOrder: false,
             isOpenModalDeleteOrder: false,
-            isOpenModalDetailOrder: false,
+            // isOpenModalDetailOrder: false,
             orderEdit: {},
             orderDelete: {},
-            orderDetail: {}
+            // orderDetail: {}
         }
     }
 
@@ -42,16 +41,16 @@ class OrderManage extends Component {
             })
         }
     }
-    // handleAddNewProduct = () => {
-    //     this.setState({
-    //         isOpenModalAddProduct: true
-    //     })
+
+    // getOrderDetail = async (order) => {
+    //     let response = await getAllOrderDetail(order.orderId)
+    //     if (response && response.errCode === 0) {
+    //         this.setState({
+    //             orderDetail: response.orderDetail
+    //         })
+    //     }
     // }
-    // toggleAddProductModal = () => {
-    //     this.setState({
-    //         isOpenModalAddProduct: !this.state.isOpenModalAddProduct,
-    //     })
-    // }
+
     toggleOrderEditModal = () => {
         this.setState({
             isOpenModalEditOrder: !this.state.isOpenModalEditOrder,
@@ -64,11 +63,11 @@ class OrderManage extends Component {
         })
     }
 
-    toggleOrderDetailModal = () => {
-        this.setState({
-            isOpenModalDetailOrder: !this.state.isOpenModalDetailOrder,
-        })
-    }
+    // toggleOrderDetailModal = () => {
+    //     this.setState({
+    //         isOpenModalDetailOrder: !this.state.isOpenModalDetailOrder,
+    //     })
+    // }
     // createNewProduct = async (data) => {
     //     try {
     //         let res = await createNewProductService(data)
@@ -88,20 +87,20 @@ class OrderManage extends Component {
     //     }
     // }
     handleEditOrder = async (order) => {
-        console.log("check edit order", order)
+        // console.log("check edit order", order)
         this.setState({
             isOpenModalEditOrder: true,
             orderEdit: order
         })
     }
 
-    handleDetailOrder = async (order) => {
-        console.log("check edit order", order)
-        this.setState({
-            isOpenModalDetailOrder: true,
-            orderDetail: order
-        })
-    }
+    // handleDetailOrder = async (orderDetail) => {
+    //     // console.log("check edit order", orderDetail)
+    //     this.setState({
+    //         isOpenModalDetailOrder: true,
+    //         orderDetail: orderDetail
+    //     })
+    // }
 
 
     handleDeleteOrder = async (order) => {
@@ -129,22 +128,22 @@ class OrderManage extends Component {
         }
     }
 
-    doDetailOrder = async (order) => {
-        try {
-            let res = await editOrderService(order)
-            if (res && res.errCode === 0) {
-                this.setState({
-                    isOpenModalEditOrder: false
-                })
-                await this.getAllOrdersFromReact()
-            }
-            else {
-                alert(res.errMessage)
-            }
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    // doDetailOrder = async (order) => {
+    //     try {
+    //         let res = await getAllOrderDetail(order.orderId)
+    //         if (res && res.errCode === 0) {
+    //             this.setState({
+    //                 isOpenModalDetailOrder: false
+    //             })
+    //             await this.getAllOrdersFromReact()
+    //         }
+    //         else {
+    //             alert(res.errMessage)
+    //         }
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
 
     deleteOrder = async (order) => {
         console.log('click delete', order)
@@ -191,14 +190,14 @@ class OrderManage extends Component {
                         deleteAction={this.deleteOrder}
 
                     />}
-                {this.state.isOpenModalDetailOrder &&
+                {/* {this.state.isOpenModalDetailOrder &&
                     <ModalDetailOrder
                         isOpen={this.state.isOpenModalDetailOrder}
                         toggleFromParent={this.toggleOrderDetailModal}
                         currentOrder={this.state.orderDetail}
                         editAction={this.doDetailOrder}
                     />
-                }
+                } */}
 
                 <div className='title text-center'>Manage orders with admin:</div>
 
@@ -238,10 +237,10 @@ class OrderManage extends Component {
                                                 className='btn-delete'
                                                 onClick={() => { this.handleDeleteOrder(item) }}
                                             ><BiTrash /><p>Delete</p></span>
-                                            <span
+                                            {/* <span
                                                 className='btn-infor'
-                                                onClick={() => { this.handleEditOrder(item) }}
-                                            ><AiFillInfoCircle /><p>Detail</p></span>
+                                                onClick={() => { this.handleDetailOrder(item) }}
+                                            ><AiFillInfoCircle /><p>Detail</p></span> */}
                                         </td>
                                     </tr>
 

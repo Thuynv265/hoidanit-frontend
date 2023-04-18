@@ -2,39 +2,39 @@ import React, { Component } from 'react';
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss'
-import { createNewProductService, getAllProducts, deleteProductService, editProductService } from '../../services/userService'
+import { getAllOrderDetail } from '../../services/userService'
 import { emitter } from '../../utils/emitter';
-import ModalAddProduct from './Modal Product/ModalAddProduct';
-import ModalDeleteProduct from './Modal Product/ModalDeleteProduct';
-import CustomScrollbars from '../../components/CustomScrollbars';
-import ModalEditProduct from './Modal Product/ModalEditProduct';
+// import ModalAddProduct from './Modal Product/ModalAddProduct';
+// import ModalDeleteProduct from './Modal Product/ModalDeleteProduct';
+// import CustomScrollbars from '../../components/CustomScrollbars';
+// import ModalEditProduct from './Modal Product/ModalEditProduct';
 
 class OrderDetailManage extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         arrProducts: [],
-    //         isOpenModalAddProduct: false,
-    //         isOpenModalEditProduct: false,
-    //         isOpenModalDeleteProduct: false,
-    //         productEdit: {},
-    //         productDelete: {}
-    //     }
-    // }
+    constructor(props) {
+        super(props)
+        this.state = {
+            arrDetails: [],
+            // isOpenModalAddProduct: false,
+            // isOpenModalEditProduct: false,
+            // isOpenModalDeleteProduct: false,
+            // productEdit: {},
+            // productDelete: {}
+        }
+    }
 
-    // async componentDidMount() {
-    //     await this.getAllProductsFromReact()
-    // }
+    async componentDidMount() {
+        await this.getAllDetailOrder()
+    }
 
-    // getAllProductsFromReact = async () => {
-    //     let response = await getAllProducts('ALL')
-    //     if (response && response.errCode === 0) {
-    //         this.setState({
-    //             arrProducts: response.products
-    //         })
-    //     }
-    // }
+    getAllDetailOrder = async () => {
+        let response = await getAllOrderDetail('ALL')
+        if (response && response.errCode === 0) {
+            this.setState({
+                arrDetails: response.orderDetail
+            })
+        }
+    }
     // handleAddNewProduct = () => {
     //     this.setState({
     //         isOpenModalAddProduct: true
@@ -128,7 +128,7 @@ class OrderDetailManage extends Component {
     //     }
     // }
     render() {
-        // let arrProducts = this.state.arrProducts[0]
+        let arrDetails = this.state.arrDetails[0]
         return (
             <div className="users-container">
 
@@ -155,55 +155,31 @@ class OrderDetailManage extends Component {
 
                     />} */}
                 <div className='title text-center'>Manage order detail with admin:</div>
-                {/* <div className='mx1'>
-                    <button
-                        className='btn btn-primary px-3'
-                        onClick={() => { this.handleAddNewProduct() }}
-                    >
-                        <i className='fas fa-plus'></i>
-                        Add new product
-                    </button>
-                </div> */}
                 <div className='user-table mt-3 mx-1'>
                     <table id="customers">
                         <tbody>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Product name</th>
-                                <th>Brand</th>
-                                <th>Color</th>
-                                <th>Storage</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Discount</th>
-                                <th>Actions</th>
+                                <th>ID Chi tiết</th>
+                                <th>Id Đơn hàng</th>
+                                <th>Sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
                             </tr>
-                            {/* {arrProducts && arrProducts.map((item, index) => {
+                            {arrDetails && arrDetails.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{item.productId}</td>
-                                        <td>{item.productName}</td>
-                                        <td>{item.categoryId}</td>
-                                        <td>{item.color}</td>
-                                        <td>{item.storage}</td>
+                                        <td>{item.orderdetailId}</td>
+                                        <td>{item.orderId}</td>
+                                        <td>{item.productId === 1 ? 'Iphone 14 promax tím 6gb/256GB' : 'Oppo Reno 8 5G vàng 8GB/256GB'}</td>
                                         <td>{item.price}</td>
                                         <td>{item.quantity}</td>
-                                        <td>{item.discount}</td>
-                                        <td>
-                                            <button
-                                                className='btn-edit'
-                                                onClick={() => { this.handleEditProduct(item) }}
-                                            ><i className='fas fa-pencil-alt'></i>Edit</button>
-                                            <button
-                                                className='btn-delete'
-                                                onClick={() => { this.handleDeleteProduct(item) }}
-                                            ><i className='fas fa-trash'></i>Delete</button>
-                                        </td>
+                                        <td>{item.total}</td>
                                     </tr>
 
                                 )
-                            }) */}
-                            {/* } */}
+                            })}
+
                         </tbody>
                     </table>
                 </div>

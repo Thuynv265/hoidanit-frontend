@@ -5,12 +5,13 @@ import './orderHistory.scss'
 import HomeHeader from '../Homepage/HomeHeader';
 import { RiInformationFill } from "react-icons/ri"
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserOrderHistory } from '../../services/userService';
+import { getUserOrderDetail, getUserOrderHistory } from '../../services/userService';
 
 const OrderHistory = () => {
     const [arrOrders, setArrOrders] = useState();
+    const [arrDetail, setArrDetail] = useState();
     const userInfo = useSelector(state => state.user.userInfo);
-    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+    // const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     // console.log('userInfo: ', userInfo)
     const getUserHistory = async () => {
         try {
@@ -27,7 +28,21 @@ const OrderHistory = () => {
         if (userInfo) { getUserHistory() }
     }, [userInfo])
 
-    console.log("this is resonse", arrOrders)
+    const getUserOrderDetailHistory = async () => {
+        try {
+            let userId = userInfo.id
+            let response = await getUserOrderDetail(userId)
+            // console.log("this is resonse", response)
+            setArrDetail(response.orderDetail[0])
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        { getUserOrderDetailHistory() }
+    }, [userInfo])
+
     return (
         <>
             <HomeHeader />
@@ -73,26 +88,22 @@ const OrderHistory = () => {
                     <table id="customers">
                         <tbody>
                             <tr>
-                                <th>ID đơn</th>
-                                <th>Tên người nhận</th>
-                                <th>Số điện thoại</th>
-                                <th>Địa chỉ nhận hàng</th>
-                                <th>Phương thức giao hàng</th>
-                                <th>Ngày đặt</th>
-                                <th>Trạng thái</th>
-
+                                <th>ID Chi tiết</th>
+                                <th>Id Đơn hàng</th>
+                                <th>Sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
                             </tr>
-                            {arrOrders && arrOrders.map((item, index) => {
+                            {arrDetail && arrDetail.map((item, index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>{item.orderdetailId}</td>
                                         <td>{item.orderId}</td>
-                                        <td>{item.custmerName}</td>
-                                        <td>{item.phone}</td>
-                                        <td>{item.address}</td>
-                                        <td>{item.delivery}</td>
-                                        <td>{item.createdAt}</td>
-                                        <td>{item.status}</td>
-
+                                        <td>{item.productId}</td>
+                                        <td>{item.price}</td>
+                                        <td>{item.quantity}</td>
+                                        <td>{item.total}</td>
                                     </tr>
 
                                 )
