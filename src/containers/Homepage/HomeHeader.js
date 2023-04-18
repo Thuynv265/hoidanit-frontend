@@ -15,6 +15,7 @@ import { MdManageAccounts } from "react-icons/md"
 import { push } from "connected-react-router";
 import ModalEditUser from '../EditUserInfo/ModalEditUser';
 import { editUserService } from '../../services/userService';
+import SearchHeader from './SearchHeader';
 // import menulogo from '../../assets/images/menu.svg'
 
 class HomeHeader extends Component {
@@ -58,7 +59,6 @@ class HomeHeader extends Component {
         }
     }
     render() {
-        console.log('check user info: ', this.props.cartNumber)
         let { isLoggedIn, processLogout, userInfo, cartNumber } = this.props;
         let inforUser = userInfo
         return (
@@ -76,16 +76,7 @@ class HomeHeader extends Component {
                                     </h3>
                                 </div>
                                 <div className='col-5'>
-                                    <div className="input-group">
-                                        <input
-                                            type="text" className="form-control py-2"
-                                            placeholder="Tìm kiếm sản phẩm ở đây..."
-                                            aria-label="Tìm kiếm sản phẩm ở đây..."
-                                            aria-describedby="basic-addon2" />
-                                        <span className="input-group-text p-3" id="basic-addon2">
-                                            <BsSearch className='fs-6' />
-                                        </span>
-                                    </div>
+                                    <SearchHeader />
                                 </div>
                                 <div className='col-5'>
                                     <div className='header-upper-links d-flex align-items-center justify-content-between '>
@@ -161,7 +152,10 @@ class HomeHeader extends Component {
                                             </Link>
                                         </div>
                                         <div >
-                                            <span >{isLoggedIn ? <HiOutlineLogout className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }} onClick={processLogout} /> : ''}</span>
+                                            <span >{isLoggedIn ? <HiOutlineLogout className=' d-flex align-items-center gap-10 text-white' style={{ width: "40px", height: "40px" }}
+                                                onClick={() => {
+                                                    processLogout()
+                                                }} /> : ''}</span>
 
                                         </div>
                                     </div>

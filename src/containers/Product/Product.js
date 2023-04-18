@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom'
 import Meta from '../../components/Meta'
 import './Product.scss'
@@ -13,10 +13,14 @@ import { AiOutlineSortAscending, AiOutlineSortDescending, } from "react-icons/ai
 import { BsSortNumericDown, BsSortNumericDownAlt, } from "react-icons/bs"
 import ProductItem from './ProductItem';
 import { v4 as uuidv4 } from 'uuid';
+import { set } from 'lodash';
 
 const Product = () => {
     // all products
+    const search = useSelector(state => state.search.search)
     const [products, setProducts] = useState()
+    const [AllProducts, setAllProducts] = useState()
+    const [typeFilter, setTypeFilter] = useState('ALL')
     const fetchDataProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -26,11 +30,23 @@ const Product = () => {
         }
     }
     useEffect(() => {
+
+
+        if (search) {
+            const arr = AllProducts?.filter((item) => {
+                return item.productName.toUpperCase().includes(search.toUpperCase())
+            })
+            setProducts(arr);
+        }
+        else {
+            setProducts(AllProducts)
+        }
+    }, [search])
+    useEffect(() => {
         fetchDataProduct()
     }, [])
 
     // all product2 
-    const [AllProducts, setAllProducts] = useState()
     const fetchDataAllProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -192,7 +208,6 @@ const Product = () => {
     useEffect(() => {
         fetchSortAlphabetAsc()
     }, [])
-    console.log('product sort a-z', sortAlphabetASC)
 
     // sort product z-a desc
     const [sortAlphabetDESC, setSortAlphabetDESC] = useState()
@@ -305,48 +320,82 @@ const Product = () => {
         <>
             <HomeHeader></HomeHeader>
             <Meta title={"Sản phẩm"} />
-            <div className='product-wrapper home-wrapper-2 py-5'>
+            <div className='product-wrapper home-wrapper-2 '>
                 <div className='container-xxl'>
                     <div className='row'>
                         <div className='col-3'>
                             <div className='filter-part mb-3'>
                                 {/* <h3 className='filter-title'> */}
-                                <h2 >
+                                <h4 >
                                     Phân loại sản phẩm:
-                                </h2>
+                                </h4>
                                 <div>
-                                    <ul className='ps-0'>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(AllProducts)}>-Tất cả sản phẩm</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productIphone)}>-Iphone</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productSamsung)}>-Samsung</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productOppo)}>-Oppo</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productXiaomi)}>-Xiaomi</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productVivo)}>-Vivo</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productRealme)}>-Realme</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productRedmi)}>-Redmi</h6></li>
-                                        <li><h6 className='hover-category-filter mx-4' onClick={() => setProducts(productNokia)}>-Nokia</h6></li>
+                                    <ul className='ps-0 filter_type_product'>
+                                        <li
+                                            onClick={() => setProducts(AllProducts)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Tất cả sản phẩm</span></li>
+                                        <li
+                                            onClick={() => setProducts(productIphone)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Iphone</span></li>
+                                        <li
+                                            onClick={() => setProducts(productSamsung)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Samsung</span></li>
+                                        <li
+                                            onClick={() => setProducts(productOppo)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Oppo</span></li>
+                                        <li
+                                            onClick={() => setProducts(productXiaomi)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Xiaomi</span></li>
+                                        <li
+                                            onClick={() => setProducts(productVivo)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Vivo</span></li>
+                                        <li
+                                            onClick={() => setProducts(productRealme)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Realme</span></li>
+                                        <li
+                                            onClick={() => setProducts(productRedmi)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Redmi</span></li>
+                                        <li
+                                            onClick={() => setProducts(productNokia)}
+                                        ><span className='hover-category-filter mx-4'
+                                        >-Nokia</span></li>
                                     </ul>
                                 </div>
                             </div>
                             <div className='filter-part mb-3'>
-                                <h2 >Phân loại theo:</h2>
+                                <h3 >Phân loại theo:</h3>
                                 <div>
                                     {/* <h3 className='sub-title'>Phân khúc điện thoại</h3> */}
                                     <h4 className='mx-1'>Phân khúc điện thoại:</h4>
                                     <div>
-                                        <ul className='ps-0'>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(productCheap)}>#Giá rẻ: 2-5 triệu</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(productMid)}>#Tầm trung: 5-10 triệu</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(productFlagship)}>#Flagship: trên 10 triệu</h6></li>
+                                        <ul className=' filter_type_product'>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(productCheap)}>#Giá rẻ: 2-5 triệu</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(productMid)}>#Tầm trung: 5-10 triệu</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(productFlagship)}>#Flagship: trên 10 triệu</h6></li>
                                         </ul>
                                     </div>
                                     <h4 className='mx-1'>Dung lượng điện thoại</h4>
                                     <div>
-                                        <ul className='ps-0'>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(product64gb)}>#64 GB</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(product128gb)}>#128 GB</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(product256gb)}>#256 GB</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3' onClick={() => setProducts(product512gb)}>#512 GB</h6></li>
+                                        <ul className=' filter_type_product'>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(product64gb)}>#64 GB</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(product128gb)}>#128 GB</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(product256gb)}>#256 GB</h6></li>
+                                            <li><h6 className='hover-category-filter mx-3'
+                                                onClick={() => setProducts(product512gb)}>#512 GB</h6></li>
                                         </ul>
                                     </div>
                                 </div>
