@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import formatMoney from "../../utils/format";
+import { createNewOrderService } from "../../services/userService";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { DeleteCart } from "../../store/actions/cartAction";
+import { Redirect, useHistory } from "react-router";
 
 const CheckoutCart = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const userInfo = useSelector((state) => state.user.userInfo);
     const products = useSelector((state) => state.cart.Carts);
     const numberCart = useSelector((state) => state.cart.numberCart);
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    const [name, setName] = useState(userInfo?.firstName + " " + userInfo?.lastName);
+    const [phone, setPhone] = useState(userInfo?.phone);
+    const [address, setAddress] = useState(userInfo?.address);
     const [note, setNote] = useState("");
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState("male");
 
     const handleGenderChange = (event) => {
         setGender(event.target.value);
@@ -43,21 +51,48 @@ const CheckoutCart = () => {
         })
         return sum;
     }
-    const handleOrder = () => {
+    const handleOrder = async () => {
+        history.push("/home");
+
         const dataUser = {
+            id: userInfo?.id,
             name: name,
             gender: gender,
             phone: phone,
             address: address,
             note: note,
-
+            payname: "Thanh toán khi nhận hàng"
         }
 
         const data = {
             dataUser: dataUser,
             products: products,
         }
-        console.log(data)
+        const res = await createNewOrderService(data);
+        if (res.message.errCode !== 0) {
+            toast.error('Đặt hàng thất bại!', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        if (res.message.errCode === 0) {
+            dispatch(DeleteCart())
+            toast.success('Đặt hàng thành công!', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+
     }
 
     useEffect(() => {
@@ -66,7 +101,7 @@ const CheckoutCart = () => {
 
 
     return (
-        <form>
+        <div>
             <h5 className="text-uppercase">Thông tin nhận hàng</h5>
             <div style={{
                 flexDirection: "row",
@@ -143,6 +178,9 @@ const CheckoutCart = () => {
                     Địa chỉ
                 </label>
                 <input
+                    style={{
+                        padding: '10px 12px',
+                    }}
                     className="form-control"
                     id="address"
                     value={address}
@@ -184,7 +222,7 @@ const CheckoutCart = () => {
                 />
             </div>
             <div className='d-flex justify-content-between'
-                onClick={handleOrder}
+
                 style={{
                     borderBottom: '1px solid #e0e0e0',
                     borderTop: '1px solid #e0e0e0',
@@ -205,12 +243,13 @@ const CheckoutCart = () => {
                         borderRadius: "4px",
                         fontWeight: "bold"
                     }}
+                    onClick={handleOrder}
                 // type="submit"
                 >
                     Đặt hàng
                 </button>
             </div>
-        </form >
+        </div >
     )
 };
 

@@ -114,6 +114,10 @@ const getUserOrderDetail = (inputId) => {
 }
 
 
+const createNewOrderService = (data) => {
+    return axios.post(`/api/create-new-order`, data)
+}
+
 
 export {
     handleLoginApi,
@@ -140,5 +144,6 @@ export {
     deleteOrderService,
     getUserOrderHistory,
     getAllOrderDetail,
-    getUserOrderDetail
+    getUserOrderDetail,
+    createNewOrderService,
 }

@@ -11,7 +11,6 @@ import CheckoutCart from './CheckoutCart';
 const ProductCartList = ({ products }) => {
     const numberCart = useSelector(state => state.cart.numberCart)
 
-    console.log('ProductCartList', products)
     const totalCart = () => {
         let sum = 0;
         const test = products?.map((item) => {
@@ -45,30 +44,29 @@ const ProductCartList = ({ products }) => {
                     boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px',
                 }}
             >
-                {
-                    numberCart > 0 ? <div className="row">
-                        <table class="table" >
+                <div className="row">
+                    <table class="table" >
 
-                            <tbody>
-                                {products ? products?.map((product) => (
-                                    < ProductCartItem product={product} key={uuidv4()} />
-                                )) :
-                                    <div>Giỏ hàng của bạn trống</div>
-                                }
-                            </tbody>
-                        </table>
-                        <div className='d-flex justify-content-between'
-                            style={{
-                                borderBottom: '1px solid #e0e0e0',
-                                paddingBottom: '12px',
-                                marginBottom: '12px',
-                            }}
-                        >
-                            <span>Tính tạm {numberCart} sản phẩm</span>
-                            <span>{formatMoney(totalCart())}đ</span>
-                        </div>
-                        <CheckoutCart />
-                        {/* <div className="col-12 py-2 mt-4">
+                        <tbody>
+                            {products ? products?.map((product) => (
+                                < ProductCartItem product={product} key={uuidv4()} />
+                            )) :
+                                <div>Giỏ hàng của bạn trống</div>
+                            }
+                        </tbody>
+                    </table>
+                    <div className='d-flex justify-content-between'
+                        style={{
+                            borderBottom: '1px solid #e0e0e0',
+                            paddingBottom: '12px',
+                            marginBottom: '12px',
+                        }}
+                    >
+                        <span>Tính tạm {numberCart} sản phẩm</span>
+                        <span>{formatMoney(totalCart())}đ</span>
+                    </div>
+                    <CheckoutCart />
+                    {/* <div className="col-12 py-2 mt-4">
                             <div className="d-flex justify-content-between align-items-baseline">
 
                                 <div className="d-flex flex-column align-items-end">
@@ -80,9 +78,9 @@ const ProductCartList = ({ products }) => {
                                 </div>
                             </div>
                         </div> */}
-                    </div> :
-                        <div>none</div>
-                }
+                </div>
+
+
 
             </div>
         </div >
