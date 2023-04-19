@@ -96,6 +96,7 @@ class HomeHeader extends Component {
                                                         <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Cập nhật </span>
                                                         <br />
                                                     </p>
+                                                    &nbsp;   &nbsp;
                                                     <Link className='d-flex align-items-center gap-10 text-white' to='/order-history'>
                                                         <FaHistory className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                         <p className='mb-0'>

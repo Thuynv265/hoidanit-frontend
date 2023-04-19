@@ -148,7 +148,7 @@ class ModalEditUser extends Component {
                             <div className='input-container'>
                                 <label>Phone:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'phone') }}
                                     value={this.state.phone}
                                 ></input>

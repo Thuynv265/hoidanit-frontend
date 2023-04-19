@@ -171,7 +171,7 @@ class OrderDetailManage extends Component {
                                     <tr key={index}>
                                         <td>{item.orderdetailId}</td>
                                         <td>{item.orderId}</td>
-                                        <td>{item.productId === 1 ? 'Iphone 14 promax tím 6gb/256GB' : 'Oppo Reno 8 5G vàng 8GB/256GB'}</td>
+                                        <td>{item.productId}</td>
                                         <td>{item.price}</td>
                                         <td>{item.quantity}</td>
                                         <td>{item.total}</td>

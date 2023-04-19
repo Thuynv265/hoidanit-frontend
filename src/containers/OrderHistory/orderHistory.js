@@ -60,6 +60,7 @@ const OrderHistory = () => {
                                 <th>Phương thức giao hàng</th>
                                 <th>Ngày đặt</th>
                                 <th>Trạng thái</th>
+                                <th>Tổng tiền</th>
 
                             </tr>
                             {arrOrders && arrOrders.map((item, index) => {
@@ -72,6 +73,7 @@ const OrderHistory = () => {
                                         <td>{item.delivery}</td>
                                         <td>{item.createdAt}</td>
                                         <td>{item.status}</td>
+                                        <td>{item.total}</td>
 
                                     </tr>
 

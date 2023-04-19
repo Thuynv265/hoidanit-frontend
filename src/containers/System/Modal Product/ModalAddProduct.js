@@ -145,32 +145,68 @@ class ModalAddProduct extends Component {
                             </div>
                             <div className='input-container'>
                                 <label>Storage:</label>
-                                <input
+                                {/* <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'storage') }}
                                     value={this.state.storage}
-                                ></input>
+                                ></input> */}
+                                <select
+                                    name="storage"
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'storage') }}
+                                    value={this.state.storage}
+                                >
+                                    <option value="--">--</option>
+                                    <option value="3GB/32GB">3GB/32GB</option>
+                                    <option value="3GB/64GB">3GB/64GB</option>
+                                    <option value="4GB/64GB">4GB/64GB</option>
+                                    <option value="4GB/128GB">4GB/128GB</option>
+                                    <option value="6GB/64GB">6GB/64GB</option>
+                                    <option value="6GB/128GB">6GB/128GB</option>
+                                    <option value="6GB/256GB">6GB/256GB</option>
+                                    <option value="6GB/512GB">6GB/512GB</option>
+                                    <option value="6GB/1TB">6GB/1TB</option>
+                                    <option value="8GB/128GB">8GB/128GB</option>
+                                    <option value="8GB/256GB">8GB/256GB</option>
+                                    <option value="8GB/512GB">8GB/512GB</option>
+                                    <option value="8GB/1TB">8GB/1TB</option>
+                                    <option value="12GB/256GB">12GB/256GB</option>
+                                    <option value="12GB/512GB">12GB/512GB</option>
+                                </select>
                             </div>
                             <div className='input-container'>
                                 <label>Screen:</label>
                                 <input
-                                    type='text'
+                                    type='number' step="any"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'screen') }}
                                     value={this.state.screen}
                                 ></input>
                             </div>
                             <div className='input-container'>
                                 <label>Resolution:</label>
-                                <input
+                                {/* <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'resolution') }}
                                     value={this.state.resolution}
-                                ></input>
+                                ></input> */}
+                                <select
+                                    name="resolution"
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'resolution') }}
+                                    value={this.state.resolution}
+                                >
+                                    <option value="--">--</option>
+                                    <option value="NFT">NFT</option>
+                                    <option value="IPS LCD">IPS LCD</option>
+                                    <option value="Semi Amoled">Semi Amoled</option>
+                                    <option value="Amoled">Amoled</option>
+                                    <option value="Oled">Oled</option>
+                                    <option value="1.5k">1.5K</option>
+                                    <option value="2k">2K</option>
+                                </select>
                             </div>
                             <div className='input-container'>
                                 <label>Weight:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'weight') }}
                                     value={this.state.weight}
                                 ></input>
@@ -178,7 +214,7 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Battery:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'battery') }}
                                     value={this.state.battery}
                                 ></input>
@@ -193,16 +229,27 @@ class ModalAddProduct extends Component {
                             </div>
                             <div className='input-container'>
                                 <label>Water Resist:</label>
-                                <input
+                                {/* <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
                                     value={this.state.water_resist}
-                                ></input>
+                                ></input> */}
+                                <select
+                                    name="water_resist"
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
+                                    value={this.state.water_resist}
+                                >
+                                    <option value="--">--</option>
+                                    <option value="NFT">Không kháng nước</option>
+                                    <option value="IPS LCD">Chuẩn IP 53</option>
+                                    <option value="Semi Amoled">Chuẩn IP 67</option>
+                                    <option value="Amoled">Chuẩn IP68</option>
+                                </select>
                             </div>
                             <div className='input-container'>
                                 <label>Price:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'price') }}
                                     value={this.state.price}
                                 ></input>
@@ -210,7 +257,7 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Quantity:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'quantity') }}
                                     value={this.state.quantity}
                                 ></input>
@@ -218,7 +265,7 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Discount:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'discount') }}
                                     value={this.state.discount}
                                 ></input>
@@ -226,7 +273,7 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Warranty:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'warranty') }}
                                     value={this.state.warranty}
                                 ></input>
@@ -247,13 +294,14 @@ class ModalAddProduct extends Component {
                                     value={this.state.img2}
                                 ></input>
                             </div>
-                            <div className='input-container'>
+                            <div className='input-container max-width-input'>
                                 <label>Content:</label>
-                                <input
+                                <textarea
                                     type='text'
+                                    rows="3"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'content') }}
                                     value={this.state.content}
-                                ></input>
+                                ></textarea>
                             </div>
 
                         </div>

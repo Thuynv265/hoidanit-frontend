@@ -34,7 +34,8 @@ class ModalEditOrder extends Component {
                 custmerName: order.custmerName,
                 phone: order.phone,
                 address: order.address,
-                delivery: order.delivery
+                delivery: order.delivery,
+                total: order.total
             })
         }
         console.log('didmount edit modal', this.props.currentOrder)
@@ -98,26 +99,27 @@ class ModalEditOrder extends Component {
                                     disabled
                                 ></input>
                             </div>
-                            <div className='input-container'>
+                            {/* <div className='input-container'>
                                 <label>Status</label>
                                 <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'status') }}
                                     value={this.state.status}
                                 ></input>
-                            </div>
-                            {/* <div className='input-container'>
+                            </div> */}
+                            <div className='input-container'>
                                 <label>Status:</label>
                                 <select
                                     name="status"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'status') }}
                                     value={this.state.status}
                                 >
-                                    <option value="1">Đang tiếp nhận</option>
-                                    <option value="2">Đang vận chuyển</option>
-                                    <option value="3">Đã hoàn thành</option>
+                                    <option value="Đang tiếp nhận">Đang tiếp nhận</option>
+                                    <option value="Đang vận chuyển">Đang vận chuyển</option>
+                                    <option value="Đã hoàn thành">Đã hoàn thành</option>
+                                    <option value="Đã hủy">Đã hủy</option>
                                 </select>
-                            </div> */}
+                            </div>
                             <div className='input-container'>
                                 <label>Customer name:</label>
                                 <input
@@ -129,7 +131,7 @@ class ModalEditOrder extends Component {
                             <div className='input-container'>
                                 <label>Phone:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'phone') }}
                                     value={this.state.phone}
                                 ></input>

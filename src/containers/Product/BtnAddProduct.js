@@ -106,7 +106,7 @@ function BtnAddProduct({ product }) {
                                         alt={product.productName}
                                     />
                                     <input id={`${product.productName}1`} type="radio" name="color" value="red" checked />
-                                    <label class='text-center' htmlFor={`${product.productName}1`}>Red</label>
+                                    <label class='text-center' htmlFor={`${product.productName}1`}>{product.color}</label>
                                 </div>
 
                             </div>

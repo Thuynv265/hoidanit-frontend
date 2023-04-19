@@ -145,6 +145,7 @@ const CheckoutCart = () => {
             </div>
 
             <div className="mb-3 d-flex">
+
                 <input
                     type="text"
                     className="form-control"
@@ -169,7 +170,7 @@ const CheckoutCart = () => {
             <div className="mb-3 form-check">
                 <input type="radio" className="form-check-input" id="delivery" name="deliveryMethod" value="delivery" checked />
                 <label className="form-check-label" htmlFor="delivery">
-                    Giao tận nơi
+                    COD
                 </label>
             </div>
 

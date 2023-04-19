@@ -214,6 +214,7 @@ class OrderManage extends Component {
                                 <th>Payment By</th>
                                 <th>Status</th>
                                 <th>Order Date</th>
+                                <th>Total</th>
                                 <th>Actions</th>
                             </tr>
                             {arrOrders && arrOrders.map((item, index) => {
@@ -228,6 +229,7 @@ class OrderManage extends Component {
                                         <td>{item.paymentId === 1 ? 'Thanh toán khi nhận hàng' : 'Thanh toán chuyển khoản'}</td>
                                         <td>{item.status}</td>
                                         <td>{item.createdAt}</td>
+                                        <td>{item.total} VND</td>
                                         <td>
                                             <span
                                                 className='btn-edit'
