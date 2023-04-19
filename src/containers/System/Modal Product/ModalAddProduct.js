@@ -108,36 +108,6 @@ class ModalAddProduct extends Component {
 
         }
     }
-
-    onChangeInputImage = async (e, field) => {
-        const cloudinaryEnv = {
-            cloud_name: "dtm9z55xc",
-            upload_preset: "ays0ycky",
-        };
-        let formData = new FormData();
-        if (e.target.files[0] === undefined) return;
-
-        formData.append("file", e.target.files[0], "file");
-        formData.append("upload_preset", cloudinaryEnv.upload_preset);
-
-        Axios.post(
-            `https://api.cloudinary.com/v1_1/${cloudinaryEnv.cloud_name}/image/upload`,
-            formData
-        ).then((res) => {
-            if (field === 'img1') {
-                this.setState({
-                    tmpImg: res.data.secure_url,
-                    img1: res.data.secure_url,
-                });
-            } else if (field === 'img2') {
-                this.setState({
-                    tmpImg2: res.data.secure_url,
-                    img2: res.data.secure_url,
-                });
-            }
-
-        });
-    };
     render() {
         return (
             <div>
@@ -148,7 +118,9 @@ class ModalAddProduct extends Component {
                     size='lg'
                     centered
                 >
-                    <ModalHeader toggle={() => { this.toggle() }}>Create new Product</ModalHeader>
+                    <ModalHeader
+
+                        toggle={() => { this.toggle() }}>Create new Product</ModalHeader>
                     <ModalBody>
                         <div className='modal-user-body'>
                             <div className='input-container'>
