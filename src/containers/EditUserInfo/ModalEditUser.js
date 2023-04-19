@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // import { emitter } from '../../utils/emitter';
 // import { emitter } from '../../../utils/emitter';
-import { getAllUsers } from '../../services/userService'
-import './modalEditUser.scss'
 import _ from 'lodash'
+import actionTypes from '../../store/actions/actionTypes';
+import "./edituser.css"
 class ModalEditUser extends Component {
 
     constructor(props) {
@@ -21,15 +21,7 @@ class ModalEditUser extends Component {
             address: ''
         }
     }
-    getUserFromReact = async () => {
-        let user = this.props.currentUser
-        let response = await getAllUsers(user.id)
-        if (response && response.errCode === 0) {
-            this.setState({
-                arrUsers: response.users
-            })
-        }
-    }
+
     componentDidMount() {
         let user = this.props.currentUser
         // let {currentUser} = this.props
@@ -45,7 +37,6 @@ class ModalEditUser extends Component {
                 address: user.address
             })
         }
-        console.log('didmount edit modal', this.props.currentUser.id)
     }
 
     toggle = () => {
@@ -69,7 +60,6 @@ class ModalEditUser extends Component {
             ...copyState
         })
     }
-
     checkValidateInput = () => {
         let isValid = true
         // let arrInput = ['email', 'password', 'firstName', 'lastName', 'address', 'phoneNumber', 'gender', 'roleId']
@@ -85,38 +75,48 @@ class ModalEditUser extends Component {
         return isValid;
     }
 
-    handleSaveUser = async () => {
+    handleSaveUser = (userInfo) => {
         let isValid = this.checkValidateInput()
+        let newData = {
+            ...userInfo,
+            ...this.state
+        }
         if (isValid === true) {
             //call api edit user
-            this.props.editUser(this.state)
-
-            alert('Cập nhật thành công! Các thông tin thay đổi sẽ hiển thị khi bạn đăng nhập lại')
+            try {
+                this.props.editUser(this.state)
+                this.props.updateUserInfo(newData)
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
     render() {
+        const { userInfo } = this.props;
+        console.log('test', userInfo)
+
         return (
             <div>
                 <Modal
                     isOpen={this.props.isOpen}
                     toggle={() => { this.toggle() }}
                     className={'modal-user-container '}
-                    size='lg'
+                    size='md'
                     centered
+
                 >
-                    <ModalHeader toggle={() => { this.toggle() }}>Edit user</ModalHeader>
+                    <ModalHeader toggle={() => { this.toggle() }}>
+                        Edit user
+                    </ModalHeader>
                     <ModalBody>
-                        <div className='modal-user-body'>
-                            <div className='input-container'>
-                                <label>Email:</label>
-                                <input
-                                    type='email'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'userName') }}
-                                    value={this.state.userName}
-                                    disabled
-                                ></input>
-                            </div>
-                            {/* <div className='input-container'>
+                        <div className='modal-user-body d-flex'
+                            style={{
+                                flexDirection: 'column',
+                                padding: "20px"
+                            }}
+                        >
+
+                            {/* <div className='edit_user_container_input'>
                                 <label>Password:</label>
                                 <input
                                     type='password'
@@ -125,57 +125,86 @@ class ModalEditUser extends Component {
                                     disabled
                                 ></input>
                             </div> */}
-                            <div className='input-container'>
-                                <label>Firstname:</label>
+                            <div style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                width: "100%"
+                            }}>
+                                <div className='edit_user_container_input'
+                                    style={{
+                                        marginRight: "8px"
+                                    }}
+                                >
+                                    <label>Firstname:</label>
+                                    <input
+                                        type='text'
+                                        className='edit_user_container_input_field'
+                                        onChange={(event) => { this.handleOnchangeInput(event, 'firstName') }}
+                                        value={this.state.firstName}
+                                    ></input>
+                                </div>
+                                <div className='edit_user_container_input'
+                                    style={{
+                                        marginLeft: "8px"
+                                    }}
+                                >
+                                    <label>Lastname:</label>
+                                    <input type='text'
+                                        onChange={(event) => { this.handleOnchangeInput(event, 'lastName') }}
+                                        className='edit_user_container_input_field'
+                                        value={this.state.lastName}
+                                    ></input>
+                                </div>
+                            </div>
+
+                            <div className='edit_user_container_input'>
+                                <label>Email:</label>
                                 <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'firstName') }}
-                                    value={this.state.firstName}
+                                    type='email'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'userName') }}
+                                    className='edit_user_container_input_field'
+                                    value={this.state.userName}
+                                    disabled
                                 ></input>
                             </div>
-                            <div className='input-container'>
-                                <label>Lastname:</label>
-                                <input type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'lastName') }}
-                                    value={this.state.lastName}
-                                ></input>
-                            </div>
-                            <div className='input-container'>
-                                <label>Role:</label>
-                                {/* <select
+                            {/* <div className='edit_user_container_input'>
+                                <label>Role:</label> */}
+                            {/* <select
                                     name="roleId"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'roleId') }}
                                     value={this.state.roleId}
                                 > */}
-                                {/* <option value="0">User</option>
+                            {/* <option value="0">User</option>
                                     <option value="1">Admin</option> */}
-                                {/* </select> */}
-                                <input type='text'
+                            {/* </select> */}
+                            {/* <input type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'roleId') }}
                                     value={this.state.roleId === '1' ? 'Admin' : 'User'}
                                 ></input>
-                            </div>
+                            </div> */}
 
-                            <div className='input-container'>
+                            <div className='edit_user_container_input'>
                                 <label>Phone:</label>
                                 <input
-                                    type='text'
+                                    type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'phone') }}
                                     value={this.state.phone}
+                                    className='edit_user_container_input_field'
                                 ></input>
                             </div>
-                            <div className='input-container '>
+                            <div className='edit_user_container_input '>
                                 <label>Address:</label>
                                 <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'address') }}
                                     value={this.state.address}
+                                    className='edit_user_container_input_field'
                                 ></input>
                             </div>
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" className='px-3' onClick={() => { this.handleSaveUser() }}>
+                        <Button color="primary" className='px-3' onClick={() => { this.handleSaveUser(userInfo) }}>
                             Save changes
                         </Button>{' '}
                         <Button color="secondary" className='px-3' onClick={() => { this.toggle() }}>
@@ -191,11 +220,19 @@ class ModalEditUser extends Component {
 
 const mapStateToProps = state => {
     return {
+        isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo
     };
 };
 
+
 const mapDispatchToProps = dispatch => {
     return {
+        updateUserInfo: (userInfo) => dispatch({
+            type: actionTypes.USER_UPDATE_SUCCESS,
+            userInfo: userInfo
+        })
+
     };
 };
 

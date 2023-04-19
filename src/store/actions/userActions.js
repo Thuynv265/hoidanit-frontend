@@ -16,3 +16,8 @@ export const userLoginFail = () => ({
 export const processLogout = () => ({
     type: actionTypes.PROCESS_LOGOUT
 })
+
+export const userUpdateInfo = (userInfo) => ({
+    type: actionTypes.USER_UPDATE_SUCCESS,
+    userInfo: userInfo
+})

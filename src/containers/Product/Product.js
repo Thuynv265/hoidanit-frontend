@@ -14,6 +14,20 @@ import { BsSortNumericDown, BsSortNumericDownAlt, } from "react-icons/bs"
 import ProductItem from './ProductItem';
 import { v4 as uuidv4 } from 'uuid';
 import { set } from 'lodash';
+import ReactPaginate from "react-paginate";
+
+
+function Items({ currentItems }) {
+    return (
+        <>
+            {currentItems &&
+                currentItems.map((item) => (
+                    <ProductItem item={item} key={uuidv4()} />
+                ))}
+        </>
+    );
+}
+
 
 const Product = () => {
     // all products
@@ -316,14 +330,39 @@ const Product = () => {
     useEffect(() => {
         fetchFlagshipProduct()
     }, [])
+
+
+    const [itemOffset, setItemOffset] = useState(0);
+
+    // Simulate fetching items from another resources.
+    // (This could be items from props; or items loaded in a local state
+    // from an API endpoint with useEffect and useState)
+    const itemsPerPage = 12;
+    const endOffset = itemOffset + itemsPerPage;
+    const currentItems = products?.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(products?.length / itemsPerPage);
+
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % products?.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+    };
+
     return (
         <>
             <HomeHeader></HomeHeader>
             <Meta title={"Sản phẩm"} />
-            <div className='product-wrapper home-wrapper-2 '>
+            <div className='product-wrapper home-wrapper-2 '
+                style={{
+                    minHeight: '100vh',
+                }}
+            >
                 <div className='container-xxl'>
                     <div className='row'>
-                        <div className='col-3'>
+                        <div className='col-2'>
                             <div className='filter-part mb-3'>
                                 {/* <h3 className='filter-title'> */}
                                 <h4 >
@@ -333,68 +372,78 @@ const Product = () => {
                                     <ul className='ps-0 filter_type_product'>
                                         <li
                                             onClick={() => setProducts(AllProducts)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Tất cả sản phẩm</span></li>
                                         <li
                                             onClick={() => setProducts(productIphone)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Iphone</span></li>
                                         <li
                                             onClick={() => setProducts(productSamsung)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Samsung</span></li>
                                         <li
                                             onClick={() => setProducts(productOppo)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Oppo</span></li>
                                         <li
                                             onClick={() => setProducts(productXiaomi)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Xiaomi</span></li>
                                         <li
                                             onClick={() => setProducts(productVivo)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Vivo</span></li>
                                         <li
                                             onClick={() => setProducts(productRealme)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Realme</span></li>
                                         <li
                                             onClick={() => setProducts(productRedmi)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Redmi</span></li>
                                         <li
                                             onClick={() => setProducts(productNokia)}
-                                        ><span className='hover-category-filter mx-4'
+                                        ><span className='hover-category-filter '
                                         >-Nokia</span></li>
                                     </ul>
                                 </div>
                             </div>
                             <div className='filter-part mb-3'>
-                                <h3 >Phân loại theo:</h3>
+                                <h4 >Phân loại theo:</h4>
                                 <div>
                                     {/* <h3 className='sub-title'>Phân khúc điện thoại</h3> */}
-                                    <h4 className='mx-1'>Phân khúc điện thoại:</h4>
+                                    <h5 className='mx-1'>Phân khúc điện thoại:</h5>
                                     <div>
-                                        <ul className=' filter_type_product'>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                        <ul className=' filter_type_product'
+                                            style={{
+                                                paddingLeft: '0px',
+                                            }}
+                                        >
+                                            <li><h6 className='hover-category-filter'
                                                 onClick={() => setProducts(productCheap)}>#Giá rẻ: 2-5 triệu</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                            <li><h6 className='hover-category-filter'
                                                 onClick={() => setProducts(productMid)}>#Tầm trung: 5-10 triệu</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                            <li><h6 className='hover-category-filter'
                                                 onClick={() => setProducts(productFlagship)}>#Flagship: trên 10 triệu</h6></li>
                                         </ul>
                                     </div>
-                                    <h4 className='mx-1'>Dung lượng điện thoại</h4>
+                                    <h5 className='mx-1'>Dung lượng điện thoại</h5>
                                     <div>
-                                        <ul className=' filter_type_product'>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                        <ul className=' filter_type_product'
+                                            style={{
+                                                paddingLeft: '0px',
+                                            }}
+                                        >
+
+
+                                            <li><h6 className='hover-category-filter '
                                                 onClick={() => setProducts(product64gb)}>#64 GB</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                            <li><h6 className='hover-category-filter '
                                                 onClick={() => setProducts(product128gb)}>#128 GB</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                            <li><h6 className='hover-category-filter '
                                                 onClick={() => setProducts(product256gb)}>#256 GB</h6></li>
-                                            <li><h6 className='hover-category-filter mx-3'
+                                            <li><h6 className='hover-category-filter '
                                                 onClick={() => setProducts(product512gb)}>#512 GB</h6></li>
                                         </ul>
                                     </div>
@@ -402,7 +451,11 @@ const Product = () => {
                             </div>
                         </div>
 
-                        <div className="col-9">
+                        <div className="col-10"
+                            style={{
+                                position: "relative",
+                            }}
+                        >
                             <div className="filter-sort-grid mb-4">
                                 <div className="d-flex justify-content-between align-items-center">
                                     <div className="d-flex align-items-center gap-30 ">
@@ -440,22 +493,49 @@ const Product = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='list-product mx-3 px-3'>
-                                <div className='d-flex flex-wrap gap-70'>
+                            <div className='list-product '>
+                                <div className='d-flex flex-wrap gap-30 '
 
-                                    {products && products.map((item) => {
-                                        return (
-                                            <ProductItem item={item} key={uuidv4()} />
-                                        )
-                                    })}
+                                    style={{
+                                        padding: "0 12px 80px 12px"
+                                    }}
+                                >
+                                    <Items currentItems={currentItems} key={uuidv4()} />
                                 </div>
 
+                            </div>
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    right: "37%",
+                                    bottom: 0,
+                                }}
+                            >
+                                <ReactPaginate
+                                    breakLabel="..."
+                                    // nextLabel="next >"
+                                    onPageChange={handlePageClick}
+                                    pageRangeDisplayed={5}
+                                    pageCount={pageCount}
+                                    // previousLabel="< previous"
+                                    renderOnZeroPageCount={null}
+                                    pageClassName="page-item"
+                                    pageLinkClassName="page-link"
+                                    previousClassName="page-item"
+                                    previousLinkClassName="page-link"
+                                    nextClassName="page-item"
+                                    nextLinkClassName="page-link"
+                                    breakClassName="page-item"
+                                    breakLinkClassName="page-link"
+                                    containerClassName="pagination"
+                                    activeClassName="active"
+                                />
                             </div>
                         </div>
                     </div>
                 </div >
-                <Footer></Footer>
             </div >
+            <Footer></Footer>
         </>
     );
 

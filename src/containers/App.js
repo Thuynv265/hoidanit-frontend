@@ -64,6 +64,7 @@ const App = (props) => {
                                     <Route path={path.CHECKOUT} component={Checkout} />
                                     <Route path={path.PRODUCT_DETAIL} component={ProductDetail} />
                                     <Route path={path.ORDER_HISTORY} component={orderHistory} />
+                                    <Redirect to={path.HOME} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>

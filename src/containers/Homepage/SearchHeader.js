@@ -4,8 +4,10 @@ import { getAllProducts } from "../../services/userService";
 import { useDispatch } from "react-redux";
 import { searchFilterChange } from "../../store/actions/searchActions";
 import { set } from "lodash";
+import { useHistory } from "react-router";
 
 const SearchHeader = () => {
+    const history = useHistory();
     const dispatch = useDispatch()
     const [search, setSearch] = React.useState('')
 
@@ -28,6 +30,7 @@ const SearchHeader = () => {
             />
             <span className="input-group-text p-3" id="basic-addon2"
                 onClick={handleSearchSubmit}
+                style={{ cursor: 'pointer' }}
             >
                 <BsSearch className='fs-6' />
             </span>

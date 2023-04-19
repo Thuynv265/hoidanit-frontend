@@ -1,0 +1,9 @@
+.edit_user_container_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit_user_container_input_field {
+  padding: 4px 8px;
+  border-radius: 4px;
+}

@@ -90,10 +90,15 @@ class HomeHeader extends Component {
                                                 />
                                             }
                                             {isLoggedIn ?
-                                                <div className='d-flex align-items-center gap-10 text-white'>
+                                                <div style={{
+                                                    cursor: 'pointer'
+                                                }} className='d-flex align-items-center gap-10 text-white '>
                                                     <BiEdit onClick={() => { this.handleEditUser(userInfo) }} className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                     <p className='mb-0'>
-                                                        <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Cập nhật </span>
+                                                        <span className='text-white'
+
+
+                                                            onClick={() => { this.handleEditUser(inforUser) }}>Cập nhật </span>
                                                         <br />
                                                     </p>
                                                     &nbsp;   &nbsp;
