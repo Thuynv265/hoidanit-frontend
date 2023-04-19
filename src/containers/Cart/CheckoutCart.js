@@ -47,7 +47,8 @@ const CheckoutCart = () => {
     const totalCart = () => {
         let sum = 0;
         products?.map((item) => {
-            sum += item.price * (item.quantity) - item.discount
+            // sum += (item.price - item.discount) * (item.quantity)
+            sum += item.price * (item.quantity)
         })
         return sum;
     }

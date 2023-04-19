@@ -14,7 +14,7 @@ const ProductCartList = ({ products }) => {
     const totalCart = () => {
         let sum = 0;
         const test = products?.map((item) => {
-            sum += item.price * (item.quantity) - item.discount
+            sum += item.price * (item.quantity)
         })
         // products?.map((item) => {
         //     sum += item.price * (item.quantity) - item.discount
