@@ -1,23 +1,36 @@
+
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // import { emitter } from '../../utils/emitter';
 import { emitter } from '../../../utils/emitter';
+import Axios from 'axios';
+import "./ModalAddProduct.scss";
 class ModalAddProduct extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             productName: '',
+            categoryId: '',
             color: '',
             storage: '',
+            screen: '',
+            resolution: '',
+            weight: '',
+            battery: '',
+            material: '',
+            water_resist: '',
             price: '',
-            discount: '',
             quantity: '',
-            img: '',
+            discount: '',
+            warranty: '',
+            img1: '',
+            tmpImg: 'https://image.oppo.com/content/dam/oppo/common/mkt/v2-2/reno6-5g-oversea/listpage/Phone-list-product-list-Arctic-Blue-427-x-600.png.thumb.webp',
+            img2: '',
+            tmpImg2: 'https://image.oppo.com/content/dam/oppo/common/mkt/v2-2/reno6-5g-oversea/listpage/Phone-list-product-list-Arctic-Blue-427-x-600.png.thumb.webp',
             content: '',
-            unit: ''
         }
         this.listenToEmitter()
     }
@@ -92,10 +105,39 @@ class ModalAddProduct extends Component {
         if (isValid === true) {
             //call api create user
             this.props.createNewProduct(this.state)
-            console.log('data model:', this.state)
 
         }
     }
+
+    onChangeInputImage = async (e, field) => {
+        const cloudinaryEnv = {
+            cloud_name: "dtm9z55xc",
+            upload_preset: "ays0ycky",
+        };
+        let formData = new FormData();
+        if (e.target.files[0] === undefined) return;
+
+        formData.append("file", e.target.files[0], "file");
+        formData.append("upload_preset", cloudinaryEnv.upload_preset);
+
+        Axios.post(
+            `https://api.cloudinary.com/v1_1/${cloudinaryEnv.cloud_name}/image/upload`,
+            formData
+        ).then((res) => {
+            if (field === 'img1') {
+                this.setState({
+                    tmpImg: res.data.secure_url,
+                    img1: res.data.secure_url,
+                });
+            } else if (field === 'img2') {
+                this.setState({
+                    tmpImg2: res.data.secure_url,
+                    img2: res.data.secure_url,
+                });
+            }
+
+        });
+    };
     render() {
         return (
             <div>
@@ -146,10 +188,10 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Storage:</label>
                                 {/* <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'storage') }}
-                                    value={this.state.storage}
-                                ></input> */}
+                                        type='text'
+                                        onChange={(event) => { this.handleOnchangeInput(event, 'storage') }}
+                                        value={this.state.storage}
+                                    ></input> */}
                                 <select
                                     name="storage"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'storage') }}
@@ -184,10 +226,10 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Resolution:</label>
                                 {/* <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'resolution') }}
-                                    value={this.state.resolution}
-                                ></input> */}
+                                        type='text'
+                                        onChange={(event) => { this.handleOnchangeInput(event, 'resolution') }}
+                                        value={this.state.resolution}
+                                    ></input> */}
                                 <select
                                     name="resolution"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'resolution') }}
@@ -230,10 +272,10 @@ class ModalAddProduct extends Component {
                             <div className='input-container'>
                                 <label>Water Resist:</label>
                                 {/* <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
-                                    value={this.state.water_resist}
-                                ></input> */}
+                                        type='text'
+                                        onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
+                                        value={this.state.water_resist}
+                                    ></input> */}
                                 <select
                                     name="water_resist"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
@@ -280,19 +322,39 @@ class ModalAddProduct extends Component {
                             </div>
                             <div className='input-container'>
                                 <label>Image 1:</label>
+                                <img src={this.state.tmpImg}
+                                    alt='img2'
+                                    style={{
+                                        height: '80px',
+                                        width: '60px'
+                                    }}
+                                />
                                 <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'img1') }}
-                                    value={this.state.img1}
-                                ></input>
+                                    type="file"
+                                    id="avatar"
+                                    name="avatar"
+                                    accept="image/png, image/jpeg"
+                                    className="profile__infor-avatar-input"
+                                    onChange={(e) => this.onChangeInputImage(e, 'img1')}
+                                />
                             </div>
                             <div className='input-container'>
                                 <label>Image 2:</label>
+                                <img src={this.state.tmpImg2}
+                                    alt='img2'
+                                    style={{
+                                        height: '80px',
+                                        width: '60px'
+                                    }}
+                                />
                                 <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'img2') }}
-                                    value={this.state.img2}
-                                ></input>
+                                    type="file"
+                                    id="avatar"
+                                    name="avatar"
+                                    accept="image/png, image/jpeg"
+                                    className="profile__infor-avatar-input"
+                                    onChange={(e) => this.onChangeInputImage(e, 'img2')}
+                                />
                             </div>
                             <div className='input-container max-width-input'>
                                 <label>Content:</label>
@@ -305,6 +367,7 @@ class ModalAddProduct extends Component {
                             </div>
 
                         </div>
+
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" className='px-3' onClick={() => { this.handleAddNewProduct() }}>

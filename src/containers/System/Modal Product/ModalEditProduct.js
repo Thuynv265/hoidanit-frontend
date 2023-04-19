@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // import { emitter } from '../../utils/emitter';
 // import { emitter } from '../../../utils/emitter';
-
+import Axios from 'axios';
 import _ from 'lodash'
+
 class ModalEditProduct extends Component {
 
     constructor(props) {
@@ -26,7 +27,9 @@ class ModalEditProduct extends Component {
             discount: '',
             warranty: '',
             img1: '',
+            tmpImg1: '',
             img2: '',
+            tmpImg2: '',
             content: '',
         }
     }
@@ -51,11 +54,12 @@ class ModalEditProduct extends Component {
                 quantity: product.quantity,
                 warranty: product.warranty,
                 img1: product.img1,
+                tmpImg1: product.img1,
                 img2: product.img2,
+                tmpImg2: product.img2,
                 content: product.content,
             })
         }
-        console.log('didmount edit modal', this.props.currentProduct)
     }
 
     toggle = () => {
@@ -79,6 +83,37 @@ class ModalEditProduct extends Component {
             ...copyState
         })
     }
+
+    onChangeInputImage = async (e, field) => {
+        const cloudinaryEnv = {
+            cloud_name: "dtm9z55xc",
+            upload_preset: "ays0ycky",
+        };
+        let formData = new FormData();
+        if (e.target.files[0] === undefined) return;
+
+        formData.append("file", e.target.files[0], "file");
+        formData.append("upload_preset", cloudinaryEnv.upload_preset);
+
+        Axios.post(
+            `https://api.cloudinary.com/v1_1/${cloudinaryEnv.cloud_name}/image/upload`,
+            formData
+        ).then((res) => {
+            if (field === 'img1') {
+                this.setState({
+                    tmpImg1: res.data.secure_url,
+                    img1: res.data.secure_url,
+                });
+            } else if (field === 'img2') {
+                this.setState({
+                    tmpImg2: res.data.secure_url,
+                    img2: res.data.secure_url,
+                });
+            }
+
+        });
+    };
+
 
     checkValidateInput = () => {
         let isValid = true
@@ -286,19 +321,51 @@ class ModalEditProduct extends Component {
                             </div>
                             <div className='input-container'>
                                 <label>Image 1:</label>
-                                <input
+                                {/* <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'img1') }}
                                     value={this.state.img1}
-                                ></input>
+                                ></input> */}
+
+                                <img src={this.state.tmpImg1}
+                                    alt='img1'
+                                    style={{
+                                        height: '80px',
+                                        width: '60px'
+                                    }}
+                                />
+                                <input
+                                    type="file"
+                                    id="avatar"
+                                    name="avatar"
+                                    accept="image/png, image/jpeg"
+                                    className="profile__infor-avatar-input"
+                                    onChange={(e) => this.onChangeInputImage(e, 'img1')}
+                                />
                             </div>
                             <div className='input-container'>
                                 <label>Image 2:</label>
-                                <input
+                                {/* <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'img2') }}
                                     value={this.state.img2}
-                                ></input>
+                                ></input> */}
+                                <img src={this.state.tmpImg2}
+                                    alt='img2'
+                                    style={{
+                                        height: '80px',
+                                        width: '60px'
+                                    }}
+                                />
+                                <input
+                                    type="file"
+                                    id="avatar"
+                                    name="avatar"
+                                    accept="image/png, image/jpeg"
+                                    className="profile__infor-avatar-input"
+                                    onChange={(e) => this.onChangeInputImage(e, 'img2')}
+                                />
+
                             </div>
                             <div className='input-container max-width-input'>
                                 <label>Content:</label>
