@@ -105,7 +105,7 @@ class HomeHeader extends Component {
                                                     <Link className='d-flex align-items-center gap-10 text-white' to='/order-history'>
                                                         <FaHistory className=' d-flex align-items-center  text-white ' style={{ width: "20px", height: "20px" }} />
                                                         <p className='mb-0'>
-                                                            <span className='text-white' onClick={() => { this.handleEditUser(inforUser) }}>Lịch sử</span>
+                                                            <span className='text-white' >Lịch sử</span>
                                                             <br />
                                                         </p>
                                                     </Link>

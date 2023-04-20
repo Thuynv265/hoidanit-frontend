@@ -16,7 +16,7 @@ const OrderHistory = () => {
     // const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     // console.log('userInfo: ', userInfo)
     const [orderId, setOrderId] = useState();
-    const [showPopup, setShowPopup] = useState(false); // new state variable for popup visibility
+    const [showPopup, setShowPopup] = useState(true); // new state variable for popup visibility
     const getUserHistory = async () => {
         try {
             let id = userInfo.id
@@ -44,6 +44,7 @@ const OrderHistory = () => {
         setShowPopup(!showPopup);
 
     }
+
 
     return (
         <>
@@ -96,7 +97,7 @@ const OrderHistory = () => {
                 {showPopup && (
 
                     <div className='user-table mt-3 mx-1'>
-                        <div className='title text-center'>Chi tiết đơn hàng: &nbsp;&nbsp;&nbsp;<Button color="secondary" className='px-3' onClick={togglePopup}>Đóng</Button></div>
+                        <div className='title text-center'>Chi tiết đơn hàng: &nbsp;&nbsp;&nbsp;<Button color="secondary" className='px-3' onClick={() => { setShowPopup(!showPopup) }}>Đóng</Button></div>
 
                         <table id="customers">
                             <tbody>

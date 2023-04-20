@@ -113,7 +113,7 @@ const getAllOrderDetail = (inputId) => {
 //     return axios.get(`/api/get-user-order-detail?id=${inputId}`)
 // }
 const getUserOrderDetail = (data) => {
-    return axios.get(`/api/get-user-order-detail?orderId=${data.orderId}&userId=${data.userId}`, data)
+    return axios.get(`/api/get-user-order-detail?userId=${data.userId}&orderId=${data.orderId}`, data)
 }
 
 
