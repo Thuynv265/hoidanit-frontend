@@ -16,7 +16,6 @@ const OrderHistory = () => {
     // const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     // console.log('userInfo: ', userInfo)
     const [orderId, setOrderId] = useState();
-    const userId = userInfo.id
     const [showPopup, setShowPopup] = useState(false); // new state variable for popup visibility
     const getUserHistory = async () => {
         try {
@@ -33,30 +32,19 @@ const OrderHistory = () => {
         if (userInfo) { getUserHistory() }
     }, [userInfo])
 
-    const togglePopup = (id) => {
-        setShowPopup(!showPopup);
+    const togglePopup = async (id) => {
         setOrderId(id)
-    }
-
-    const getUserOrderDetailHistory = async () => {
-        try {
+        if (showPopup === false) {
             let userId = userInfo.id
-            let data = [userId, orderId]
+            let data = { userId, orderId }
             let response = await getUserOrderDetail(data)
-            // console.log("this is resonse", response)
-            setArrDetail(response.orderDetail[0])
+
+            if (response?.errCode === 0) setArrDetail(response?.orderDetail[0])
         }
-        catch (error) {
-            console.log(error)
-        }
+        setShowPopup(!showPopup);
+
     }
-    useEffect(() => {
-        { getUserOrderDetailHistory() }
-    }, [userInfo])
 
-
-    console.log('check id= ', orderId, 'check user id = ', userInfo.id)
-    console.log('check orderDetail', arrDetail)
     return (
         <>
             <HomeHeader />
