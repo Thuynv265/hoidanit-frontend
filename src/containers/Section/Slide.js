@@ -7,12 +7,19 @@ import './Slider.scss'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import banner1 from '../../assets/slide/banner1.png'
-import banner2ip from '../../assets/slide/banner2ip.png'
-import banner3 from '../../assets/slide/banner3.png'
-import banner4 from '../../assets/slide/banner4.png'
-import slide5 from '../../assets/slide/slide5.jpg'
+// import banner1 from '../../assets/slide/banner1.png'
+// import banner2ip from '../../assets/slide/banner2ip.png'
+// import banner3 from '../../assets/slide/banner3.png'
+// import banner4 from '../../assets/slide/banner4.png'
+import slide1 from '../../assets/slide/slide1.jpg'
+import slide2 from '../../assets/slide/slide2.jpg'
 import slide3 from '../../assets/slide/slide3.jpg'
+import slide4 from '../../assets/slide/slide4.jpg'
+import slide6 from '../../assets/slide/slide6.jpg'
+import home1 from '../../assets/slide/home1.jpg'
+import home2 from '../../assets/slide/home2.jpg'
+import home3 from '../../assets/slide/home3.png'
+import home4 from '../../assets/slide/home4.jpg'
 import service from '../../assets/images/service.png'
 import service2 from '../../assets/images/service-02.png'
 import service3 from '../../assets/images/service-03.png'
@@ -37,7 +44,57 @@ class Slide extends Component {
         };
         return (
             <>
-                <section className='section-slider'>
+                {/* <div><h2 className='text-center'>Chào mừng đến với VT-mobile</h2></div> */}
+                <section className='home-wrapper-1 py-5'>
+                    <div className='container-xxl'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <div className='main-banner position-relative'>
+                                    <img
+                                        src={slide1}
+                                        className='img-fluid rounded-3'
+                                        alt='main banner'
+                                    />
+                                </div>
+                            </div>
+                            <div className='col-6'>
+                                <div className='d-flex flex-wrap gap-10 justify-content-between align-items-center'>
+                                    <div className='small-banner position-relative '>
+                                        <img
+                                            src={slide2}
+                                            className='img-fluid rounded-3 mb-2 mt-4'
+                                            alt='main banner'
+                                        />
+                                    </div>
+                                    <div className='small-banner position-relative '>
+                                        <img
+                                            src={slide3}
+                                            className='img-fluid rounded-3 mb-2 mt-4'
+                                            alt='main banner'
+                                        />
+                                    </div>
+                                    <div className='small-banner position-relative '>
+                                        <img
+                                            src={slide4}
+                                            className='img-fluid rounded-3 mt-3 mb-2'
+                                            alt='main banner'
+                                        />
+                                    </div>
+                                    <div className='small-banner position-relative mt-3 mb-2'>
+                                        <img
+                                            src={slide6}
+                                            className='img-fluid rounded-3'
+                                            alt='main banner'
+                                        />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* <section className='section-slider'>
                     <div className='slide-container'>
                         <div className='slide-header text-center'>
                             <h1>Chào mừng tới VT mobile</h1>
@@ -63,7 +120,7 @@ class Slide extends Component {
                             </div>
                         </Slider>
                     </div>
-                </section>
+                </section> */}
                 <section className='marque-wrapper py-5'>
                     <div className='container-xxl'>
                         <div className='row'>
@@ -99,54 +156,6 @@ class Slide extends Component {
                         </div>
                     </div>
                 </section>
-                <section className='home-wrapper-1 py-5'>
-                    <div className='container-xxl'>
-                        <div className='row'>
-                            <div className='col-6'>
-                                <div className='main-banner position-relative'>
-                                    <img
-                                        src='https://img.global.news.samsung.com/vn/wp-content/uploads/2023/02/Diamond_PreOrder_KV_Hor.jpg'
-                                        className='img-fluid rounded-3'
-                                        alt='main banner'
-                                    />
-                                </div>
-                            </div>
-                            <div className='col-6'>
-                                <div className='d-flex flex-wrap gap-10 justify-content-between align-items-center'>
-                                    <div className='small-banner position-relative '>
-                                        <img
-                                            src='https://www.mobiledokan.co/wp-content/uploads/2022/09/Apple-iPhone-14-series-come-with-some-revolutions-featured-image-780x470.jpg'
-                                            className='img-fluid rounded-3 mb-2 mt-4'
-                                            alt='main banner'
-                                        />
-                                    </div>
-                                    <div className='small-banner position-relative '>
-                                        <img
-                                            src='https://images2.thanhnien.vn/Uploaded/nthanhluan/2022_03_15/3117-7706.jpg'
-                                            className='img-fluid rounded-3 mb-2 mt-4'
-                                            alt='main banner'
-                                        />
-                                    </div>
-                                    <div className='small-banner position-relative '>
-                                        <img
-                                            src='https://laptopdell.com.vn/wp-content/uploads/2022/09/Oppo-Reno-8.jpg'
-                                            className='img-fluid rounded-3 mt-3 mb-2'
-                                            alt='main banner'
-                                        />
-                                    </div>
-                                    <div className='small-banner position-relative mt-3 mb-2'>
-                                        <img
-                                            src='https://i.ytimg.com/vi/_ynwIfkO35Y/maxresdefault.jpg'
-                                            className='img-fluid rounded-3'
-                                            alt='main banner'
-                                        />
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <section className='home-wrapper-1 py-5'>
                     <div className='container-xxl'>
@@ -162,28 +171,28 @@ class Slide extends Component {
                                 <div className='d-flex flex-wrap gap-10 justify-content-between align-items-center'>
                                     <div className='small-banner position-relative '>
                                         <img
-                                            src='https://quaviet365.vn/Uploads/origin/20220803/mua-ky-niem-chuong-1-20220803222122059.jpg'
+                                            src={home1}
                                             className='img-fluid rounded-3 '
                                             alt='main banner'
                                         />
                                     </div>
                                     <div className='small-banner position-relative '>
                                         <img
-                                            src='https://mainguyen.sgp1.digitaloceanspaces.com/11576/Apple_Reseller_Logo.jpg'
+                                            src={home2}
                                             className='img-fluid rounded-3  '
                                             alt='main banner'
                                         />
                                     </div>
                                     <div className='small-banner position-relative '>
                                         <img
-                                            src='https://hungthinhcorp.com.vn//media/ftp/bang-khen-vi-co-nhieu-dong-gop-cho-the-thao-nuoc-nha-1.png'
+                                            src={home3}
                                             className='img-fluid rounded-3 '
                                             alt='main banner'
                                         />
                                     </div>
                                     <div className='small-banner position-relative '>
                                         <img
-                                            src='https://chinhnhan.vn/uploads/hinh-anh-bai/2019-E-Certificate-Partners-Gold-Mobile-Reseller-Chinh%20nhan-min.jpg'
+                                            src={home4}
                                             className='img-fluid rounded-3'
                                             alt='main banner'
                                         />

@@ -48,15 +48,16 @@ const ProductItem = ({ item }) => {
                                 style={{
                                     color: '#d0021c',
                                     fontWeight: 'bold',
-                                    fontSize: '18px',
+                                    fontSize: '13px',
                                 }}
-                            >{formatMoney(item.price)}đ</span>
+                            >Giá ny: {formatMoney(item.price)}đ</span>
                             {item.discount && item.discount > 0 && (
                                 <span style={{
                                     color: '#d0021c',
                                     fontWeight: 'bold',
                                     backgroundColor: '#fff0e9',
                                     marginLeft: '8px',
+                                    fontSize: '13px'
                                 }}>
 
                                     -{(item.discount * 100 / item.price).toFixed(2)}%
@@ -68,7 +69,7 @@ const ProductItem = ({ item }) => {
                                 style={{
                                     color: '#d0021c',
                                 }}
-                            >Giá rẻ quá {formatMoney(item.price - item.discount)}</span>
+                            >Chỉ còn: {formatMoney(item.price - item.discount)}đ</span>
                         )}
 
 

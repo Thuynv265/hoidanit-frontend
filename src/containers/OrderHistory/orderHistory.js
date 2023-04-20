@@ -53,7 +53,7 @@ const OrderHistory = () => {
                     <table id="customers">
                         <tbody>
                             <tr>
-                                <th>ID đơn</th>
+                                <th>Mã đơn</th>
                                 <th>Tên người nhận</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ nhận hàng</th>
@@ -61,6 +61,7 @@ const OrderHistory = () => {
                                 <th>Ngày đặt</th>
                                 <th>Trạng thái</th>
                                 <th>Tổng tiền</th>
+                                <th>Ghi chú</th>
 
                             </tr>
                             {arrOrders && arrOrders.map((item, index) => {
@@ -74,6 +75,7 @@ const OrderHistory = () => {
                                         <td>{item.createdAt}</td>
                                         <td>{item.status}</td>
                                         <td>{item.total}</td>
+                                        <td>{item.note}</td>
 
                                     </tr>
 
@@ -91,11 +93,11 @@ const OrderHistory = () => {
                         <tbody>
                             <tr>
                                 <th>ID Chi tiết</th>
-                                <th>Id Đơn hàng</th>
+                                <th>Mã đơn hàng</th>
                                 <th>Sản phẩm</th>
-                                <th>Giá</th>
+                                <th>Giá 1 sản phẩm</th>
                                 <th>Số lượng</th>
-                                <th>Tổng tiền</th>
+                                {/* <th>Tổng tiền</th> */}
                             </tr>
                             {arrDetail && arrDetail.map((item, index) => {
                                 return (
@@ -105,7 +107,7 @@ const OrderHistory = () => {
                                         <td>{item.productId}</td>
                                         <td>{item.price}</td>
                                         <td>{item.quantity}</td>
-                                        <td>{item.total}</td>
+                                        {/* <td>{item.total}</td> */}
                                     </tr>
 
                                 )

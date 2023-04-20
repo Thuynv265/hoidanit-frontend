@@ -106,7 +106,7 @@ class ModalEditUser extends Component {
 
                 >
                     <ModalHeader toggle={() => { this.toggle() }}>
-                        Edit user
+                        Chỉnh sửa thông tin người dùng
                     </ModalHeader>
                     <ModalBody>
                         <div className='modal-user-body d-flex'
@@ -135,7 +135,7 @@ class ModalEditUser extends Component {
                                         marginRight: "8px"
                                     }}
                                 >
-                                    <label>Firstname:</label>
+                                    <label>Tên:</label>
                                     <input
                                         type='text'
                                         className='edit_user_container_input_field'
@@ -148,7 +148,7 @@ class ModalEditUser extends Component {
                                         marginLeft: "8px"
                                     }}
                                 >
-                                    <label>Lastname:</label>
+                                    <label>Họ:</label>
                                     <input type='text'
                                         onChange={(event) => { this.handleOnchangeInput(event, 'lastName') }}
                                         className='edit_user_container_input_field'
@@ -184,7 +184,7 @@ class ModalEditUser extends Component {
                             </div> */}
 
                             <div className='edit_user_container_input'>
-                                <label>Phone:</label>
+                                <label>Số điện thoại:</label>
                                 <input
                                     type='number'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'phone') }}
@@ -193,7 +193,7 @@ class ModalEditUser extends Component {
                                 ></input>
                             </div>
                             <div className='edit_user_container_input '>
-                                <label>Address:</label>
+                                <label>Địa chỉ liên hệ:</label>
                                 <input
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'address') }}
@@ -205,10 +205,10 @@ class ModalEditUser extends Component {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" className='px-3' onClick={() => { this.handleSaveUser(userInfo) }}>
-                            Save changes
+                            Lưu thay đổi
                         </Button>{' '}
                         <Button color="secondary" className='px-3' onClick={() => { this.toggle() }}>
-                            Close
+                            Đóng
                         </Button>
                     </ModalFooter>
                 </Modal>

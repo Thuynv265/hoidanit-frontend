@@ -18,6 +18,7 @@ class ModalEditOrder extends Component {
             phone: '',
             address: '',
             delivery: '',
+            note: ''
             // createdAt: '',
             // paymentId: ''
         }
@@ -35,7 +36,8 @@ class ModalEditOrder extends Component {
                 phone: order.phone,
                 address: order.address,
                 delivery: order.delivery,
-                total: order.total
+                total: order.total,
+                note: order.note
             })
         }
         console.log('didmount edit modal', this.props.currentOrder)
@@ -59,7 +61,7 @@ class ModalEditOrder extends Component {
 
     checkValidateInput = () => {
         let isValid = true
-        let arrInput = ['status', 'custmerName', 'phone', 'address', 'delivery']
+        let arrInput = ['status', 'custmerName', 'phone', 'address', 'delivery', 'note']
         for (let i = 0; i < arrInput.length; i++) {
             console.log('check inside loop: ', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
@@ -150,6 +152,14 @@ class ModalEditOrder extends Component {
                                     type='text'
                                     onChange={(event) => { this.handleOnchangeInput(event, 'delivery') }}
                                     value={this.state.delivery}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>Note</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'note') }}
+                                    value={this.state.note}
                                 ></input>
                             </div>
 

@@ -215,6 +215,7 @@ class OrderManage extends Component {
                                 <th>Status</th>
                                 <th>Order Date</th>
                                 <th>Total</th>
+                                <th>Note</th>
                                 <th>Actions</th>
                             </tr>
                             {arrOrders && arrOrders.map((item, index) => {
@@ -230,6 +231,7 @@ class OrderManage extends Component {
                                         <td>{item.status}</td>
                                         <td>{item.createdAt}</td>
                                         <td>{item.total} VND</td>
+                                        <td>{item.note}</td>
                                         <td>
                                             <span
                                                 className='btn-edit'
