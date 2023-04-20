@@ -109,8 +109,11 @@ const getAllOrderDetail = (inputId) => {
     return axios.get(`/api/get-all-order-detail?id=${inputId}`)
 }
 //get user order detail
-const getUserOrderDetail = (inputId) => {
-    return axios.get(`/api/get-user-order-detail?id=${inputId}`)
+// const getUserOrderDetail = (inputId) => {
+//     return axios.get(`/api/get-user-order-detail?id=${inputId}`)
+// }
+const getUserOrderDetail = (data) => {
+    return axios.put(`/api/get-user-order-detail`, data)
 }
 
 

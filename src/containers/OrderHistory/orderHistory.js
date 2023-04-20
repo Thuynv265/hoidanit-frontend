@@ -15,6 +15,8 @@ const OrderHistory = () => {
     const userInfo = useSelector(state => state.user.userInfo);
     // const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     // console.log('userInfo: ', userInfo)
+    const [orderId, setOrderId] = useState();
+    const userId = userInfo.id
     const [showPopup, setShowPopup] = useState(false); // new state variable for popup visibility
     const getUserHistory = async () => {
         try {
@@ -31,10 +33,16 @@ const OrderHistory = () => {
         if (userInfo) { getUserHistory() }
     }, [userInfo])
 
+    const togglePopup = (id) => {
+        setShowPopup(!showPopup);
+        setOrderId(id)
+    }
+
     const getUserOrderDetailHistory = async () => {
         try {
             let userId = userInfo.id
-            let response = await getUserOrderDetail(userId)
+            let data = [userId, orderId]
+            let response = await getUserOrderDetail(data)
             // console.log("this is resonse", response)
             setArrDetail(response.orderDetail[0])
         }
@@ -46,10 +54,9 @@ const OrderHistory = () => {
         { getUserOrderDetailHistory() }
     }, [userInfo])
 
-    const togglePopup = () => {
-        setShowPopup(!showPopup);
-    }
 
+    console.log('check id= ', orderId, 'check user id = ', userInfo.id)
+    console.log('check orderDetail', arrDetail)
     return (
         <>
             <HomeHeader />
@@ -87,7 +94,7 @@ const OrderHistory = () => {
                                         <td>
                                             <span
                                                 className='btn-infor'
-                                                onClick={togglePopup}
+                                                onClick={() => { togglePopup(item.orderId) }}
                                             ><AiFillInfoCircle /><p>Detail</p></span></td>
                                     </tr>
 
