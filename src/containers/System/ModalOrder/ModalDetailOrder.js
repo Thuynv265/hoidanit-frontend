@@ -3,8 +3,6 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // import { emitter } from '../../utils/emitter';
-// import { emitter } from '../../../utils/emitter';
-
 import _ from 'lodash'
 import { getAllOrderDetail } from '../../../services/userService';
 class ModalDetailOrder extends Component {
@@ -12,21 +10,10 @@ class ModalDetailOrder extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // orderId: '',
             arrDetail: []
         }
     }
-
     async componentDidMount() {
-        // let order = this.props.currentOrder
-        // let response = await getAllOrderDetail(this.props.currentOrder)
-
-        // if (order && !_.isEmpty(order)) {
-        //     this.setState({
-        //         orderId: order,
-        //         arrDetail: response.orderDetail
-        //     })
-        // }
         await this.getOrderDetail()
     }
 
@@ -45,7 +32,7 @@ class ModalDetailOrder extends Component {
 
     render() {
         let arrDetail = this.state.arrDetail[0]
-        console.log('didmount detail modal', arrDetail)
+        // console.log('didmount detail modal', arrDetail)
 
         return (
             <div>
@@ -63,9 +50,11 @@ class ModalDetailOrder extends Component {
                                 <tbody>
                                     <tr>
                                         <th>Order Detail ID</th>
-                                        <th>Product</th>
+                                        <th>Product ID</th>
+                                        <th>Product Name</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Money</th>
 
                                     </tr>
                                     {arrDetail && arrDetail.map((item, index) => {
@@ -73,8 +62,10 @@ class ModalDetailOrder extends Component {
                                             <tr key={index}>
                                                 <td>{item.orderdetailId}</td>
                                                 <td>{item.productId}</td>
+                                                <td>{item.productName} {item.color} {item.storage}</td>
                                                 <td>{item.price}</td>
                                                 <td>{item.quantity}</td>
+                                                <td>{item.quantity * item.price}</td>
                                             </tr>
 
                                         )

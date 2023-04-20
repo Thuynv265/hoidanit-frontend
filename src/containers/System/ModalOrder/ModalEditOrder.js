@@ -61,7 +61,7 @@ class ModalEditOrder extends Component {
 
     checkValidateInput = () => {
         let isValid = true
-        let arrInput = ['status', 'custmerName', 'phone', 'address', 'delivery', 'note']
+        let arrInput = ['status', 'custmerName', 'phone', 'address', 'delivery']
         for (let i = 0; i < arrInput.length; i++) {
             console.log('check inside loop: ', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
