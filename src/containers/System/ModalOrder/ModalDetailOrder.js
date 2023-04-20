@@ -52,6 +52,7 @@ class ModalDetailOrder extends Component {
                                         <th>Order Detail ID</th>
                                         <th>Product ID</th>
                                         <th>Product Name</th>
+                                        <th>Image</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Money</th>
@@ -63,6 +64,10 @@ class ModalDetailOrder extends Component {
                                                 <td>{item.orderdetailId}</td>
                                                 <td>{item.productId}</td>
                                                 <td>{item.productName} {item.color} {item.storage}</td>
+                                                <td><img src={item.img1} className="img-fluid" alt=""
+                                                    style={{
+                                                        height: "58px",
+                                                    }}></img></td>
                                                 <td>{item.price}</td>
                                                 <td>{item.quantity}</td>
                                                 <td>{item.quantity * item.price}</td>

@@ -110,9 +110,10 @@ const OrderHistory = () => {
                                     <th>Mã đơn hàng</th>
                                     <th>Mã sản phẩm</th>
                                     <th>Tên sản phẩm</th>
+                                    <th>Ảnh</th>
                                     <th>Giá 1 sản phẩm</th>
                                     <th>Số lượng</th>
-                                    <th>Tiền</th>
+                                    {/* <th>Tiền</th> */}
                                 </tr>
                                 {arrDetail && arrDetail.map((item, index) => {
                                     return (
@@ -121,9 +122,15 @@ const OrderHistory = () => {
                                             <td>{item.orderId}</td>
                                             <td>{item.productId}</td>
                                             <td>{item.productName} {item.color} {item.storage}</td>
+                                            <td><img src={item.img1} className="img-fluid" alt=""
+                                                style={{
+                                                    height: "58px",
+                                                }}
+                                            /></td>
                                             <td>{item.price}VNĐ</td>
                                             <td>{item.quantity}</td>
-                                            <td>{item.quantity * item.price}VNĐ</td>
+                                            {/* <td>{item.quantity * item.price}VNĐ</td> */}
+
                                         </tr>
 
                                     )
