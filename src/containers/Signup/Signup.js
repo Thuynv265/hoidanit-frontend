@@ -146,15 +146,14 @@ class Signup extends Component {
                                             onChange={(event) => { this.handleOnchangeInput(event, 'phone') }}
                                             value={this.state.phone}
                                         ></input>
-                                        <label>Vai trò:</label>
+                                        {/* <label>Vai trò:</label>
                                         <select
                                             name="roleId"
                                             onChange={(event) => { this.handleOnchangeInput(event, 'roleId') }}
                                             value={this.state.roleId}
                                         >
                                             <option value="0">Người dùng</option>
-                                            {/* <option value="1">Admin</option> */}
-                                        </select>
+                                        </select> */}
                                         <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                                             <span className='button border-0' onClick={() => { this.handleAddNewUser() }}>
                                                 Đăng ký

@@ -22,10 +22,10 @@ class OrderManage extends Component {
             arrOrders: [],
             isOpenModalEditOrder: false,
             isOpenModalDeleteOrder: false,
-            // isOpenModalDetailOrder: false,
+            isOpenModalDetailOrder: false,
             orderEdit: {},
             orderDelete: {},
-            // orderDetail: {}
+            orderDetail: {}
         }
     }
 
@@ -63,11 +63,11 @@ class OrderManage extends Component {
         })
     }
 
-    // toggleOrderDetailModal = () => {
-    //     this.setState({
-    //         isOpenModalDetailOrder: !this.state.isOpenModalDetailOrder,
-    //     })
-    // }
+    toggleOrderDetailModal = () => {
+        this.setState({
+            isOpenModalDetailOrder: !this.state.isOpenModalDetailOrder,
+        })
+    }
     // createNewProduct = async (data) => {
     //     try {
     //         let res = await createNewProductService(data)
@@ -94,13 +94,13 @@ class OrderManage extends Component {
         })
     }
 
-    // handleDetailOrder = async (orderDetail) => {
-    //     // console.log("check edit order", orderDetail)
-    //     this.setState({
-    //         isOpenModalDetailOrder: true,
-    //         orderDetail: orderDetail
-    //     })
-    // }
+    handleDetailOrder = async (order) => {
+        // console.log("check edit order", orderDetail)
+        this.setState({
+            isOpenModalDetailOrder: true,
+            orderDetail: order.orderId
+        })
+    }
 
 
     handleDeleteOrder = async (order) => {
@@ -128,22 +128,22 @@ class OrderManage extends Component {
         }
     }
 
-    // doDetailOrder = async (order) => {
-    //     try {
-    //         let res = await getAllOrderDetail(order.orderId)
-    //         if (res && res.errCode === 0) {
-    //             this.setState({
-    //                 isOpenModalDetailOrder: false
-    //             })
-    //             await this.getAllOrdersFromReact()
-    //         }
-    //         else {
-    //             alert(res.errMessage)
-    //         }
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
+    doDetailOrder = async (order) => {
+        try {
+            let res = await getAllOrderDetail(order.orderId)
+            if (res && res.errCode === 0) {
+                this.setState({
+                    isOpenModalDetailOrder: false
+                })
+                await this.getAllOrdersFromReact()
+            }
+            else {
+                alert(res.errMessage)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     deleteOrder = async (order) => {
         console.log('click delete', order)
@@ -168,11 +168,6 @@ class OrderManage extends Component {
         return (
             <div className="users-container">
 
-                {/* <ModalAddProduct
-                    isOpen={this.state.isOpenModalAddProduct}
-                    toggleFromParent={this.toggleAddProductModal}
-                    createNewProduct={this.createNewProduct}
-                /> */}
                 {this.state.isOpenModalEditOrder &&
                     <ModalEditOrder
                         isOpen={this.state.isOpenModalEditOrder}
@@ -190,14 +185,14 @@ class OrderManage extends Component {
                         deleteAction={this.deleteOrder}
 
                     />}
-                {/* {this.state.isOpenModalDetailOrder &&
+                {this.state.isOpenModalDetailOrder &&
                     <ModalDetailOrder
                         isOpen={this.state.isOpenModalDetailOrder}
                         toggleFromParent={this.toggleOrderDetailModal}
                         currentOrder={this.state.orderDetail}
-                        editAction={this.doDetailOrder}
+                        detailAction={this.doDetailOrder}
                     />
-                } */}
+                }
 
                 <div className='title text-center'>Manage orders with admin:</div>
 
@@ -241,10 +236,10 @@ class OrderManage extends Component {
                                                 className='btn-delete'
                                                 onClick={() => { this.handleDeleteOrder(item) }}
                                             ><BiTrash /><p>Delete</p></span>
-                                            {/* <span
+                                            <span
                                                 className='btn-infor'
                                                 onClick={() => { this.handleDetailOrder(item) }}
-                                            ><AiFillInfoCircle /><p>Detail</p></span> */}
+                                            ><AiFillInfoCircle /><p>Detail</p></span>
                                         </td>
                                     </tr>
 
