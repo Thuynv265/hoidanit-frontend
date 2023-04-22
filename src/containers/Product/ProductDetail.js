@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import HomeHeader from "../Homepage/HomeHeader";
 import Footer from "../Footer/Footer";
-import { getProductById, getProductComment } from "../../services/userService";
-import { useDispatch } from "react-redux";
+import { createNewComment, getProductById, getProductComment } from "../../services/userService";
+import { useDispatch, useSelector } from "react-redux";
 import { AddCart } from "../../store/actions/cartAction";
 // import ProductCard from './ProductCard';
 // import ReactImageZoom from "react-image-zoom";
@@ -27,8 +27,14 @@ const ProductDetail = (props) => {
     const [product, setProduct] = useState({});
     const [zoomImg, setZoomImg] = useState({});
     const [comment, setComment] = useState()
+    const [content, setContent] = useState()
     const dispatch = useDispatch()
 
+    const userInfo = useSelector(state => state.user.userInfo);
+
+    const handleOnchangeInput = (event) => {
+        setContent(event.target.value)
+    }
     const fetchDataDetailProduct = async () => {
         const response = await getProductById(id);
         if (response && response.errCode === 0) {
@@ -82,7 +88,17 @@ const ProductDetail = (props) => {
     useEffect(() => {
         fetchProductComment()
     }, [])
-    console.log('check cmt', comment)
+
+    const createComment = async () => {
+        let userId = userInfo.id
+        let productId = id
+        let createdAt = ''
+        let updatedAt = ''
+        let data = { userId, productId, content, createdAt, updatedAt }
+        let response = await createNewComment(data)
+        setComment(response?.comment[0])
+    }
+    console.log('check content', userInfo)
     return (
         <>
             <HomeHeader />
@@ -257,7 +273,6 @@ const ProductDetail = (props) => {
                                             Thêm vào giỏ hàng
                                         </button> */}
                                         <AddProduct product={product} />
-                                        {/* <button className="button signup">Mua ngay</button> */}
                                     </div>
                                 </div>
                             </div>
@@ -287,7 +302,7 @@ const ProductDetail = (props) => {
                                 {comment && comment.map((item, index) => {
                                     return (
                                         <div className="review-form py-4 text-bold" >
-                                            <h6 style={{ fontWeight: 'bold' }}>Người dùng "{item.userName}" đã bình luận:</h6>
+                                            {item.roleId === 0 ? <h6 style={{ fontWeight: 'bold' }}>Người dùng "{item.userName}" đã bình luận</h6> : <h6 style={{ fontWeight: 'bold' }}>Admin {item.firstName} {item.lastName} đã bình luận</h6>}
                                             {/* <h6>Người dùng {item.updatedAt} </h6> */}
                                             <form action="" className="d-flex flex-column gap-15">
                                                 <div>
@@ -306,19 +321,20 @@ const ProductDetail = (props) => {
                                 })}
                                 <div className="review-form py-4">
                                     <h4>Viết bình luận của bạn</h4>
-                                    <form action="" className="d-flex flex-column gap-15">
-                                        <div>
+                                    <form className="d-flex flex-column gap-15">
+                                        <div >
                                             <textarea
                                                 name=""
                                                 id=""
                                                 className="w-100 form-control"
                                                 cols="30"
                                                 rows="4"
+                                                onChange={(event) => { handleOnchangeInput(event) }}
                                                 placeholder="Comments"
                                             ></textarea>
                                         </div>
                                         <div className="d-flex justify-content-end">
-                                            <button className="button border-0">Gửi đánh giá</button>
+                                            <button className="button border-0" onClick={() => { createComment() }}>Gửi bình luận</button>
                                         </div>
                                     </form>
                                 </div>

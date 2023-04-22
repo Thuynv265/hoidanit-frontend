@@ -102,9 +102,9 @@ const OrderHistory = () => {
                         <table id="customers">
                             <tbody>
                                 <tr>
-                                    <th>ID Chi tiết</th>
+                                    {/* <th>ID Chi tiết</th> */}
                                     <th>Mã đơn hàng</th>
-                                    <th>Mã sản phẩm</th>
+                                    {/* <th>Mã sản phẩm</th> */}
                                     <th>Tên sản phẩm</th>
                                     <th>Ảnh</th>
                                     <th>Giá 1 sản phẩm</th>
@@ -114,9 +114,9 @@ const OrderHistory = () => {
                                 {arrDetail && arrDetail.map((item, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td>{item.orderdetailId}</td>
+                                            {/* <td>{item.orderdetailId}</td> */}
                                             <td>{item.orderId}</td>
-                                            <td>{item.productId}</td>
+                                            {/* <td>{item.productId}</td> */}
                                             <td>{item.productName} {item.color} {item.storage}</td>
                                             <td><img src={item.img1} className="img-fluid" alt=""
                                                 style={{

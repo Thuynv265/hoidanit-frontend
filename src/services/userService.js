@@ -49,7 +49,7 @@ const deleteCategoryService = (categoryId) => {
 }
 
 const createNewCategoryService = (data) => {
-    console.log('Check data from services: ', data)
+    // console.log('Check data from services: ', data)
     return axios.post(`/api/create-new-category`, data)
 }
 
@@ -125,6 +125,12 @@ const getProductComment = (inputId) => {
     return axios.get(`/api/get-product-comment?id=${inputId}`)
 }
 
+// create new comment
+const createNewComment = (data) => {
+    // console.log('Check data from services: ', data)
+    return axios.post(`/api/create-new-comment`, data)
+}
+
 export {
     handleLoginApi,
     getAllUsers,
@@ -153,4 +159,5 @@ export {
     getUserOrderDetail,
     createNewOrderService,
     getProductComment,
+    createNewComment
 }

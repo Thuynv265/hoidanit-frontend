@@ -138,11 +138,11 @@ class UserManage extends Component {
         return (
             <div className="users-container">
 
-                {/* <ModalUser
+                <ModalUser
                     isOpen={this.state.isOpenModalUser}
                     toggleFromParent={this.toggleUserModal}
                     createNewUser={this.createNewUser}
-                /> */}
+                />
                 {/* {this.state.isOpenModalEditUser &&
                     <ModalEditUser
                         isOpen={this.state.isOpenModalEditUser}
@@ -161,13 +161,13 @@ class UserManage extends Component {
                     />}
                 <div className='title text-center'>Manage users with admin:</div>
                 <div className='mx1'>
-                    {/* <button
+                    <button
                         className='btn btn-primary px-3'
                         onClick={() => { this.handleAddNewUser() }}
                     >
                         <i className='fas fa-plus'></i>
                         Add new user
-                    </button> */}
+                    </button>
                 </div>
                 <div className='user-table mt-3 mx-1'>
                     <table id="customers">
