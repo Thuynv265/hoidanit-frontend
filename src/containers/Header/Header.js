@@ -84,9 +84,9 @@ class Header extends Component {
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link to="/system/orderdetail-manage" className='d-flex align-items-center text-white'>
+                                        <Link to="/system/comment-manage" className='d-flex align-items-center text-white'>
                                             <p className='mb-0'>
-                                                <span className='text-white' >Order Detail</span>
+                                                <span className='text-white' >Comments</span>
                                                 <br />
                                             </p>
 

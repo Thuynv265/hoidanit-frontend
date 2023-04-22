@@ -120,7 +120,7 @@ const createNewOrderService = (data) => {
     return axios.post(`/api/create-new-order`, data)
 }
 
-//get user order history
+//get product comment
 const getProductComment = (inputId) => {
     return axios.get(`/api/get-product-comment?id=${inputId}`)
 }
@@ -130,6 +130,17 @@ const createNewComment = (data) => {
     // console.log('Check data from services: ', data)
     return axios.post(`/api/create-new-comment`, data)
 }
+
+//get  comment
+const getManageComment = (inputId) => {
+    return axios.get(`/api/get-all-comment?id=${inputId}`)
+}
+
+//delete comment manage
+const deleteCommentService = (commentId) => {
+    return axios.delete(`/api/delete-comment`, { data: { commentId: commentId } })
+}
+
 
 export {
     handleLoginApi,
@@ -159,5 +170,7 @@ export {
     getUserOrderDetail,
     createNewOrderService,
     getProductComment,
-    createNewComment
+    createNewComment,
+    getManageComment,
+    deleteCommentService,
 }
