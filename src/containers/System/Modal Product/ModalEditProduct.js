@@ -318,7 +318,7 @@ class ModalEditProduct extends Component {
                                     <option value="Không kháng nước">Không kháng nước</option>
                                     <option value="Chuẩn IP 53">Chuẩn IP 53</option>
                                     <option value="Chuẩn IP 67">Chuẩn IP 67</option>
-                                    <option value="Chuẩn IP68">Chuẩn IP68</option>
+                                    <option value="Chuẩn IP 68">Chuẩn IP 68</option>
                                 </select>
                             </div>
                             <div className='input-container'>

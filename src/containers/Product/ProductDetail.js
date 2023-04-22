@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import HomeHeader from "../Homepage/HomeHeader";
 import Footer from "../Footer/Footer";
-import { getProductById } from "../../services/userService";
+import { getProductById, getProductComment } from "../../services/userService";
 import { useDispatch } from "react-redux";
 import { AddCart } from "../../store/actions/cartAction";
-import ProductCard from './ProductCard';
-import ReactImageZoom from "react-image-zoom";
+// import ProductCard from './ProductCard';
+// import ReactImageZoom from "react-image-zoom";
 import { TbTruckReturn, TbDiscount2 } from "react-icons/tb";
 import { SiCashapp } from "react-icons/si";
 import { ImPriceTags } from "react-icons/im";
 import { FaShippingFast } from "react-icons/fa";
 import { BiTimer } from "react-icons/bi";
-import ReactStars from 'react-rating-stars-component';
 import { Link } from "react-router-dom";
 import './productDetail.scss'
 import logoApple from '../../assets/images/logoIphone.jpg'
@@ -27,6 +26,7 @@ const ProductDetail = (props) => {
     const { id } = props.match.params;
     const [product, setProduct] = useState({});
     const [zoomImg, setZoomImg] = useState({});
+    const [comment, setComment] = useState()
     const dispatch = useDispatch()
 
     const fetchDataDetailProduct = async () => {
@@ -41,37 +41,48 @@ const ProductDetail = (props) => {
             })
         }
     }
-    console.log(product)
+    // console.log(product)
 
     const addCart = () => {
         if (product)
             dispatch(AddCart(product))
     }
 
-    const zoomItem = {
-        width: 594,
-        height: 600,
-        zoomWidth: 600,
-        img: product.img1
-    };
+    // const zoomItem = {
+    //     width: 594,
+    //     height: 600,
+    //     zoomWidth: 600,
+    //     img: product.img1
+    // };
 
     // eslint-disable-next-line no-unused-vars
-    const copyToClipboard = (text) => {
-        var textField = document.createElement("textarea");
-        textField.innerText = text;
-        document.body.appendChild(textField);
-        textField.select();
-        document.execCommand("copy");
-        textField.remove();
-    };
+    // const copyToClipboard = (text) => {
+    //     var textField = document.createElement("textarea");
+    //     textField.innerText = text;
+    //     document.body.appendChild(textField);
+    //     textField.select();
+    //     document.execCommand("copy");
+    //     textField.remove();
+    // };
 
 
     useEffect(() => {
         fetchDataDetailProduct();
     }, [])
 
-
-
+    // fetch comment
+    const fetchProductComment = async () => {
+        try {
+            const res = await getProductComment(id)
+            setComment(res.comment[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchProductComment()
+    }, [])
+    console.log('check cmt', comment)
     return (
         <>
             <HomeHeader />
@@ -267,6 +278,56 @@ const ProductDetail = (props) => {
                     </div>
                 </div>
             </div>
+            <section className="reviews-wrapper home-wrapper-2">
+                <div className='container-xxl'>
+                    <div className="row">
+                        <div className="col-12">
+                            <h3 id="review">Bình luận về sản phẩm</h3>
+                            <div className="review-inner-wrapper">
+                                {comment && comment.map((item, index) => {
+                                    return (
+                                        <div className="review-form py-4 text-bold" >
+                                            <h6 style={{ fontWeight: 'bold' }}>Người dùng "{item.userName}" đã bình luận:</h6>
+                                            {/* <h6>Người dùng {item.updatedAt} </h6> */}
+                                            <form action="" className="d-flex flex-column gap-15">
+                                                <div>
+                                                    <textarea
+                                                        name=""
+                                                        id=""
+                                                        className="w-100 form-control"
+                                                        cols="30"
+                                                        rows="4"
+                                                        placeholder="Comments"
+                                                    >{item.content}</textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    )
+                                })}
+                                <div className="review-form py-4">
+                                    <h4>Viết bình luận của bạn</h4>
+                                    <form action="" className="d-flex flex-column gap-15">
+                                        <div>
+                                            <textarea
+                                                name=""
+                                                id=""
+                                                className="w-100 form-control"
+                                                cols="30"
+                                                rows="4"
+                                                placeholder="Comments"
+                                            ></textarea>
+                                        </div>
+                                        <div className="d-flex justify-content-end">
+                                            <button className="button border-0">Gửi đánh giá</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section className='marque-wrapper py-5'>
                 <div className='container-xxl'>
                     <div className='row'>

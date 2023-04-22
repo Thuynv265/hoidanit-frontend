@@ -116,11 +116,14 @@ const getUserOrderDetail = (data) => {
     return axios.get(`/api/get-user-order-detail?userId=${data.userId}&orderId=${data.orderId}`, data)
 }
 
-
 const createNewOrderService = (data) => {
     return axios.post(`/api/create-new-order`, data)
 }
 
+//get user order history
+const getProductComment = (inputId) => {
+    return axios.get(`/api/get-product-comment?id=${inputId}`)
+}
 
 export {
     handleLoginApi,
@@ -149,4 +152,5 @@ export {
     getAllOrderDetail,
     getUserOrderDetail,
     createNewOrderService,
+    getProductComment,
 }
