@@ -135,11 +135,11 @@ const ProductDetail = (props) => {
                                 <div className="d-flex gap-10 flex-column  my-3">
                                     <h3 className="product-heading">
                                         <FaShippingFast style={{ width: "40px", height: "40px" }} />
-                                        Vận chuyển: Miễn phí vận chuyển với mọi đơn hàng tại VT-mobile<br />
+                                        Vận chuyển: Miễn phí vận chuyển với mọi đơn hàng<br />
                                     </h3>
                                     <h3 className="product-heading">
                                         < TbTruckReturn style={{ width: "40px", height: "40px" }} />
-                                        Hoàn trả dễ dàng: Hoàn trả sản phẩm dễ dàng nếu khách hàng gặp bất kỳ lỗi gì liên quan đến phần cứng và phần mềm khi nhân hàng<br />
+                                        Hoàn trả dễ dàng: Hoàn trả sản phẩm dễ dàng nếu khách hàng gặp bất kỳ lỗi gì liên quan đến phần cứng và phần mềm khi nhận hàng<br />
                                     </h3>
                                 </div>
                                 <div>
@@ -171,7 +171,7 @@ const ProductDetail = (props) => {
                                         <thead style={{ color: 'white' }}>
                                             <tr>
                                                 <th className="text-center">Bảng cấu hình máy</th>
-                                                <th >{product.productName} {product.storage} GB</th>
+                                                <th >{product.productName} {product.storage}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -188,12 +188,28 @@ const ProductDetail = (props) => {
                                                 <td>{product.storage}</td>
                                             </tr>
                                             <tr>
+                                                <td className="text-center">Camera trước</td>
+                                                <td>{product.cameraFront} MP</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Camera sau</td>
+                                                <td>{product.cameraBack}</td>
+                                            </tr>
+                                            <tr>
                                                 <td className="text-center">Kích thước màn hình</td>
                                                 <td>{product.screen} inches</td>
                                             </tr>
                                             <tr>
                                                 <td className="text-center">Độ phân giải</td>
                                                 <td>{product.resolution}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">CPU</td>
+                                                <td>{product.cpu}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-center">Hỗ trợ thẻ nhớ</td>
+                                                <td>{product.memoryCard}</td>
                                             </tr>
                                             <tr>
                                                 <td className="text-center">Trọng lượng</td>

@@ -31,6 +31,10 @@ class ModalAddProduct extends Component {
             img2: '',
             tmpImg2: 'https://image.oppo.com/content/dam/oppo/common/mkt/v2-2/reno6-5g-oversea/listpage/Phone-list-product-list-Arctic-Blue-427-x-600.png.thumb.webp',
             content: '',
+            cameraFront: '',
+            cameraBack: '',
+            cpu: '',
+            memoryCard: ''
         }
         this.listenToEmitter()
     }
@@ -56,6 +60,10 @@ class ModalAddProduct extends Component {
                 img1: '',
                 img2: '',
                 content: '',
+                cameraFront: '',
+                cameraBack: '',
+                cpu: '',
+                memoryCard: ''
             })
         })
     }
@@ -88,7 +96,7 @@ class ModalAddProduct extends Component {
 
     checkValidateInput = () => {
         let isValid = true
-        let arrInput = ['productName', 'categoryId', 'color', 'storage', 'screen', 'resolution', 'weight', 'battery', 'material', 'water_resist', 'price', 'quantity', 'discount', 'warranty', 'img1', 'img2', 'content']
+        let arrInput = ['productName', 'categoryId', 'color', 'storage', 'screen', 'resolution', 'weight', 'battery', 'material', 'water_resist', 'price', 'quantity', 'discount', 'warranty', 'img1', 'img2', 'content', 'cameraFront', 'cameraBack', 'cpu', 'memoryCard']
         for (let i = 0; i < arrInput.length; i++) {
             console.log('check inside loop: ', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
@@ -219,11 +227,43 @@ class ModalAddProduct extends Component {
                                 </select>
                             </div>
                             <div className='input-container'>
+                                <label>Camera front:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'cameraFront') }}
+                                    value={this.state.cameraFront}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>Camera back:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'cameraBack') }}
+                                    value={this.state.cameraBack}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
                                 <label>Screen:</label>
                                 <input
                                     type='number' step="any"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'screen') }}
                                     value={this.state.screen}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>CPU:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'cpu') }}
+                                    value={this.state.cpu}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>Memory Card:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'memoryCard') }}
+                                    value={this.state.memoryCard}
                                 ></input>
                             </div>
                             <div className='input-container'>
@@ -285,10 +325,10 @@ class ModalAddProduct extends Component {
                                     value={this.state.water_resist}
                                 >
                                     <option value="--">--</option>
-                                    <option value="NFT">Không kháng nước</option>
-                                    <option value="IPS LCD">Chuẩn IP 53</option>
-                                    <option value="Semi Amoled">Chuẩn IP 67</option>
-                                    <option value="Amoled">Chuẩn IP68</option>
+                                    <option value="Không kháng nước">Không kháng nước</option>
+                                    <option value="Chuẩn IP 53">Chuẩn IP 53</option>
+                                    <option value="Chuẩn IP 67">Chuẩn IP 67</option>
+                                    <option value="Chuẩn IP68">Chuẩn IP68</option>
                                 </select>
                             </div>
                             <div className='input-container'>

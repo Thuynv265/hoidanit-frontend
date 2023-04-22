@@ -31,6 +31,10 @@ class ModalEditProduct extends Component {
             img2: '',
             tmpImg2: '',
             content: '',
+            cameraFront: '',
+            cameraBack: '',
+            cpu: '',
+            memoryCard: ''
         }
     }
 
@@ -58,6 +62,10 @@ class ModalEditProduct extends Component {
                 img2: product.img2,
                 tmpImg2: product.img2,
                 content: product.content,
+                cameraFront: product.cameraFront,
+                cameraBack: product.cameraBack,
+                cpu: product.cpu,
+                memoryCard: product.memoryCard
             })
         }
     }
@@ -117,7 +125,7 @@ class ModalEditProduct extends Component {
 
     checkValidateInput = () => {
         let isValid = true
-        let arrInput = ['productName', 'categoryId', 'color', 'storage', 'screen', 'resolution', 'weight', 'battery', 'material', 'water_resist', 'price', 'quantity', 'discount', 'warranty', 'img1', 'img2', 'content']
+        let arrInput = ['productName', 'categoryId', 'color', 'storage', 'screen', 'resolution', 'weight', 'battery', 'material', 'water_resist', 'price', 'quantity', 'discount', 'warranty', 'img1', 'img2', 'content', 'cameraFront', 'cameraBack', 'cpu', 'memoryCard']
         for (let i = 0; i < arrInput.length; i++) {
             console.log('check inside loop: ', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
@@ -213,11 +221,43 @@ class ModalEditProduct extends Component {
                                 </select>
                             </div>
                             <div className='input-container'>
+                                <label>Camera front:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'cameraFront') }}
+                                    value={this.state.cameraFront}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>Camera back:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'cameraBack') }}
+                                    value={this.state.cameraBack}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
                                 <label>Screen:</label>
                                 <input
                                     type='number' step="any"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'screen') }}
                                     value={this.state.screen}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>CPU:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'cpu') }}
+                                    value={this.state.cpu}
+                                ></input>
+                            </div>
+                            <div className='input-container'>
+                                <label>Memory Card:</label>
+                                <input
+                                    type='text'
+                                    onChange={(event) => { this.handleOnchangeInput(event, 'memoryCard') }}
+                                    value={this.state.memoryCard}
                                 ></input>
                             </div>
                             <div className='input-container'>
@@ -270,21 +310,15 @@ class ModalEditProduct extends Component {
                             </div>
                             <div className='input-container'>
                                 <label>Water Resist:</label>
-                                {/* <input
-                                    type='text'
-                                    onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
-                                    value={this.state.water_resist}
-                                ></input> */}
                                 <select
                                     name="water_resist"
                                     onChange={(event) => { this.handleOnchangeInput(event, 'water_resist') }}
                                     value={this.state.water_resist}
                                 >
-                                    {/* <option value="">--</option> */}
-                                    <option value="NFT">Không kháng nước</option>
-                                    <option value="IPS LCD">Chuẩn IP 53</option>
-                                    <option value="Semi Amoled">Chuẩn IP 67</option>
-                                    <option value="Amoled">Chuẩn IP 68</option>
+                                    <option value="Không kháng nước">Không kháng nước</option>
+                                    <option value="Chuẩn IP 53">Chuẩn IP 53</option>
+                                    <option value="Chuẩn IP 67">Chuẩn IP 67</option>
+                                    <option value="Chuẩn IP68">Chuẩn IP68</option>
                                 </select>
                             </div>
                             <div className='input-container'>
