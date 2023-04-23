@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom'
-import { BsSearch, BsFillCartDashFill } from "react-icons/bs"
-import { FaUserPlus, FaUserCircle } from "react-icons/fa"
+// import { NavLink, Link } from 'react-router-dom'
 import Marquee from "react-fast-marquee";
 import Meta from '../../components/Meta'
 import './About.scss'

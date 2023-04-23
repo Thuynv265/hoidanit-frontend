@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './UserManage.scss'
 import { createNewCategoryService, deleteCategoryService, editCategoryService, getAllCategory } from '../../services/userService'
 import { emitter } from '../../utils/emitter';
-import CustomScrollbars from '../../components/CustomScrollbars'
+// import CustomScrollbars from '../../components/CustomScrollbars'
 import ModalDeleteCategory from './Modal Category/ModalDeleteCategory';
 import ModalAddCategory from './Modal Category/ModalAddCategory';
 import ModalEditCategory from './Modal Category/ModalEditCategory';

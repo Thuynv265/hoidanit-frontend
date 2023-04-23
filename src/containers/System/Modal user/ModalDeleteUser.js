@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalFooter } from 'reactstrap';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import _ from 'lodash'
 class ModalDeleteUser extends Component {
     constructor(props) {

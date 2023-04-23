@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
+// import React, { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
-import { getAllProducts } from "../../services/userService";
+// import { getAllProducts } from "../../services/userService";
 import { useDispatch } from "react-redux";
 import { searchFilterChange } from "../../store/actions/searchActions";
-import { set } from "lodash";
+// import { set } from "lodash";
 import { useHistory } from "react-router";
 
 const SearchHeader = () => {

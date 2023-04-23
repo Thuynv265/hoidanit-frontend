@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
+// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from 'react-redux';
 import { AddCart } from "../../store/actions/cartAction";
-import { IoAdd } from "react-icons/io5";
+// import { IoAdd } from "react-icons/io5";
 
 function BtnAddProduct({ product }) {
     console.log(product)

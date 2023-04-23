@@ -12,7 +12,7 @@ import Footer from '../Footer/Footer';
 // import { NavLink, Link } from 'react-router-dom'
 import { editUserService } from '../../services/userService'
 import ModalEditUser from './ModalEditUser';
-import { emitter } from '../../utils/emitter';
+// import { emitter } from '../../utils/emitter';
 
 class editInfo extends Component {
     constructor(props) {

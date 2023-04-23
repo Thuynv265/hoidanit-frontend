@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
-import { BsFacebook, BsGoogle, BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
+// import { BsFacebook, BsGoogle, BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs'
 // import * as actions from "../store/actions";
 import * as actions from "../../store/actions";
 import './Signup.scss';
-import { FormattedMessage } from 'react-intl';
-import { handleLoginApi } from '../../services/userService';
+// import { FormattedMessage } from 'react-intl';
+// import { handleLoginApi } from '../../services/userService';
 import Meta from '../../components/Meta'
 import HomeHeader from '../Homepage/HomeHeader';
 import Footer from '../Footer/Footer';
-import { NavLink, Link } from 'react-router-dom'
+// import { NavLink, Link } from 'react-router-dom'
 import { createNewUserService } from '../../services/userService'
 
 
@@ -44,12 +44,12 @@ class Signup extends Component {
 
     checkValidateInput = () => {
         let isValid = true
-        let arrInput = ['userName', 'passWord', 'firstName', 'lastName', 'roleId', 'phone', 'address']
+        let arrInput = ['userName', 'passWord', 'firstName', 'lastName', 'phone', 'address']
         for (let i = 0; i < arrInput.length; i++) {
             console.log('check inside loop: ', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
                 isValid = false;
-                alert('Missing parameter: ' + arrInput[i]);
+                alert('Thiếu trường thông tin: ' + arrInput[i]);
                 break;
             }
         }

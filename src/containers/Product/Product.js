@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect, useSelector } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom'
+import React from 'react';
+// import React, { Component } from 'react';
+// import { Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+// import { connect, useSelector } from 'react-redux';
+// import { NavLink, Link } from 'react-router-dom'
 import Meta from '../../components/Meta'
 import './Product.scss'
 import HomeHeader from '../Homepage/HomeHeader';
@@ -13,7 +15,7 @@ import { AiOutlineSortAscending, AiOutlineSortDescending, } from "react-icons/ai
 import { BsSortNumericDown, BsSortNumericDownAlt, } from "react-icons/bs"
 import ProductItem from './ProductItem';
 import { v4 as uuidv4 } from 'uuid';
-import { set } from 'lodash';
+// import { set } from 'lodash';
 import ReactPaginate from "react-paginate";
 
 

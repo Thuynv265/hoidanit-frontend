@@ -1,7 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Cart.scss'
-import ip14prm from "../../assets/images/ip14promax.jpg";
 import ProductCartItem from './ProductCartItem';
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';

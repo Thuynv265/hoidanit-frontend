@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { BsFacebook, BsYoutube, BsGithub, BsInstagram } from 'react-icons/bs'
-import newsletter from '../../assets/images/newsletter.png'
+// import newsletter from '../../assets/images/newsletter.png'
 import './Footer.scss'
 class Footer extends Component {
     render() {

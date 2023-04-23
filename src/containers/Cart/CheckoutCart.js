@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import formatMoney from "../../utils/format";
 import { createNewOrderService } from "../../services/userService";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DeleteCart } from "../../store/actions/cartAction";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 
 const CheckoutCart = () => {
     const dispatch = useDispatch();

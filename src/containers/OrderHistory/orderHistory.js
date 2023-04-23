@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Marquee from "react-fast-marquee";
 import Meta from '../../components/Meta'
 import './orderHistory.scss'
 import HomeHeader from '../Homepage/HomeHeader';
 import { AiFillInfoCircle } from "react-icons/ai"
 // import { RiInformationFill } from "react-icons/ri"
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserOrderDetail, getUserOrderHistory } from '../../services/userService';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button } from 'reactstrap';
+// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const OrderHistory = () => {
     const [arrOrders, setArrOrders] = useState();

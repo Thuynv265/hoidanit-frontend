@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom'
-import { BsSearch, BsFillCartDashFill } from "react-icons/bs"
+import { BsFillCartDashFill } from "react-icons/bs"
 import { FaUserPlus, FaUserCircle } from "react-icons/fa"
 import * as actions from "../../store/actions";
 // import { FcMultipleSmartphones } from "react-icons/fc"
@@ -11,8 +11,8 @@ import './HomeHeader.scss'
 import logoVT from '../../assets/images/logoVT.png'
 import { HiOutlineLogout } from "react-icons/hi"
 import { FaHistory } from "react-icons/fa"
-import { MdManageAccounts } from "react-icons/md"
-import { push } from "connected-react-router";
+// import { MdManageAccounts } from "react-icons/md"
+// import { push } from "connected-react-router";
 import ModalEditUser from '../EditUserInfo/ModalEditUser';
 import { editUserService } from '../../services/userService';
 import SearchHeader from './SearchHeader';

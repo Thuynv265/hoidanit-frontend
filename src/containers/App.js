@@ -13,7 +13,7 @@ import Contact from './Contact/Contact';
 import Product from './Product/Product';
 import Policy from './Policy/Policy';
 import Cart from './Cart/Cart';
-import Checkout from './Checkout/Checkout';
+// import Checkout from './Checkout/Checkout';
 import Home from '../routes/Home';
 import editInfo from './EditUserInfo/editInfo';
 // import Login from '../routes/Login';
@@ -61,7 +61,7 @@ const App = (props) => {
                                     <Route path={path.PRODUCT} component={Product} exact />
                                     <Route path={path.POLICY} component={Policy} />
                                     <Route path={path.CART} component={Cart} />
-                                    <Route path={path.CHECKOUT} component={Checkout} />
+                                    {/* <Route path={path.CHECKOUT} component={Checkout} /> */}
                                     <Route path={path.PRODUCT_DETAIL} component={ProductDetail} />
                                     <Route path={path.ORDER_HISTORY} component={orderHistory} />
                                     <Redirect to={path.HOME} />

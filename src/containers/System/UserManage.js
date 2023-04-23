@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss'
-import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService'
+import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService'
 import ModalUser from './Modal user/ModalUser';
 // import ModalEditUser from './Modal user/ModalEditUser';
 import ModalDeleteUser from './Modal user/ModalDeleteUser';
 import { emitter } from '../../utils/emitter';
-import CustomScrollbars from '../../components/CustomScrollbars';
+// import CustomScrollbars from '../../components/CustomScrollbars';
 
 class UserManage extends Component {
 

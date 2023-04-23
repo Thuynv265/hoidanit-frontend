@@ -3,11 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './UserManage.scss'
 import { getAllOrder, editOrderService, deleteOrderService, getAllOrderDetail } from '../../services/userService'
-import { emitter } from '../../utils/emitter';
-import ModalAddProduct from './Modal Product/ModalAddProduct';
-import ModalDeleteProduct from './Modal Product/ModalDeleteProduct';
-import CustomScrollbars from '../../components/CustomScrollbars';
-import ModalEditProduct from './Modal Product/ModalEditProduct';
+// import { emitter } from '../../utils/emitter';
+// import CustomScrollbars from '../../components/CustomScrollbars';
 import { AiFillEdit, AiFillInfoCircle } from "react-icons/ai"
 import { BiTrash } from "react-icons/bi"
 import ModalEditOrder from './ModalOrder/ModalEditOrder';

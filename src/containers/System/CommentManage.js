@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './UserManage.scss'
-import { deleteCategoryService, deleteCommentService, getManageComment } from '../../services/userService'
+import { deleteCommentService, getManageComment } from '../../services/userService'
 // import { emitter } from '../../utils/emitter';
 import ModalDeleteComment from './ModalComment/ModalDeleteComment';
-// import ModalDeleteProduct from './Modal Product/ModalDeleteProduct';
 
 class CommentManage extends Component {
     constructor(props) {

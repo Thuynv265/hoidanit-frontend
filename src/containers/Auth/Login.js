@@ -34,13 +34,13 @@ class Login extends Component {
         this.setState({
             userName: event.target.value
         })
-        console.log(event.target.value)
+        // console.log(event.target.value)
     }
     handleOnChangePassword = (event) => {
         this.setState({
             passWord: event.target.value
         })
-        console.log(event.target.value)
+        // console.log(event.target.value)
     }
     handleLogin = async () => {
         this.setState({

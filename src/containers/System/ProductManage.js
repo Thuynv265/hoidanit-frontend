@@ -6,7 +6,7 @@ import { createNewProductService, getAllProducts, deleteProductService, editProd
 import { emitter } from '../../utils/emitter';
 import ModalAddProduct from './Modal Product/ModalAddProduct';
 import ModalDeleteProduct from './Modal Product/ModalDeleteProduct';
-import CustomScrollbars from '../../components/CustomScrollbars';
+// import CustomScrollbars from '../../components/CustomScrollbars';
 import ModalEditProduct from './Modal Product/ModalEditProduct';
 
 class ProductManage extends Component {

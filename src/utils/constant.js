@@ -11,7 +11,7 @@ export const path = {
     PRODUCT_DETAIL: '/products/:id',
     POLICY: '/policy',
     CART: '/cart',
-    CHECKOUT: '/checkout',
+    // CHECKOUT: '/checkout',
     EDIT: '/edit-infor',
     ORDER_HISTORY: '/order-history'
 };
