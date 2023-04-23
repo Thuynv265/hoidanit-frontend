@@ -131,13 +131,7 @@ class Login extends Component {
                                     Đăng ký ngay
                                 </Link>
                             </div>
-                            {/* <div className='col-12 social-login'>
-                                <BsFacebook className='fs-4 facebook' />
-                                <BsGoogle className='fs-4 google' />
-                                <Link to="/signup">
-                                    Đăng ký
-                                </Link>
-                            </div> */}
+
                         </div>
                     </div>
                 </div>
