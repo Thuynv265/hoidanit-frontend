@@ -120,10 +120,10 @@ class Login extends Component {
                                 </div>
                             </div>
                             <div className='col-12'><button className='btn-login' onClick={() => this.handleLogin()}>Login</button></div>
-                            <div className='col-12'>
+                            {/* <div className='col-12'>
                                 <Link to="/forgotpassword" className='col-12 text-center mt-3 text-dark'>Quên mật khẩu?</Link>
 
-                            </div>
+                            </div> */}
                             <div className='col-12 text-center mt-3'>
                                 <span >Bạn chưa có tài khoản?</span>
                                 <br />

@@ -84,8 +84,7 @@ class CommentManage extends Component {
                                 <th>Product ID</th>
                                 <th>Product Name</th>
                                 <th>Image</th>
-                                {/* <th>Created at</th> */}
-                                <th>Last update</th>
+                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                             {arrComments && arrComments.map((item, index) => {
@@ -101,8 +100,7 @@ class CommentManage extends Component {
                                             style={{
                                                 height: "58px",
                                             }}></img></td>
-                                        {/* <td>{item.createdAt}</td> */}
-                                        <td>{item.updatedAt}</td>
+                                        <td>{item.createdAt}</td>
                                         <td>
                                             <button
                                                 className='btn-delete'

@@ -183,7 +183,7 @@ class ProductManage extends Component {
                                     <tr key={index}>
                                         <td>{item.productId}</td>
                                         <td>{item.productName}</td>
-                                        <td>{item.categoryId}</td>
+                                        <td>{item.categoryId === 1 ? '1-Iphone' : item.categoryId === 2 ? '2-Samsung' : item.categoryId === 3 ? '3-Oppo' : item.categoryId === 4 ? "4-Xiaomi" : item.categoryId === 5 ? '5-Vivo' : item.categoryId === 6 ? '6-Realme' : item.categoryId === 7 ? '7-Redmi' : "8-Nokia"}</td>
                                         <td>{item.color}</td>
                                         <td>{item.storage}</td>
                                         <td>{item.price}</td>

@@ -213,7 +213,7 @@ const CheckoutCart = () => {
                     placeholder="Gọi người khác nhận hàng (nếu có)"
                 />
             </div> */}
-            <div className="form-check mb-3">
+            {/* <div className="form-check mb-3">
                 <label htmlFor="productUsage" className="form-label">
                     Hướng dẫn sử dụng, giải đáp thắc mắc sản phẩm
                 </label>
@@ -222,7 +222,7 @@ const CheckoutCart = () => {
                     className="form-check-input"
                     id="productUsage"
                 />
-            </div>
+            </div> */}
             <div className='d-flex justify-content-between'
 
                 style={{
