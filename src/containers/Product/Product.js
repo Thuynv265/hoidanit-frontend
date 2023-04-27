@@ -479,14 +479,14 @@ const Product = () => {
                                             </span>
                                         </div>
                                         <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortPriceDESC)}>
-                                            <BsSortNumericDown className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
+                                            <BsSortNumericDownAlt className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
                                             <span className='mb-0'>
                                                 <span className='text-dark'>: Giá cao đến thấp</span>
                                                 <br />
                                             </span>
                                         </div>
                                         <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortPriceASC)}>
-                                            <BsSortNumericDownAlt className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
+                                            < BsSortNumericDown className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
                                             <span className='mb-0'>
                                                 <span className='text-dark'>: Giá thấp đến cao</span>
                                                 <br />
