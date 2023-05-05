@@ -9,6 +9,7 @@ import { AddCart } from "../../store/actions/cartAction";
 
 function BtnAddProduct({ product }) {
     console.log(product)
+    //dispatch de sua trang thai, useselect de lay state trong redux
     const dispatch = useDispatch();
     const [modal, setModal] = useState(false);
     const [quantity, setQuantity] = useState(1);
