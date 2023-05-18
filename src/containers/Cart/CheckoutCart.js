@@ -21,7 +21,7 @@ const CheckoutCart = () => {
 
     const handleGenderChange = (event) => {
         setGender(event.target.value);
-        console.log(event.target.value)
+        // console.log(event.target.value)
     };
 
     const inputOnChange = (e, field) => {

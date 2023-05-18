@@ -24,7 +24,8 @@ class HomeHeader extends Component {
         this.state = {
             isOpenModalEditUser: false,
             userEdit: {},
-            inforUser: []
+            // inforUser: [],
+            // param: "",
         }
     };
 
@@ -58,6 +59,16 @@ class HomeHeader extends Component {
             console.log(e)
         }
     }
+    // componentDidMount() {
+    //     const url = new URL(window.location.href);
+    //     const path = url.pathname;
+    //     const segments = path.split('/');
+    //     const product = segments[segments.length - 1];
+    //     this.setState({
+    //         param: product
+    //     })
+    // }
+
     render() {
         let { isLoggedIn, processLogout, userInfo, cartNumber } = this.props;
         let inforUser = userInfo
@@ -176,14 +187,27 @@ class HomeHeader extends Component {
                                     <div className='menu-bottom d-flex align-items-center '>
                                         <div className='menu-links'>
                                             <div className='d-flex align-items-center gap-50'>
-
                                                 <NavLink to=''></NavLink>
                                                 <NavLink to=''></NavLink>
-                                                <NavLink to='/home'>Trang chủ </NavLink>
-                                                <NavLink to='/products'>Sản phẩm</NavLink>
-                                                <NavLink to='/about'>Về chúng tôi</NavLink>
-                                                <NavLink to='/contact'>Liên hệ</NavLink>
-                                                <NavLink to='/policy'>Điều khoản</NavLink>
+                                                <NavLink
+                                                    // className={this.state.param === "home" ? "bg-warning" : ""} 
+                                                    to='/home'>Trang chủ </NavLink>
+                                                <NavLink
+                                                    // className={this.state.param === "products" ? "bg-warning" : ""}
+                                                    to='/products'
+                                                >Sản phẩm</NavLink>
+                                                <NavLink
+                                                    // className={this.state.param === "about" ? "bg-warning" : ""}
+                                                    to='/about'
+                                                >Về chúng tôi</NavLink>
+                                                <NavLink
+                                                    // className={this.state.param === "contact" ? "bg-warning" : ""}
+                                                    to='/contact'
+                                                >Liên hệ</NavLink>
+                                                <NavLink
+                                                    // className={this.state.param === "policy" ? "bg-warning" : ""}
+                                                    to='/policy'
+                                                >Điều khoản</NavLink>
                                                 <a className='text-white' href='tel: 0978569372'>Hotline : 0978569372</a>
                                             </div>
                                         </div>

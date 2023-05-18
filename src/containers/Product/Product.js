@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { getAllProducts, getProductByBrand, getProductSortAlphabet, getProductSortPrice, getProductFilterByStorage, getFilterByPrice } from '../../services/userService';
 import { useState } from 'react';
 import { AiOutlineSortAscending, AiOutlineSortDescending, } from "react-icons/ai"
+import { BiBorderAll } from "react-icons/bi"
 import { BsSortNumericDown, BsSortNumericDownAlt, } from "react-icons/bs"
 import ProductItem from './ProductItem';
 import { v4 as uuidv4 } from 'uuid';
@@ -37,6 +38,39 @@ const Product = () => {
     const [products, setProducts] = useState()
     const [AllProducts, setAllProducts] = useState()
     const [typeFilter, setTypeFilter] = useState('ALL')
+    const [filter, setFilter] = useState('');
+
+    const blodTextFilter = (type) => {
+        if (type === filter) {
+            console.log('reset')
+            setFilter('');
+            return;
+        }
+
+        switch (type) {
+            case 'ALL':
+                setFilter('ALL');
+                // console.log('gan')
+                break;
+            case 'AZ':
+                setFilter('AZ');
+                // console.log('gan')
+                break;
+            case 'ZA':
+                setFilter('ZA');
+                break;
+            case 'highlow':
+                setFilter('highlow');
+                break;
+            case 'lowhigh':
+                setFilter('lowhigh');
+                break;
+            default:
+                break;
+        }
+    }
+
+
     const fetchDataProduct = async () => {
         try {
             const res = await getAllProducts('ALL')
@@ -372,10 +406,10 @@ const Product = () => {
                                 </h4>
                                 <div>
                                     <ul className='ps-0 filter_type_product'>
-                                        <li
+                                        {/* <li
                                             onClick={() => setProducts(AllProducts)}
                                         ><span className='hover-category-filter '
-                                        >-Tất cả sản phẩm</span></li>
+                                        >-Tất cả sản phẩm</span></li> */}
                                         <li
                                             onClick={() => setProducts(productIphone)}
                                         ><span className='hover-category-filter '
@@ -464,31 +498,55 @@ const Product = () => {
                                         <p className="mb-0 d-block" style={{ width: "100px" }}>
                                             Sắp xếp theo:
                                         </p>
-                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortAlphabetASC)}>
-                                            <AiOutlineSortAscending className=' d-flex align-items-center ' style={{ width: "40px", height: "40px" }} />
+                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => {
+                                            blodTextFilter('ALL')
+                                            setProducts(AllProducts)
+                                        }}>
+                                            <BiBorderAll
+                                                className={filter === 'ALL' ? 'text-red d-flex align-items-center ' : ' d-flex align-items-center '} style={{ width: "40px", height: "40px" }} />
                                             <span className='mb-0'>
-                                                <span className='text-dark'>: Từ A-Z</span>
+                                                <span className={filter === 'ALL' ? 'text-red' : 'text-dark'}>: Tất cả</span>
                                                 <br />
                                             </span>
                                         </div>
-                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortAlphabetDESC)}>
+                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => {
+                                            blodTextFilter('AZ')
+                                            setProducts(sortAlphabetASC)
+                                        }}>
+                                            <AiOutlineSortAscending
+                                                className={filter === 'AZ' ? 'text-red d-flex align-items-center ' : ' d-flex align-items-center '} style={{ width: "40px", height: "40px" }} />
+                                            <span className='mb-0'>
+                                                <span className={filter === 'AZ' ? 'text-red' : 'text-dark'}>: Từ A-Z</span>
+                                                <br />
+                                            </span>
+                                        </div>
+                                        <div className={filter === 'ZA' ? 'text-red d-flex align-items-center gap-10 sort-hover' : 'd-flex align-items-center gap-10 sort-hover'} onClick={() => {
+                                            blodTextFilter('ZA')
+                                            setProducts(sortAlphabetDESC)
+                                        }}>
                                             <AiOutlineSortDescending className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
                                             <span className='mb-0'>
-                                                <span className='text-dark'>: Từ Z-A</span>
+                                                <span className={filter === 'ZA' ? 'text-red' : 'text-dark'}>: Từ Z-A</span>
                                                 <br />
                                             </span>
                                         </div>
-                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortPriceDESC)}>
+                                        <div className={filter === 'highlow' ? 'text-red d-flex align-items-center gap-10 sort-hover' : 'd-flex align-items-center gap-10 sort-hover'} onClick={() => {
+                                            blodTextFilter('highlow')
+                                            setProducts(sortPriceDESC)
+                                        }}>
                                             <BsSortNumericDownAlt className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
                                             <span className='mb-0'>
-                                                <span className='text-dark'>: Giá cao đến thấp</span>
+                                                <span className={filter === 'highlow' ? 'text-red' : 'text-dark'}>: Giá cao đến thấp</span>
                                                 <br />
                                             </span>
                                         </div>
-                                        <div className='d-flex align-items-center gap-10 sort-hover' onClick={() => setProducts(sortPriceASC)}>
+                                        <div className={filter === 'lowhigh' ? 'text-red d-flex align-items-center gap-10 sort-hover' : 'd-flex align-items-center gap-10 sort-hover'} onClick={() => {
+                                            blodTextFilter('lowhigh')
+                                            setProducts(sortPriceASC)
+                                        }}>
                                             < BsSortNumericDown className=' d-flex align-items-center' style={{ width: "40px", height: "40px" }} />
                                             <span className='mb-0'>
-                                                <span className='text-dark'>: Giá thấp đến cao</span>
+                                                <span className={filter === 'lowhigh' ? 'text-red' : 'text-dark'}>: Giá thấp đến cao</span>
                                                 <br />
                                             </span>
                                         </div>

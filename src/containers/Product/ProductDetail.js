@@ -93,8 +93,8 @@ const ProductDetail = (props) => {
         let userId = userInfo.id
         let productId = id
         let createdAt = ''
-        let updatedAt = ''
-        let data = { userId, productId, content, createdAt, updatedAt }
+        // let updatedAt = ''
+        let data = { userId, productId, content, createdAt }
         let response = await createNewComment(data)
         setComment(response?.comment[0])
     }
